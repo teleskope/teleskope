@@ -1,21 +1,18 @@
 import SimpleSchema from 'simpl-schema';
 
-/** Create a Meteor collection. */
-
-
 /** Create a schema to constrain the structure of documents associated with this collection. */
 const UserSchema = new SimpleSchema({
-  firstName: String,
-  lastName: String,
-  email: String,
-  password: String,
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  email: { type: String, required: true },
+  password: { type: String, required: true },
   linkedin: String,
   twitter: String,
   github: String,
   image: String,
 
-});
+}, { requiredByDefault: false });
 
 
-/** Make the collection and schema available to other code. */
+/** Make schema available to other code. */
 export { UserSchema };
