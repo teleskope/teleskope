@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Table, Header, Loader } from 'semantic-ui-react';
+import { Container, Header, Loader, Grid, Image, Card } from 'semantic-ui-react';
 import { Company } from '/imports/api/company/company';
 // import  from '/imports/ui/components/'; this line will contain the import statement for the company
 import { withTracker } from 'meteor/react-meteor-data';
@@ -18,20 +18,32 @@ class DisplayCompany extends React.Component {
   renderPage() {
     return (
         <Container>
-          <Header as="h2" textAlign="center">List Stuff</Header>
-          <Table celled>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Name</Table.HeaderCell>
-                <Table.HeaderCell>Quantity</Table.HeaderCell>
-                <Table.HeaderCell>Condition</Table.HeaderCell>
-                <Table.HeaderCell>Edit</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {this.props.company.map((company) => <CHANGE-ME key={company._id} company={company} />)}
-            </Table.Body>
-          </Table>
+          <Grid divided='vertically'>
+          <Grid.Row column={2}>
+          <Grid.Column>
+            <Image src={this.props.company.image} size='medium' />
+          </Grid.Column>
+            <Grid.Column>
+          <Header inverted as="h2" textAlign="center">{this.props.company.companyName}</Header>
+            </Grid.Column>
+          </Grid.Row>
+            <Grid.Row>
+              <Header as="h4">{this.props.company.address}</Header>
+            </Grid.Row>
+            <Grid.Row columns={2}>
+              <Grid.Column>
+                <Header as="h4">{this.props.company.zipCode}</Header>
+              </Grid.Column>
+              <Grid.Column>
+                <Header as="h4">{this.props.company.email}</Header>
+              </Grid.Column>
+            </Grid.Row>
+            <Header as="h3">Description:</Header>
+            <Card>
+              {this.props.company.summary}
+            </Card>
+          </Grid>
+
         </Container>
     );
   }
