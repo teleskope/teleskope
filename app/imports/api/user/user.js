@@ -1,4 +1,5 @@
 import SimpleSchema from 'simpl-schema';
+import { Tracker } from 'meteor/tracker';
 
 /** Create a schema to constrain the structure of documents associated with this collection. */
 const UserSchema = new SimpleSchema({
@@ -11,7 +12,7 @@ const UserSchema = new SimpleSchema({
   github: String,
   image: String,
 
-}, { requiredByDefault: false });
+}, { requiredByDefault: false, tracker: Tracker });
 
 
 /** Make schema available to other code. */
