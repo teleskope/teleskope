@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Container, Header, Loader, Grid, Image, Card } from 'semantic-ui-react';
 import { Company } from '/imports/api/company/company';
-// import  from '/imports/ui/components/'; this line will contain the import statement for the company
+import CompanyComponent from '/imports/ui/components/Company';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 
@@ -18,31 +18,7 @@ class DisplayCompany extends React.Component {
   renderPage() {
     return (
         <Container>
-          <Grid divided='vertically'>
-          <Grid.Row column={2}>
-          <Grid.Column>
-            <Image src={this.props.company.image} size='medium' />
-          </Grid.Column>
-            <Grid.Column>
-          <Header inverted as="h2" textAlign="center">{this.props.company.companyName}</Header>
-            </Grid.Column>
-          </Grid.Row>
-            <Grid.Row>
-              <Header as="h4">{this.props.company.address}</Header>
-            </Grid.Row>
-            <Grid.Row columns={2}>
-              <Grid.Column>
-                <Header as="h4">{this.props.company.zipCode}</Header>
-              </Grid.Column>
-              <Grid.Column>
-                <Header as="h4">{this.props.company.email}</Header>
-              </Grid.Column>
-            </Grid.Row>
-            <Header as="h3">Description:</Header>
-            <Card>
-              {this.props.company.summary}
-            </Card>
-          </Grid>
+          {this.props.company.map((company) => <CompanyComponent key={company._id} company={company} />)}
 
         </Container>
     );
@@ -57,7 +33,7 @@ DisplayCompany.propTypes = {
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
-  // Get access to Stuff documents.
+  // Get access to Company documents.
   const subscription = Meteor.subscribe('Company');
   return {
     company: Company.find({}).fetch(),
