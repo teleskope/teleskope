@@ -25,7 +25,7 @@ class ShowCompany extends Component {
 
 ShowCompany.propTypes = {
   company: PropTypes.object,
-  read: PropTypes.bool,
+  ready: PropTypes.bool,
 };
 
 export default withTracker(({ match }) => {

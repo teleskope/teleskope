@@ -3,8 +3,6 @@ import { Link, Route } from 'react-router-dom';
 import { Card, Icon, Grid, Image, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-// const summaryMaxLen = 180;
-
 const imageStyle = {
   width: '100%',
 };
