@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, Route } from 'react-router-dom';
 import { Card, Icon, Grid, Image, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
@@ -10,7 +11,7 @@ const imageStyle = {
 
 export default function CompanyCard(props) {
 
-  const { companyName, address, website, summary } = props.company;
+  const { companyName, address, website, _id } = props.company;
   return (
 
       <Card as='a'>
@@ -22,19 +23,21 @@ export default function CompanyCard(props) {
           </Card.Meta>
           {/* <Card.Description>{summary.substring(0, summaryMaxLen) + '...'}</Card.Description> */}
           <List>
-            <List.Item>{`Positions Open: 3`}</List.Item>
+            <Link to={`/companies/${_id}`}>
+              <List.Item>{`Positions Open: 3`}</List.Item>
+            </Link>
           </List>
         </Card.Content>
         <Card.Content extra>
-          <a>
             <Icon name='globe' />
             {website}
-          </a>
         </Card.Content>
       </Card>       
   );
 }
 
+
 CompanyCard.propTypes = {
   company: PropTypes.object.isRequired,
+  match: PropTypes.string,
 };

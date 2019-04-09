@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Grid, Header, Loader, Card } from 'semantic-ui-react';
+import { Container, Grid, Header, Loader, Card, Divider } from 'semantic-ui-react';
 import { Companies } from '/imports/api/company/company';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -27,6 +27,10 @@ class ListCompanies extends React.Component {
                     <CompanyCard key={index} company={company}/>
                 ))}
               </Card.Group>
+            </Grid.Row>
+            <Divider />
+            <Grid.Row>
+              <Header as="h2">All Companies</Header>
             </Grid.Row>
           </Grid>
         </Container>
