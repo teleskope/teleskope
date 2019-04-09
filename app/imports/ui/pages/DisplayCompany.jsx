@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Loader, Grid, Image, Card } from 'semantic-ui-react';
+import { Container, Loader } from 'semantic-ui-react';
 import { Company } from '/imports/api/company/company';
 import CompanyComponent from '/imports/ui/components/Company';
 import { withTracker } from 'meteor/react-meteor-data';

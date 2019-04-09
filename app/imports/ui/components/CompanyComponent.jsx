@@ -26,8 +26,15 @@ class CompanyComponent extends React.Component {
             </Grid.Column>
 
           </Grid.Row>
+          <Grid.Row>
+            <Header as='h2'>Company Description</Header>
+            <Container>
+              {this.props.company.summary}
+            </Container>
+          </Grid.Row>
 
         </Grid>
+
     );
   }
 }
