@@ -12,7 +12,7 @@ export default function CompanyCard(props) {
   const { companyName, address, website, _id } = props.company;
   return (
 
-      <Card as='a'>
+      <Card raised>
         <Image src='https://via.placeholder.com/150' style={imageStyle} centered></Image>
         <Card.Content>
           <Card.Header>{companyName}</Card.Header>
