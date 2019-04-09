@@ -16,8 +16,8 @@ class Landing extends React.Component {
             <Grid.Column width={8}>
               <Header as="h1" >Teleskope</Header>
               <Header as="h2" >Helping employers find stars</Header>
-                <Button as={NavLink} activeClassName="active" exact to="/student" key='student'>Student</Button>,
-                <Button as={NavLink} activeClassName="active" exact to="/company" key='company'>Company</Button>,
+                <Button as={NavLink} activeClassName="active" exact to="/StudentSignup" key='signup'>Student</Button>,
+                <Button as={NavLink} activeClassName="active" exact to="/CompanySignup" key='signup'>Company</Button>,
                 {this.props.currentUser ? (
                     [<Button as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Button>,
                       <Button as={NavLink} activeClassName="active" exact to="/list" key='list'>List Stuff</Button>,
