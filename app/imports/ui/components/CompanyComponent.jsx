@@ -24,7 +24,6 @@ class CompanyComponent extends React.Component {
                 <Link to={this.props.company.email}><Icon className="envelope outline icon"/></Link>
               </Container>
             </Grid.Column>
-
           </Grid.Row>
           <Grid.Row>
             <Header as='h2'>Company Description</Header>
@@ -32,7 +31,6 @@ class CompanyComponent extends React.Component {
               {this.props.company.summary}
             </Container>
           </Grid.Row>
-
         </Grid>
 
     );
