@@ -29,7 +29,6 @@ ShowCompany.propTypes = {
 };
 
 export default withTracker(({ match }) => {
-  // Get access to Stuff documents.
   const documentId = match.params.companyId;
 
   const subscription = Meteor.subscribe('Companies');

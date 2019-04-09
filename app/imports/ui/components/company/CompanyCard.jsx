@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
-import { Card, Icon, Grid, Image, List } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { Card, Icon, Image, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 const imageStyle = {
@@ -33,7 +33,6 @@ export default function CompanyCard(props) {
       </Card>       
   );
 }
-
 
 CompanyCard.propTypes = {
   company: PropTypes.object.isRequired,
