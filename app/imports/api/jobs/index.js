@@ -1,1 +1,1 @@
-import './company.js';
+import './jobs.js';
