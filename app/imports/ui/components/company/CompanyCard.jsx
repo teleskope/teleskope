@@ -11,10 +11,6 @@ const imageStyle = {
   maxHeight: '150px',
 };
 
-const cardTopStyle = {
-  position: 'relative',
-};
-
 export default function CompanyCard(props) {
   const { companyName, website, _id, zipCode } = props.company;
   const city = zipcodes.lookup(zipCode);
@@ -23,16 +19,18 @@ export default function CompanyCard(props) {
 
   return (
       <Card raised>
-        <div style={cardTopStyle}>
-          <Image src='https://via.placeholder.com/150' style={imageStyle} centered></Image>
-          <h1 style={{ position: 'absolute', left: 0, top: 0, margin: '0.5rem' }}>{companyName}</h1>
-          <Icon
-            link
-            name={ favorited ? 'heart' : 'heart outline'}
-            style={{ position: 'absolute', right: 0, top: 0, margin: '0.5rem' }}
-            onClick={(() => setFavorited(!favorited))}
-          />
-        </div>
+          <div style={{ position: 'relative' }}>
+            <Image src='https://via.placeholder.com/150' style={imageStyle} centered></Image>
+            <Link to={`/companies/${_id}`} style={{ color: 'white' }}>
+              <h1 style={{ position: 'absolute', left: 0, top: 0, margin: '0.5rem' }}>{companyName}</h1>
+            </Link>
+            <Icon
+              link
+              name={ favorited ? 'heart' : 'heart outline'}
+              style={{ position: 'absolute', right: 0, top: 0, margin: '0.5rem' }}
+              onClick={(() => setFavorited(!favorited))}
+            />
+          </div>
         <Card.Content>
           <Card.Header></Card.Header>
           <Card.Meta>
