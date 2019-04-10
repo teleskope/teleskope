@@ -1,9 +1,10 @@
 import React from 'react';
-import { Grid, Icon, Header, Divider, Menu, Button } from 'semantic-ui-react';
+import { Grid, Icon, Header, Button, Segment } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+//import logo from '../../../public/images/TeleSKOPE.png';
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
@@ -11,48 +12,46 @@ class Landing extends React.Component {
     return (
 
       <div >
-        <div className="teleskope-landing-background">
-          <Grid verticalAlign='middle' textAlign='center' container  >
-            <Grid.Column width={8}>
-              <Header as="h1" >Teleskope</Header>
-              <Header as="h2" >Helping employers find stars</Header>
-                <Button as={NavLink} activeClassName="active" exact to="/StudentSignup" key='signup'>Student</Button>,
-                <Button as={NavLink} activeClassName="active" exact to="/CompanySignup" key='signup'>Company</Button>,
-                {this.props.currentUser ? (
-                    [<Button as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Button>,
-                      <Button as={NavLink} activeClassName="active" exact to="/list" key='list'>List Stuff</Button>,
-                      <Button as={NavLink} activeClassName="active" exact to="/test" key='test'>Textbook</Button>]
+        <Segment className="teleskope-landing-background" attached="top" inverted padded="very" size="large" textAlign="center">
+          <Header as="h1" size="huge">TeleSkope</Header>
+{/*          <Image src={logo} size='medium' />*/}
+          <Header as="h2" size="medium">Helping employers find stars</Header>
+          <Header as="h3">New?  Choose a role below and register!</Header>
+          <Button as={NavLink} exact to="/signup" key='StudentSignup'>Student</Button>
+          <Button as={NavLink}  exact to="/signup" key='CompanySignup'>Company</Button>
+          {this.props.currentUser ? (
+            [<Button as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Button>,
+              <Button as={NavLink} activeClassName="active" exact to="/list" key='list'>List Stuff</Button>,
+              <Button as={NavLink} activeClassName="active" exact to="/test" key='test'>Textbook</Button>]
 
-                ) : ''}
-            </Grid.Column>
-          </Grid>
-        </div>
-        <div>
+          ) : ''}
+
+        </Segment>
+
+        <Segment padded="very" basic>
           <Grid container centered stackable columns={3}>
 
             <Grid.Column textAlign='center'>
-              <Icon size='huge' name="users" />
-              <Header as="h1" >Multiple Users</Header>
-              <Header as="h3" >This address book enables any number of users to register and save their business
-                contacts.  You can only see the business contacts you have created</Header>
+              <Icon size='huge' name="star outline" />
+              <Header as="h1" >1,000</Header>
+              <Header as="h3" >Companies looking for stars</Header>
             </Grid.Column>
 
             <Grid.Column textAlign='center'>
-              <Icon size='huge' name="file alternate" />
-              <Header as="h1" >Contact Details</Header>
-              <Header as="h3" >For each contact you can save their name, address, and phone number.</Header>
+              <Icon size='huge' name="connectdevelop" />
+              <Header as="h1" >2,000</Header>
+              <Header as="h3" >connections made</Header>
             </Grid.Column>
 
             <Grid.Column textAlign='center'>
-              <Icon size='huge' name="checked calendar" />
-              <Header as="h1" >Timestamped Notes</Header>
-              <Header as="h3" >Each time you make contact with a contact, you can write a note that summarizes
-                the conversation.  This note is saved along with a timestamp with a contact.</Header>
+              <Icon size='huge' name="money bill alternate outline" />
+              <Header as="h1" >1,210</Header>
+              <Header as="h3" >Career opportunities available</Header>
 
             </Grid.Column>
 
           </Grid>
-        </div>
+        </Segment>
       </div>
     );
   }
