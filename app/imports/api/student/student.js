@@ -14,9 +14,7 @@ const StudentSchema = new SimpleSchema({
     https://react.semantic-ui.com/modules/dropdown/#types-multiple-selection
 
     skills: Array[skill_ids],
-
     OR
-
     skills:{
       type: String,
       allowedValues: [
