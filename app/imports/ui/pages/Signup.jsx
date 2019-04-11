@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { Container, Form, Grid, Header, Message, Segment, Button } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
+import CompanyRegistration from '../components/registration/CompanyRegistration';
+import StudentRegistration from '../components/registration/StudentRegistration';
 
 /**
  * Signup component is similar to signin component, but we attempt to create a new user instead.
@@ -10,12 +12,21 @@ export default class Signup extends React.Component {
   /** Initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '', error: '' };
+    this.state = {
+      email: '',
+      password: '',
+      error: '',
+      companyReg: false,
+    };
     // Ensure that 'this' is bound to this component in these two functions.
     // https://medium.freecodecamp.org/react-binding-patterns-5-approaches-for-handling-this-92c651b5af56
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+
+  toggleRegistrationType = () => {
+    this.setState({ companyReg: !this.state.companyReg });
+  };
 
   /** Update the form controls each time the user interacts with them. */
   handleChange(e, { name, value }) {
@@ -34,8 +45,27 @@ export default class Signup extends React.Component {
     });
   }
 
+  switchRegistration() {
+    let button;
+    if (this.state.companyReg) {
+        button = <Button onClick={this.toggleRegistrationType} color='green'>
+          Switch to company registration
+        </Button>;
+    } else {
+        button = <Button onClick={this.toggleRegistrationType} color='blue'>
+          Switch to Student registration
+        </Button>;
+    }
+    return button;
+  }
+
   /** Display the signup form. */
   render() {
+    const switchButton = this.switchRegistration();
+    const registrationForm = this.state.companyReg
+      ? <CompanyRegistration />
+      : <StudentRegistration />;
+
     return (
         <Container>
           <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
@@ -43,29 +73,7 @@ export default class Signup extends React.Component {
               <Header as="h2" textAlign="center">
                 Register your account
               </Header>
-              <Form onSubmit={this.handleSubmit}>
-                <Segment stacked>
-                  <Form.Input
-                      label="Email"
-                      icon="user"
-                      iconPosition="left"
-                      name="email"
-                      type="email"
-                      placeholder="E-mail address"
-                      onChange={this.handleChange}
-                  />
-                  <Form.Input
-                      label="Password"
-                      icon="lock"
-                      iconPosition="left"
-                      name="password"
-                      placeholder="Password"
-                      type="password"
-                      onChange={this.handleChange}
-                  />
-                  <Form.Button content="Submit"/>
-                </Segment>
-              </Form>
+              {registrationForm}
               <Message>
                 Already have an account? Login <Link to="/signin">here</Link>
               </Message>
@@ -78,6 +86,9 @@ export default class Signup extends React.Component {
                       content={this.state.error}
                   />
               )}
+              <div>
+                {switchButton}
+              </div>
             </Grid.Column>
           </Grid>
         </Container>
