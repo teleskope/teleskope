@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Form, Grid, Header, Message, Segment, Button } from 'semantic-ui-react';
-import { Accounts } from 'meteor/accounts-base';
+import { Container, Icon, Grid, Header, Message, Button } from 'semantic-ui-react';
 import CompanyRegistration from '../components/registration/CompanyRegistration';
 import StudentRegistration from '../components/registration/StudentRegistration';
 
@@ -13,50 +12,34 @@ export default class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
-      error: '',
       companyReg: false,
     };
-    // Ensure that 'this' is bound to this component in these two functions.
-    // https://medium.freecodecamp.org/react-binding-patterns-5-approaches-for-handling-this-92c651b5af56
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
   toggleRegistrationType = () => {
     this.setState({ companyReg: !this.state.companyReg });
   };
 
-  /** Update the form controls each time the user interacts with them. */
-  handleChange(e, { name, value }) {
-    this.setState({ [name]: value });
-  }
-
-  /** Handle Signup submission using Meteor's account mechanism. */
-  handleSubmit() {
-    const { email, password } = this.state;
-    Accounts.createUser({ email, username: email, password }, (err) => {
-      if (err) {
-        this.setState({ error: err.reason });
-      } else {
-        // browserHistory.push('/login');
-      }
-    });
-  }
-
   switchRegistration() {
-    let button;
-    if (this.state.companyReg) {
-        button = <Button onClick={this.toggleRegistrationType} color='green'>
-          Switch to company registration
-        </Button>;
+    const { companyReg } = this.state;
+    let icon;
+    let text;
+    let color;
+    if (companyReg) {
+      icon = 'student';
+      text = 'Switch to Student registration';
+      color = 'blue';
     } else {
-        button = <Button onClick={this.toggleRegistrationType} color='blue'>
-          Switch to Student registration
-        </Button>;
+      icon = 'building';
+      text = 'Switch to Company registration';
+      color = 'green';
     }
-    return button;
+    return (
+      <Button onClick={this.toggleRegistrationType} color={color} icon labelPosition='left' fluid>
+        <Icon name={icon} />
+        {text}
+      </Button>
+    );
   }
 
   /** Display the signup form. */
@@ -73,19 +56,11 @@ export default class Signup extends React.Component {
               <Header as="h2" textAlign="center">
                 Register your account
               </Header>
-              {registrationForm}
+                {registrationForm}
               <Message>
                 Already have an account? Login <Link to="/signin">here</Link>
               </Message>
-              {this.state.error === '' ? (
-                  ''
-              ) : (
-                  <Message
-                      error
-                      header="Registration was not successful"
-                      content={this.state.error}
-                  />
-              )}
+
               <div>
                 {switchButton}
               </div>
