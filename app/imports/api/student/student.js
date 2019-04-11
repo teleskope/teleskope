@@ -8,15 +8,29 @@ const Students = new Mongo.Collection('Students');
 
 /** Create a schema to constrain the structure of documents associated with this collection. */
 const StudentSchema = new SimpleSchema({
-  name: String,
-      website: String,
+    //ERROR:
+    name: String,
+    website: String,
     /* Add this back when we figure out how to implement skills
+    https://react.semantic-ui.com/modules/dropdown/#types-multiple-selection
+
     skills: Array[skill_ids],
+    OR
+    skills:{
+      type: String,
+      allowedValues: [
+        { key: 'angular', text: 'Angular', value: 'angular' },
+        { key: 'css', text: 'CSS', value: 'css' },
+      ],
+    },
      */
     summary: String,
     /* Find a way to have user input experiences individually, such as separate fields etc */
     experience: String,
-}, { tracker: Tracker });
+    /* TODO: profile image
+    image: String,
+     */
+}, { requiredByDefault: false }, { tracker: Tracker }) ;
 
 StudentSchema.extend(UserSchema);
 Students.attachSchema(StudentSchema);
