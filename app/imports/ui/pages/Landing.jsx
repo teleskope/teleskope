@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Icon, Header, Button, Segment } from 'semantic-ui-react';
+import { Grid, Icon, Header, Button, Segment, Image } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
@@ -12,9 +12,9 @@ class Landing extends React.Component {
     return (
 
       <div >
-        <Segment className="teleskope-landing-background" attached="top" inverted padded="very" size="large" textAlign="center">
+        <Segment id="teleskope-background" attached="top" inverted padded="very" size="large" textAlign="center">
           <Header as="h1" size="huge">TeleSkope</Header>
-{/*          <Image src={logo} size='medium' />*/}
+            {/*<Image src="images/TeleSKOPE.png" size='medium' />*/}
           <Header as="h2" size="medium">Helping employers find stars</Header>
           <Header as="h3">New?  Choose a role below and register!</Header>
           <Button as={NavLink} exact to="/signup" key='StudentSignup'>Student</Button>
