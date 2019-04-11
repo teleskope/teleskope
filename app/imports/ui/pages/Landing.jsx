@@ -2,8 +2,9 @@ import React from 'react';
 import { Grid, Icon, Header, Button, Segment, Image } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { withRouter, NavLink } from 'react-router-dom';
+import { withRouter, NavLink, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Table } from 'semantic-ui-react/dist/commonjs/collections/Table';
 //import logo from '../../../public/images/TeleSKOPE.png';
 
 /** A simple static component to render some text for the landing page. */
@@ -17,13 +18,21 @@ class Landing extends React.Component {
             {/*<Image src="images/TeleSKOPE.png" size='medium' />*/}
           <Header as="h2" size="medium">Helping employers find stars</Header>
           <Header as="h3">New?  Choose a role below and register!</Header>
-          <Button as={NavLink} exact to="/signup" key='StudentSignup'>Student</Button>
-          <Button as={NavLink}  exact to="/signup" key='CompanySignup'>Company</Button>
-          {this.props.currentUser ? (
-            [<Button as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Button>,
-              <Button as={NavLink} activeClassName="active" exact to="/list" key='list'>List Stuff</Button>,
-              <Button as={NavLink} activeClassName="active" exact to="/test" key='test'>Textbook</Button>]
+          <Link to={`/signup`} key="StudentSignup">
+            <Button>Student</Button>
+          </Link>
+          <Link to={`/signup`} key="CompanySignup">
+            <Button>Company</Button>
+          </Link>
 
+          {this.props.currentUser ? (
+            [<Link to={`/signup`} key="test1">
+              <Button>test 1</Button>
+            </Link>,
+            <Link to={`/signup`} key="test2">
+              <Button>test 2</Button>
+            </Link>,
+            ]
           ) : ''}
 
         </Segment>
