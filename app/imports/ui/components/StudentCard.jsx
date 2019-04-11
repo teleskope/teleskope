@@ -17,7 +17,7 @@ export default function StudentCard(props) {
   return (
       <Card raised>
           <div style={{ position: 'relative' }}>
-            <Image src='https://via.placeholder.com/150' style={imageStyle} centered>Profile Image</Image>
+            <Image src='https://via.placeholder.com/150' style={imageStyle} centered></Image>
             <Link to={`/students/${_id}`} style={{ color: 'white' }}>
               <h1 style={{ position: 'absolute', left: 0, top: 0, margin: '0.5rem' }}>{firstName} {lastName}</h1>
             </Link>
@@ -30,10 +30,10 @@ export default function StudentCard(props) {
           </div>
         <Card.Content>
           <Card.Meta>
+            <span >{email}</span>
             <a href={website}>
-              <Icon name='globe' color='blue'/>
+              <Icon name='globe' color='blue' style={{ marginLeft: '9.5em' }}/>
             </a>
-            <span>{email}</span>
           </Card.Meta>
         <Card.Description>{summary.substring(0, summaryMaxLen) + '...'}</Card.Description>
         </Card.Content>

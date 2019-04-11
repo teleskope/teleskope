@@ -20,7 +20,7 @@ export default function CompanyCard(props) {
   return (
       <Card raised>
           <div style={{ position: 'relative' }}>
-            <Image src='https://via.placeholder.com/150' style={imageStyle} centered>Company Image</Image>
+            <Image src='https://via.placeholder.com/150' style={imageStyle} centered></Image>
             <Link to={`/companies/${_id}`} style={{ color: 'white' }}>
               <h1 style={{ position: 'absolute', left: 0, top: 0, margin: '0.5rem' }}>{companyName}</h1>
             </Link>
