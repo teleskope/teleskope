@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
-import { Accounts } from 'meteor/accounts-base';
+import { Container, Icon, Grid, Header, Message, Button } from 'semantic-ui-react';
+import CompanyRegistration from '../components/registration/CompanyRegistration';
+import StudentRegistration from '../components/registration/StudentRegistration';
 
 /**
  * Signup component is similar to signin component, but we attempt to create a new user instead.
@@ -10,32 +11,44 @@ export default class Signup extends React.Component {
   /** Initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '', error: '' };
-    // Ensure that 'this' is bound to this component in these two functions.
-    // https://medium.freecodecamp.org/react-binding-patterns-5-approaches-for-handling-this-92c651b5af56
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      companyReg: false,
+    };
   }
 
-  /** Update the form controls each time the user interacts with them. */
-  handleChange(e, { name, value }) {
-    this.setState({ [name]: value });
-  }
+  toggleRegistrationType = () => {
+    this.setState({ companyReg: !this.state.companyReg });
+  };
 
-  /** Handle Signup submission using Meteor's account mechanism. */
-  handleSubmit() {
-    const { email, password } = this.state;
-    Accounts.createUser({ email, username: email, password }, (err) => {
-      if (err) {
-        this.setState({ error: err.reason });
-      } else {
-        // browserHistory.push('/login');
-      }
-    });
+  switchRegistration() {
+    const { companyReg } = this.state;
+    let icon;
+    let text;
+    let color;
+    if (companyReg) {
+      icon = 'student';
+      text = 'Switch to Student registration';
+      color = 'blue';
+    } else {
+      icon = 'building';
+      text = 'Switch to Company registration';
+      color = 'green';
+    }
+    return (
+      <Button onClick={this.toggleRegistrationType} color={color} icon labelPosition='left' fluid>
+        <Icon name={icon} />
+        {text}
+      </Button>
+    );
   }
 
   /** Display the signup form. */
   render() {
+    const switchButton = this.switchRegistration();
+    const registrationForm = this.state.companyReg
+      ? <CompanyRegistration />
+      : <StudentRegistration />;
+
     return (
         <Container>
           <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
@@ -43,41 +56,14 @@ export default class Signup extends React.Component {
               <Header as="h2" textAlign="center">
                 Register your account
               </Header>
-              <Form onSubmit={this.handleSubmit}>
-                <Segment stacked>
-                  <Form.Input
-                      label="Email"
-                      icon="user"
-                      iconPosition="left"
-                      name="email"
-                      type="email"
-                      placeholder="E-mail address"
-                      onChange={this.handleChange}
-                  />
-                  <Form.Input
-                      label="Password"
-                      icon="lock"
-                      iconPosition="left"
-                      name="password"
-                      placeholder="Password"
-                      type="password"
-                      onChange={this.handleChange}
-                  />
-                  <Form.Button content="Submit"/>
-                </Segment>
-              </Form>
+                {registrationForm}
               <Message>
                 Already have an account? Login <Link to="/signin">here</Link>
               </Message>
-              {this.state.error === '' ? (
-                  ''
-              ) : (
-                  <Message
-                      error
-                      header="Registration was not successful"
-                      content={this.state.error}
-                  />
-              )}
+
+              <div>
+                {switchButton}
+              </div>
             </Grid.Column>
           </Grid>
         </Container>
