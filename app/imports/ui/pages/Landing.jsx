@@ -74,4 +74,5 @@ const LandingContainer = withTracker(() => ({
   currentUser: Meteor.user() ? Meteor.user().username : '',
 }))(Landing);
 
+/** Wrap this component in withRouter since we use the <Link> React Router element. */
 export default withRouter(LandingContainer);

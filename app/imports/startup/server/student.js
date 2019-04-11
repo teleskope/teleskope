@@ -3,7 +3,7 @@ import { Students } from '../../api/student/student';
 
 /** Initialize the database with a default data document. */
 function addData(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
+  console.log(`  Adding: ${data.lastName} (${data.email})`);
   Students.insert(data);
 }
 
@@ -15,11 +15,7 @@ if (Students.find().count() === 0) {
   }
 }
 
-// /** This subscription publishes only the documents associated with the logged in user */
-// Meteor.publish('Company', function publish() {
-//   if (this.userId) {
-//     const username = Meteor.users.findOne(this.userId).username;
-//     return Companies.find({ owner: username });
-//   }
-//   return this.ready();
-// });
+/** This subscription publishes all the documents regardless of the user */
+Meteor.publish('Students', function publish() {
+  return Students.find();
+});
