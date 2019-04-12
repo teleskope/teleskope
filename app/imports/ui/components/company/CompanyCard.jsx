@@ -12,7 +12,7 @@ const imageStyle = {
 };
 
 export default function CompanyCard(props) {
-  const { companyName, website, _id, zipCode } = props.company;
+  const { name, website, _id, zipCode } = props.company;
   const city = zipcodes.lookup(zipCode);
 
   const [favorited, setFavorited] = useState(false);
@@ -22,7 +22,7 @@ export default function CompanyCard(props) {
           <div style={{ position: 'relative' }}>
             <Image src='https://via.placeholder.com/150' style={imageStyle} centered></Image>
             <Link to={`/companies/${_id}`} style={{ color: 'white' }}>
-              <h1 style={{ position: 'absolute', left: 0, top: 0, margin: '0.5rem' }}>{companyName}</h1>
+              <h1 style={{ position: 'absolute', left: 0, top: 0, margin: '0.5rem' }}>{name}</h1>
             </Link>
             <Icon
               link

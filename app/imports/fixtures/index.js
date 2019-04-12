@@ -1,1 +1,1 @@
-import './companies.js';
+import './companies';

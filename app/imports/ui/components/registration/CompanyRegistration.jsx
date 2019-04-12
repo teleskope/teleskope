@@ -25,7 +25,7 @@ export default class CompanyRegistration extends Component {
 
   // TODO: reimplement handleSubmit
   handleSubmit() {
-    // const { email, password, companyName } = this.state;
+    // const { email, password, name } = this.state;
     // Accounts.createUser({ email, username: email, password }, (err) => {
     //   if (err) {
     //     this.setState({ error: err.reason });

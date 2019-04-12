@@ -20,14 +20,16 @@ const defaultCompanies = [
 ];
 
 function addData(data) {
-  console.log(`  Adding: ${data.companyName} (${data.password})`);
+  console.log(`  Adding: ${data.name}`);
   Companies.insert(data);
 }
 
-/** Initialize the collection if empty. */
-if (Companies.find().count() === 0) {
-  if (defaultCompanies) {
-    console.log('Creating default companies.');
-    defaultCompanies.map(data => addData(data));
+export default function createCompanies() {
+  /** Initialize the collection if empty. */
+  if (Companies.find().count() === 0) {
+    if (defaultCompanies) {
+      console.log('Creating default companies.');
+      defaultCompanies.map(data => addData(data));
+    }
   }
 }
