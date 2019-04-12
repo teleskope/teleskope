@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Icon, Image, Loader, Segment, Grid, Menu } from 'semantic-ui-react';
+import { Container, Header, Icon, Image, Loader, Segment, Grid, Menu, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Students } from '../../api/student/student';
 
@@ -19,6 +19,13 @@ class ShowStudent extends Component {
           <Grid.Row columns={2}>
             <Grid.Column>
               <Image src={this.props.student.image} size='huge'/>
+              <Button
+                color='blue'
+                content='Interested'
+                icon='space shuttle'
+                attached='bottom'
+                toggle
+                />
             </Grid.Column>
             <Grid.Column>
               <Header as='h1'>{this.props.student.firstName} {this.props.student.lastName}</Header>
