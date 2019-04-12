@@ -2,3 +2,21 @@
   background: url('images/spiral-of-stars.jpeg') no-repeat center center fixed;
   background-size: cover;
 }
+
+#footer {
+  height: 250px;
+  background-color: black;
+  color: white;
+}
+
+.uhire-landing-background {
+  background: url('images/spiral-of-stars.jpeg') no-repeat 50% fixed;
+  background-size: cover;
+  height: 1500px;
+  color: #fff;
+  vertical-align: middle;
+  padding-top: 50px;
+  padding-bottom: 2.5rem;
+  margin-top: -10px;
+  position: relative;
+}
