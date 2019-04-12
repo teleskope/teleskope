@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import createCompanies from '/imports/fixtures/companies.js';
 import createUsers from './accounts.js';
 
@@ -9,6 +10,7 @@ const runFixtures = function () {
   }
 };
 
+// TODO: determine when to run it for prod
 // if (!Meteor.isDevelopment) {
   runFixtures();
 // }

@@ -11,8 +11,16 @@ function createUser(email, password, role) {
     email: email,
     password: password,
   });
-  if (role === 'admin') {
-    Roles.addUsersToRoles(userID, 'admin');
+
+  switch (role) {
+    case 'admin':
+      Roles.addUsersToRoles(userID, 'company');
+      break;
+    case 'company':
+      Roles.addUsersToRoles(userID, 'company');
+      break;
+    default:
+      Roles.addUsersToRoles(userID, 'company');
   }
 }
 
