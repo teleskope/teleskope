@@ -19,13 +19,6 @@ class ShowStudent extends Component {
           <Grid.Row columns={2}>
             <Grid.Column>
               <Image src={'..images/RussHanneman.jpg'} size='huge'/>
-              <Button
-                color='blue'
-                content='Interested'
-                icon='space shuttle'
-                attached='bottom'
-                toggle
-                />
             </Grid.Column>
             <Grid.Column>
               <Header as='h1'>{this.props.student.firstName} {this.props.student.lastName}</Header>
@@ -39,6 +32,12 @@ class ShowStudent extends Component {
                   <Menu.Item><Icon size='large' className="github icon"/></Menu.Item>
                   <Menu.Item><Icon size='large' className="envelope outline icon"/></Menu.Item>
                 </Menu>
+                <Button
+                    color='blue'
+                    content='Interested'
+                    icon='space shuttle'
+                    toggle
+                />
               </Container>
             </Grid.Column>
           </Grid.Row>
