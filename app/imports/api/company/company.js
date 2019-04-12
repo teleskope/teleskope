@@ -11,6 +11,7 @@ const CompanySchema = new SimpleSchema({
   website: String,
   summary: String,
   owner: Array,
+  'owner.$': String,
 }, { tracker: Tracker, requiredByDefault: false });
 
 Companies.attachSchema(CompanySchema);
