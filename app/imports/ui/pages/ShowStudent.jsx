@@ -18,7 +18,7 @@ class ShowStudent extends Component {
         <Grid>
           <Grid.Row columns={2}>
             <Grid.Column>
-              <Image src={this.props.student.image} size='huge'/>
+              <Image src={'..images/RussHanneman.jpg'} size='huge'/>
               <Button
                 color='blue'
                 content='Interested'
