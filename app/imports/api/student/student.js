@@ -8,7 +8,7 @@ const Students = new Mongo.Collection('Students');
 
 /** Create a schema to constrain the structure of documents associated with this collection. */
 const StudentSchema = new SimpleSchema({
-    //ERROR:
+    // ERROR:
     name: String,
     website: String,
     /* Add this back when we figure out how to implement skills
@@ -30,7 +30,7 @@ const StudentSchema = new SimpleSchema({
     /* TODO: profile image
     image: String,
      */
-}, { requiredByDefault: false }, { tracker: Tracker }) ;
+}, { requiredByDefault: false }, { tracker: Tracker });
 
 StudentSchema.extend(UserSchema);
 Students.attachSchema(StudentSchema);

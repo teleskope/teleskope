@@ -95,7 +95,7 @@ export default class CompanyRegistration extends Component {
               type="text"
               placeholder="Address"
               onChange={this.handleChange}
-        />          
+        />
         <Form.Input
           label="Zip Code"
           name="zipCode"
