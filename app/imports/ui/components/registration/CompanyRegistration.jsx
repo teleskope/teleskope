@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-// import { Accounts } from 'meteor/accounts-base';
+import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
 import { Segment, Form, Message } from 'semantic-ui-react';
+import { Redirect } from 'react-router-dom';
 
 export default class CompanyRegistration extends Component {
   constructor(props) {
@@ -11,6 +13,8 @@ export default class CompanyRegistration extends Component {
       firstName: '',
       lastName: '',
       companyName: '',
+      address: '',
+      zipCode: '',
       error: '',
     };
 
@@ -25,24 +29,35 @@ export default class CompanyRegistration extends Component {
 
   // TODO: reimplement handleSubmit
   handleSubmit() {
-    // const { email, password, name } = this.state;
-    // Accounts.createUser({ email, username: email, password }, (err) => {
-    //   if (err) {
-    //     this.setState({ error: err.reason });
-    //   } else {
-    //     // browserHistory.push('/login');
-    //   }
-    // });
+    const { email, password, companyName, address, zipCode } = this.state;
+    const company = {
+      name: companyName,
+      address,
+      zipCode,
+    };
+
+    Accounts.createUser({ email, username: email, password }, (err) => {
+      if (err) {
+        this.setState({ error: err.reason });
+      } else {
+        // browserHistory.push('/login');
+        // TODO: wehre do we implement validation?
+        Meteor.call('addUserRoleCompany');
+        Meteor.call('createUserCompany', company);
+      }
+    });
   }
 
   render() {
+    if (Meteor.UserId) return <Redirect to='/profile' />;
+
     return (
   <React.Fragment>
     <Form onSubmit={this.handleSubmit}>
       <Segment stacked>
         <Form.Input
             label="Company Name"
-            icon="user"
+            icon="building"
             iconPosition="left"
             name="companyName"
             type="text"
@@ -57,6 +72,36 @@ export default class CompanyRegistration extends Component {
             type="email"
             placeholder="E-mail address"
             onChange={this.handleChange}
+        />
+        <Form.Group widths='equal'>
+          <Form.Input
+              label="First Name"
+              name="firstName"
+              type="text"
+              placeholder="First Name"
+              onChange={this.handleChange}
+          />
+          <Form.Input
+              label="Last Name"
+              name="lastName"
+              type="text"
+              placeholder="Last Name"
+              onChange={this.handleChange}
+          />
+        </Form.Group>
+        <Form.Input
+              label="Address"
+              name="address"
+              type="text"
+              placeholder="Address"
+              onChange={this.handleChange}
+        />          
+        <Form.Input
+          label="Zip Code"
+          name="zipCode"
+          type="text"
+          placeholder="Zip Code"
+          onChange={this.handleChange}
         />
         <Form.Input
             label="Password"
