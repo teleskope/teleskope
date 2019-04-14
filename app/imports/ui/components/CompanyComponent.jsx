@@ -6,29 +6,33 @@ import { withRouter, Link } from 'react-router-dom';
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class CompanyComponent extends React.Component {
   render() {
+    const { image, name, address, summary } = this.props.company;
+    // TODO: social attributes should go in a subschema on company or user profile
+    const { linkedin, github, twitter, email } = this.props.company;
+
     return (
         <Grid>
           <Grid.Row columns={2}>
             <Grid.Column>
-              <Image src={this.props.company.image} size='medium'/>
+              <Image src={image} size='medium'/>
             </Grid.Column>
             <Grid.Column>
-              <Header as='h1'>{this.props.company.companyName}</Header>
+              <Header as='h1'>{name}</Header>
               <Header as='h3'><Icon className="map marker alternate icon"/>
-                {this.props.company.address}
+                {address}
               </Header>
               <Container>
-                <Link to={this.props.company.twitter}><Icon className="twitter icon"/></Link>
-                <Link to={this.props.company.linkedin}><Icon className="linkedin icon"/></Link>
-                <Link to={this.props.company.github}><Icon className="github icon"/></Link>
-                <Link to={this.props.company.email}><Icon className="envelope outline icon"/></Link>
+                <Link to={twitter}><Icon className="twitter icon"/></Link>
+                <Link to={linkedin}><Icon className="linkedin icon"/></Link>
+                <Link to={github}><Icon className="github icon"/></Link>
+                <Link to={email}><Icon className="envelope outline icon"/></Link>
               </Container>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Header as='h2'>Company Description</Header>
             <Container>
-              {this.props.company.summary}
+              {summary}
             </Container>
           </Grid.Row>
         </Grid>

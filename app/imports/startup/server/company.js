@@ -1,20 +1,25 @@
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
+import { check } from 'meteor/check';
 import { Companies } from '../../api/company/company.js';
-
-/** Initialize the database with a default data document. */
-function addData(data) {
-  console.log(`  Adding: ${data.companyName} (${data.password})`);
-  Companies.insert(data);
-}
-
-/** Initialize the collection if empty. */
-if (Companies.find().count() === 0) {
-  if (Meteor.settings.defaultCompanies) {
-    console.log('Creating default companies.');
-    Meteor.settings.defaultCompanies.map(data => addData(data));
-  }
-}
 
 Meteor.publish('Companies', function publish() {
   return Companies.find();
+});
+
+Meteor.methods({
+  addUserRoleCompany: function () {
+    if (!this.userId) throw new Meteor.Error('403', 'Access Denied', 'You must be logged in');
+    Roles.addUsersToRoles(this.userId, 'company');
+  },
+  createUserCompany: function (data) {
+    check(data, Object);
+    check(data.name, String);
+    check(data.address, String);
+    check(data.zipCode, String);
+    // TODO: Validation of inserted company data and cleaning of specialchars
+    const company = data;
+    company.owner = this.userId;
+    Companies.insert(company);
+  },
 });

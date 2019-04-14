@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Icon, Image, List, Grid } from 'semantic-ui-react';
+import { Card, Icon, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 const imageStyle = {
@@ -35,10 +35,10 @@ export default function StudentCard(props) {
               <Icon name='globe' color='blue' style={{ marginLeft: '9.5em' }}/>
             </a>
           </Card.Meta>
-        <Card.Description>{summary.substring(0, summaryMaxLen) + '...'}</Card.Description>
+        <Card.Description>{ `${summary.substring(0, summaryMaxLen)}...` }</Card.Description>
         </Card.Content>
-         {/*TODO: list skills for extra card content????? */}
-        {/*<Card.Content extra>{skills}</Card.Content>*/}
+         {/* TODO: list skills for extra card content????? */}
+        {/* <Card.Content extra>{skills}</Card.Content> */}
       </Card>
   );
 }
