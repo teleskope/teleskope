@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Loader, Container, Image, Header, Icon, Grid, Segment, Menu } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Card } from 'semantic-ui-react/dist/commonjs/views/Card';
 import { Companies } from '../../api/company/company';
+import JobCard from '../imports/ui/components/job/JobCard';
+
+const companyJobs = jobs.filter(function (jobs) {
+  return jobs.companyID === this.company._id;
+});
 
 
 class ShowCompany extends Component {
@@ -49,6 +55,14 @@ class ShowCompany extends Component {
                 <Header as='h2'>Current Openings</Header>
               </Container>
             </Grid.Row>
+            <Grid.Row>
+              <Card.Group stackable>
+                {companyJobs.map((job, index) => (
+                    <JobCard key={index} job={job}/>
+                ))}
+              </Card.Group>
+
+            </Grid.Row>
           </Grid>
       );
   }
@@ -56,6 +70,7 @@ class ShowCompany extends Component {
 
 ShowCompany.propTypes = {
   company: PropTypes.object,
+  jobs: PropTypes.array,
   ready: PropTypes.bool,
 };
 
@@ -65,6 +80,7 @@ export default withTracker(({ match }) => {
   const subscription = Meteor.subscribe('Companies');
   return {
     company: Companies.findOne({ _id: documentId }),
+    jobs: Jobs.find({}).fetch(),
     ready: subscription.ready(),
   };
 })(ShowCompany);
