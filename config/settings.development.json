@@ -12,18 +12,16 @@
       "role": "company"
     }
   ],
-  "defaultStudents": [
+  "defaultProfiles": [
     {
-      "email": "jdoe@school.edu",
-      "password": "asdf1234",
+      "owner": "john@foo.com",
       "firstName": "John",
       "lastName": "Doe",
       "website": "https://www.doejohn.com",
       "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!"
     },
     {
-      "email": "jobs@school.edu",
-      "password": "asdf1234",
+      "owner": "jobs@school.edu",
       "firstName": "Steve",
       "lastName": "Jobs",
       "website": "https://www.stevejobs.com",

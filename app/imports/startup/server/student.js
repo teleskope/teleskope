@@ -1,14 +1,14 @@
 import { Meteor } from 'meteor/meteor';
-import { Students } from '../../api/student/student';
+import { Profiles } from '../../api/profile/profile';
 
 /** Initialize the database with a default data document. */
 function addData(data) {
   console.log(`  Adding: ${data.lastName} (${data.email})`);
-  Students.insert(data);
+  Profiles.insert(data);
 }
 
 /** Initialize the collection if empty. */
-if (Students.find().count() === 0) {
+if (Profiles.find().count() === 0) {
   if (Meteor.settings.defaultStudents) {
     console.log('Creating default students.');
     Meteor.settings.defaultStudents.map(data => addData(data));

@@ -1,15 +1,15 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
-import { UserSchema } from '/imports/api/user/user';
 
 /** Create a Meteor collection. */
-const Students = new Mongo.Collection('Students');
+const Profiles = new Mongo.Collection('Profiles');
 
 /** Create a schema to constrain the structure of documents associated with this collection. */
-const StudentSchema = new SimpleSchema({
-    // ERROR:
-    name: String,
+const ProfileSchema = new SimpleSchema({
+    owner: String,
+    firstName: String,
+    lastName: String,
     website: String,
     /* Add this back when we figure out how to implement skills
     https://react.semantic-ui.com/modules/dropdown/#types-multiple-selection
@@ -32,8 +32,7 @@ const StudentSchema = new SimpleSchema({
      */
 }, { requiredByDefault: false }, { tracker: Tracker });
 
-StudentSchema.extend(UserSchema);
-Students.attachSchema(StudentSchema);
+Profiles.attachSchema(ProfileSchema);
 
 /** Make the collection and schema available to other code. */
-export { Students, StudentSchema };
+export { Profiles, ProfileSchema };
