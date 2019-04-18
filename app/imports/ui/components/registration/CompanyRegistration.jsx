@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
-import { Segment, Form, Message } from 'semantic-ui-react';
+import { Segment, Form, Message, Input } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 
 export default class CompanyRegistration extends Component {
@@ -79,14 +79,14 @@ export default class CompanyRegistration extends Component {
             onChange={this.handleChange}
         />
         <Form.Group widths='equal'>
-          <Form.Input
+          <Form.Input fluid
               label="First Name"
               name="firstName"
               type="text"
               placeholder="First Name"
               onChange={this.handleChange}
           />
-          <Form.Input
+          <Form.Input fluid
               label="Last Name"
               name="lastName"
               type="text"
