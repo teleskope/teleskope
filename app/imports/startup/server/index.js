@@ -1,4 +1,4 @@
 import './accounts.js';
 import './company.js';
-import './student.js';
+import './profile.js';
 import './fixtures.js';

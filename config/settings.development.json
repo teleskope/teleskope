@@ -2,6 +2,9 @@
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "asdf1234", "role": "admin" },
     { "email": "john@foo.com", "password": "asdf1234", "role": "student" },
+    { "email": "jeff@foo.com", "password": "asdf1234", "role": "student" },
+    { "email": "matt@foo.com", "password": "asdf1234", "role": "student" },
+    { "email": "josh@foo.com", "password": "asdf1234", "role": "student" },
     { "email": "microsoft@example.com",
       "password": "asdf1234",
       "role": "company"
@@ -18,13 +21,47 @@
       "firstName": "John",
       "lastName": "Doe",
       "website": "https://www.doejohn.com",
+      "address": "123 asdf lane",
       "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!"
     },
     {
-      "owner": "jobs@school.edu",
-      "firstName": "Steve",
+      "owner": "jeff@foo.com",
+      "firstName": "Jeff",
+      "lastName": "Taki",
+      "website": "https://www.doejohn.com",
+      "address": "123 asdf lane",
+      "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!"
+    },
+    {
+      "owner": "matt@foo.com",
+      "firstName": "Matt",
+      "lastName": "Kim",
+      "website": "https://www.doejohn.com",
+      "address": "123 asdf lane",
+      "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!"
+    },
+    {
+      "owner": "josh@foo.com",
+      "firstName": "Josh",
+      "lastName": "Walters",
+      "website": "https://www.doejohn.com",
+      "address": "123 asdf lane",
+      "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!"
+    },
+    {
+      "owner": "apple@example.com",
+      "firstName":"Steve",
       "lastName": "Jobs",
       "website": "https://www.stevejobs.com",
+      "address": "123 asdf lane",
+      "summary": "Hi, I am undeclared and I dropped out after a semester, but I am working on my startup and need a job to help fund it."
+    },
+    {
+      "owner": "microsoft@example.com",
+      "firstName": "Bill",
+      "lastName": "Gates",
+      "website": "https://www.stevejobs.com",
+      "address": "123 asdf lane",
       "summary": "Hi, I am undeclared and I dropped out after a semester, but I am working on my startup and need a job to help fund it."
     }
   ]
