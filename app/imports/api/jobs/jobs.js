@@ -14,13 +14,10 @@ const JobsSchema = new SimpleSchema({
       defaultValue: 'Full Time',
   },
   date: String,
-      description: String,
-    location: String,
-    /* Add this back in when we figure out how to implement skills
-     skills: Array[skill_ids],
-     */
-    requirements: String,
-    companyID: String,
+  description: String,
+  location: String,
+  requirements: String,
+  companyID: String,
 }, { tracker: Tracker });
 
 Jobs.attachSchema(JobsSchema);

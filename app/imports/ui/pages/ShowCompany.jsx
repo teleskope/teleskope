@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Container, Image, Header, Icon, Grid, Segment, Menu } from 'semantic-ui-react';
+import { Loader, Container, Image, Header, Icon, Grid, Segment, Menu, Card } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Card } from 'semantic-ui-react/dist/commonjs/views/Card';
 import { Companies } from '../../api/company/company';
-import JobCard from '../imports/ui/components/job/JobCard';
+import { Jobs } from '../../api/jobs/jobs';
+import JobCard from '../components/job/JobCard';
 
-const companyJobs = jobs.filter(function (jobs) {
-  return jobs.companyID === this.company._id;
-});
 
+const companyJobs = this.props.jobs.filter(jobs => (jobs.companyID === this.props.company._id));
 
 class ShowCompany extends Component {
 
   render() {
-    return this.props.ready
-        ? this.renderPage()
-        : <Loader active>Getting data</Loader>;
+    return this.props.ready ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
     renderPage() {
@@ -57,11 +53,10 @@ class ShowCompany extends Component {
             </Grid.Row>
             <Grid.Row>
               <Card.Group stackable>
-                {companyJobs.map((job, index) => (
-                    <JobCard key={index} job={job}/>
-                ))}
+              {companyJobs.map((job, index) => (
+                  <JobCard key={index} job={job}/>
+              ))}
               </Card.Group>
-
             </Grid.Row>
           </Grid>
       );
@@ -78,9 +73,10 @@ export default withTracker(({ match }) => {
   const documentId = match.params.companyId;
 
   const subscription = Meteor.subscribe('Companies');
+  const subscription2 = Meteor.subscribe('Jobs');
   return {
     company: Companies.findOne({ _id: documentId }),
     jobs: Jobs.find({}).fetch(),
-    ready: subscription.ready(),
+    ready: (subscription.ready() && subscription2.ready()),
   };
 })(ShowCompany);

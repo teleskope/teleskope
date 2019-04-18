@@ -70,5 +70,44 @@
       "address": "123 asdf lane",
       "summary": "Hi, I am undeclared and I dropped out after a semester, but I am working on my startup and need a job to help fund it."
     }
+  ],
+  "defaultJobs": [
+    {
+      "title": "Software Engineer",
+      "employment type": "Full Time",
+      "date": "12/25/2009",
+      "description": "Engineer Software",
+      "location": "Hoboken, New Jersey",
+      "requirements": "Software Engineering ability",
+      "companyID": "Microsoft"
+    },
+    {
+      "title": "Data Scientist",
+      "employment type": "Full Time",
+      "date": "12/25/2009",
+      "description": "Do Science with Data",
+      "location": "Hoboken, New Jersey",
+      "requirements": "Bachelor's Degree in Mathematics, Computer Science, or a related field",
+      "companyID": "Apple"
+    },
+    {
+      "title": "Database Architect",
+      "employment type": "Part Time",
+      "date": "12/25/2009",
+      "description": "Create and maintain huge databases",
+      "location": "Hoboken, New Jersey",
+      "requirements": "Bachelor's Degree in Mathematics, Computer Science, or a related field",
+      "companyID": "Apple"
+    },
+    {
+      "title": "Full Stack Developer",
+      "employment type": "Full Time",
+      "date": "12/25/2009",
+      "description": "Engineer High-quality UI and back-end web apps",
+      "location": "Hoboken, New Jersey",
+      "requirements": "Bachelor's Degree in Mathematics, Computer Science, or a related field",
+      "companyID": "Microsoft"
+    }
+
   ]
 }
