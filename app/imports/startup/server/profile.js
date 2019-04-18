@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
+import { Roles } from 'meteor/alanning:roles';
 import { Profiles } from '../../api/profile/profile';
 
 
@@ -27,6 +28,7 @@ Meteor.methods({
     // TODO: Validation of inserted company data and cleaning of specialchars
     const profile = data;
     profile.owner = Meteor.user().emails[0].address;
+    profile.role = Roles.userIsInRole(Meteor.userId(), ['company']) ? 'company' : 'student';
     Profiles.insert(profile);
   },
 });

@@ -18,6 +18,7 @@
   "defaultProfiles": [
     {
       "owner": "john@foo.com",
+      "role": "student",
       "firstName": "John",
       "lastName": "Doe",
       "website": "https://www.doejohn.com",
@@ -26,6 +27,7 @@
     },
     {
       "owner": "jeff@foo.com",
+      "role": "student",
       "firstName": "Jeff",
       "lastName": "Taki",
       "website": "https://www.doejohn.com",
@@ -34,6 +36,7 @@
     },
     {
       "owner": "matt@foo.com",
+      "role": "student",
       "firstName": "Matt",
       "lastName": "Kim",
       "website": "https://www.doejohn.com",
@@ -42,6 +45,7 @@
     },
     {
       "owner": "josh@foo.com",
+      "role": "student",
       "firstName": "Josh",
       "lastName": "Walters",
       "website": "https://www.doejohn.com",
@@ -50,6 +54,7 @@
     },
     {
       "owner": "apple@example.com",
+      "role": "company",
       "firstName":"Steve",
       "lastName": "Jobs",
       "website": "https://www.stevejobs.com",
@@ -58,6 +63,7 @@
     },
     {
       "owner": "microsoft@example.com",
+      "role": "company",
       "firstName": "Bill",
       "lastName": "Gates",
       "website": "https://www.stevejobs.com",
