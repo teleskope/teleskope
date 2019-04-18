@@ -30,7 +30,7 @@ const ProfileSchema = new SimpleSchema({
     /* TODO: profile image
     image: String,
      */
-}, { requiredByDefault: false }, { tracker: Tracker });
+}, { requiredByDefault: false, tracker: Tracker });
 
 Profiles.attachSchema(ProfileSchema);
 

@@ -91,7 +91,7 @@ ListStudents.propTypes = {
 export default withTracker(() => {
   const subscription = Meteor.subscribe('Profiles');
   return {
-    students: Profiles.find({}, { limit: 5 }).fetch(),
+    students: Profiles.find({}, { limit: 10 }).fetch(),
     ready: subscription.ready(),
   };
 })(ListStudents);
