@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import { Accounts } from 'meteor/accounts-base';
+import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
 import { Form, Segment, Message } from 'semantic-ui-react';
 
 export default class StudentRegistration extends Component {
@@ -33,7 +34,7 @@ export default class StudentRegistration extends Component {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        Meteor.call('createUserProfile', profile)
+        Meteor.call('createUserProfile', profile);
         // browserHistory.push('/login');
       }
     });
