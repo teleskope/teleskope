@@ -15,7 +15,7 @@ const JobsSchema = new SimpleSchema({
   },
   date: String,
   description: String,
-  location: String,
+  zipcode: String,
   requirements: String,
   companyID: String,
 }, { tracker: Tracker });

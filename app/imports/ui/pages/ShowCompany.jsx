@@ -8,8 +8,6 @@ import { Jobs } from '../../api/jobs/jobs';
 import JobCard from '../components/job/JobCard';
 
 
-const companyJobs = this.props.jobs.filter(jobs => (jobs.companyID === this.props.company._id));
-
 class ShowCompany extends Component {
 
   render() {
@@ -53,9 +51,6 @@ class ShowCompany extends Component {
             </Grid.Row>
             <Grid.Row>
               <Card.Group stackable>
-              {companyJobs.map((job, index) => (
-                  <JobCard key={index} job={job}/>
-              ))}
               </Card.Group>
             </Grid.Row>
           </Grid>
