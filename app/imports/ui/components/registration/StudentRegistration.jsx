@@ -49,14 +49,14 @@ export default class StudentRegistration extends Component {
                 onChange={this.handleChange}
             />
             <Form.Group widths='equal'>
-              <Form.Input
+              <Form.Input fluid
                   label="First Name"
                   name="firstName"
                   type="text"
                   placeholder="First Name"
                   onChange={this.handleChange}
               />
-              <Form.Input
+              <Form.Input fluid
                   label="Last Name"
                   name="lastName"
                   type="text"
