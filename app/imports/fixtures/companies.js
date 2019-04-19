@@ -1,5 +1,6 @@
 import { Companies } from '/imports/api/company/company.js';
-
+/* eslint-disable no-console */
+/* eslint-disable max-len */
 const defaultCompanies = [
   {
     owner: ['microsoft@example.com'],

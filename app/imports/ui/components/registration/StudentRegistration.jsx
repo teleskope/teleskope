@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import { Accounts } from 'meteor/accounts-base';
+import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
 import { Form, Segment, Message } from 'semantic-ui-react';
 
 export default class StudentRegistration extends Component {
@@ -24,14 +25,19 @@ export default class StudentRegistration extends Component {
 
   /**  TODO: Handle Signup submission using Meteor's account mechanism. */
   handleSubmit() {
-    // const { email, password, firstName, lastName } = this.state;
-    // Accounts.createUser({ email, username: email, password }, (err) => {
-    //   if (err) {
-    //     this.setState({ error: err.reason });
-    //   } else {
-    //     // browserHistory.push('/login');
-    //   }
-    // });
+    const { email, password, firstName, lastName } = this.state;
+    const profile = {
+      firstName,
+      lastName,
+    };
+    Accounts.createUser({ email, username: email, password }, (err) => {
+      if (err) {
+        this.setState({ error: err.reason });
+      } else {
+        Meteor.call('createUserProfile', profile);
+        // browserHistory.push('/login');
+      }
+    });
   }
 
   render() {

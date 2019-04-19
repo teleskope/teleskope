@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Container, Header, Icon, Image, Loader, Segment, Grid, Menu, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Students } from '../../api/student/student';
+import { Profiles } from '../../api/profile/profile';
 
 class ShowStudent extends Component {
 
@@ -67,9 +67,9 @@ ShowStudent.propTypes = {
 export default withTracker(({ match }) => {
   const documentId = match.params.studentId;
 
-  const subscription = Meteor.subscribe('Students');
+  const subscription = Meteor.subscribe('Profiles');
   return {
-    student: Students.findOne({ _id: documentId }),
+    student: Profiles.findOne({ _id: documentId }),
     ready: subscription.ready(),
   };
 })(ShowStudent);

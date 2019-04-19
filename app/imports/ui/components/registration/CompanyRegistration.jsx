@@ -29,21 +29,26 @@ export default class CompanyRegistration extends Component {
 
   // TODO: reimplement handleSubmit
   handleSubmit() {
-    const { email, password, companyName, address, zipCode } = this.state;
+    const { email, password, companyName, address, zipCode, firstName, lastName } = this.state;
     const company = {
       name: companyName,
       address,
       zipCode,
     };
 
+    const profile = {
+      firstName,
+      lastName,
+    };
+
     Accounts.createUser({ email, username: email, password }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        // browserHistory.push('/login');
-        // TODO: wehre do we implement validation?
         Meteor.call('addUserRoleCompany');
+        Meteor.call('createUserProfile', profile);
         Meteor.call('createUserCompany', company);
+         // browserHistory.push('/login');
       }
     });
   }

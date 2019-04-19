@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Container, Grid, Header, Loader, Card, Divider, Dropdown } from 'semantic-ui-react';
-import { Students } from '/imports/api/student/student';
+import { Profiles } from '/imports/api/profile/profile';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import StudentCard from '../components/StudentCard';
@@ -89,9 +89,9 @@ ListStudents.propTypes = {
 };
 
 export default withTracker(() => {
-  const subscription = Meteor.subscribe('Students');
+  const subscription = Meteor.subscribe('Profiles');
   return {
-    students: Students.find({}, { limit: 5 }).fetch(),
+    students: Profiles.find({ role: 'student' }, { limit: 10 }).fetch(),
     ready: subscription.ready(),
   };
 })(ListStudents);

@@ -14,13 +14,13 @@ function createUser(email, password, role) {
 
   switch (role) {
     case 'admin':
-      Roles.addUsersToRoles(userID, 'company');
+      Roles.addUsersToRoles(userID, 'admin');
       break;
     case 'company':
       Roles.addUsersToRoles(userID, 'company');
       break;
     default:
-      Roles.addUsersToRoles(userID, 'company');
+      Roles.addUsersToRoles(userID, 'student');
   }
 }
 
