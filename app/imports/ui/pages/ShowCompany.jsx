@@ -8,7 +8,6 @@ import { Jobs } from '../../api/jobs/jobs';
 import JobCard from '../components/job/JobCard';
 
 class ShowCompany extends Component {
-
   render() {
     return this.props.ready ? this.renderPage() : <Loader active>Getting data</Loader>;
   }

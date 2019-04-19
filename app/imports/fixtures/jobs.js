@@ -1,4 +1,4 @@
-import { Companies } from '/imports/api/company/company.js';
+import { Jobs } from '/imports/api/jobs/jobs.js';
 
 const defaultJobs = [
   {
@@ -41,12 +41,12 @@ const defaultJobs = [
 
 function addData(data) {
   console.log(`  Adding: ${data.name}`);
-  Companies.insert(data);
+  Jobs.insert(data);
 }
 
-export default function createCompanies() {
+export default function createJobs() {
   /** Initialize the collection if empty. */
-  if (Companies.find().count() === 0) {
+  if (Jobs.find().count() === 0) {
     if (defaultJobs) {
       console.log('Creating default companies.');
       defaultJobs.map(data => addData(data));
