@@ -7,7 +7,6 @@ import { Companies } from '../../api/company/company';
 import { Jobs } from '../../api/jobs/jobs';
 import JobCard from '../components/job/JobCard';
 
-
 class ShowCompany extends Component {
 
   render() {
@@ -15,6 +14,7 @@ class ShowCompany extends Component {
   }
 
     renderPage() {
+    const { jobs } = this.props;
       return (
           <Grid>
             <Grid.Row columns={2}>
@@ -51,6 +51,9 @@ class ShowCompany extends Component {
             </Grid.Row>
             <Grid.Row>
               <Card.Group stackable>
+                {jobs.map((job, index) => (
+                    <JobCard key={index} job={job}/>
+                ))}
               </Card.Group>
             </Grid.Row>
           </Grid>
@@ -71,7 +74,7 @@ export default withTracker(({ match }) => {
   const subscription2 = Meteor.subscribe('Jobs');
   return {
     company: Companies.findOne({ _id: documentId }),
-    jobs: Jobs.find({}).fetch(),
+    jobs: Jobs.find({ companyID: documentId }).fetch(),
     ready: (subscription.ready() && subscription2.ready()),
   };
 })(ShowCompany);
