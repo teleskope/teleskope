@@ -22,7 +22,7 @@ class ShowCompany extends Component {
                 <Image src={this.props.company.image} size='huge'/>
               </Grid.Column>
               <Grid.Column>
-                <Header as='h1'>{this.props.company.companyName}</Header>
+                <Header as='h1'>{this.props.company.name}</Header>
                 <Header as='h3'><Icon className="map marker alternate icon"/>
                   {this.props.company.address}
                 </Header>
@@ -74,7 +74,7 @@ export default withTracker(({ match }) => {
   const subscription2 = Meteor.subscribe('Jobs');
   return {
     company: Companies.findOne({ _id: documentId }),
-    jobs: Jobs.find({ companyID: documentId }).fetch(),
+    jobs: Jobs.find({ companyName: this.props.company.name }).fetch(),
     ready: (subscription.ready() && subscription2.ready()),
   };
 })(ShowCompany);

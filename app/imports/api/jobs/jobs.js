@@ -15,9 +15,9 @@ const JobsSchema = new SimpleSchema({
   },
   date: String,
   description: String,
-  zipcode: String,
+  zipCode: String,
   requirements: String,
-  companyID: String,
+  companyName: String,
 }, { tracker: Tracker });
 
 Jobs.attachSchema(JobsSchema);
