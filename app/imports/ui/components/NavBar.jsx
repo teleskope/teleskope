@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Header, Loader } from 'semantic-ui-react';
+import { Menu, Dropdown, Header, Loader, Icon } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import { Profiles } from '/imports/api/profile/profile';
 
@@ -55,7 +55,9 @@ class NavBar extends React.Component {
             <Dropdown text={this.props.currentUser} pointing="top right" icon={'user'}>
               <Dropdown.Menu>
                 //REDIRECT SIGNOUT TO THE LANDING PAGE
-                <Dropdown.Item icon="sign out" text="Sign Out" as={NavLink} exact to="/"/>
+                <Dropdown.Item icon="sign out" text="Sign Out" as={NavLink} exact to="/"
+                               onClick={(() => Meteor.logout())}
+                />
               </Dropdown.Menu>
             </Dropdown>
           )}
