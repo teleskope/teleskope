@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Icon, Image } from 'semantic-ui-react';
+import { Card, Icon, Image, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 const imageStyle = {
@@ -30,9 +30,9 @@ export default function StudentCard(props) {
           </div>
         <Card.Content>
           <Card.Meta>
-            <span >{owner}</span>
+            <a href={'mailto:' + owner + '?Subject=Hello'} target="_top" id="blue-a-hyperlink" >{owner}</a>
             <a href={website}>
-              <Icon name='globe' color='blue' style={{ position: 'absolute', right: 0, top: 120, margin: '0.5rem' }}/>
+              <Icon name='globe' color='blue' style={{ position: 'absolute', right: 0, top: 157, margin: '0.5rem' }}/>
             </a>
           </Card.Meta>
         <Card.Description>
