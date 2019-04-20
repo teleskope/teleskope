@@ -20,17 +20,6 @@ class Landing extends React.Component {
           <Link to={'/signup'} key="CompanySignup">
             <Button>Company</Button>
           </Link>
-
-          {this.props.currentUser ? (
-            [<Link to={'/signup'} key="test1">
-              <Button>test 1</Button>
-            </Link>,
-            <Link to={'/signup'} key="test2">
-              <Button>test 2</Button>
-            </Link>,
-            ]
-          ) : ''}
-
         </Segment>
 
         <Segment padded="very" basic>
