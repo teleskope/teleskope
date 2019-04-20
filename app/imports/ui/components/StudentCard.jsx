@@ -11,7 +11,7 @@ const imageStyle = {
 };
 
 export default function StudentCard(props) {
-  const { firstName, lastName, website, _id, email, summary } = props.student;
+  const { firstName, lastName, website, _id, owner, summary } = props.student;
   const [favorited, setFavorited] = useState(false);
   const summaryMaxLen = 150;
   return (
@@ -30,9 +30,9 @@ export default function StudentCard(props) {
           </div>
         <Card.Content>
           <Card.Meta>
-            <span >{email}</span>
+            <span >{owner}</span>
             <a href={website}>
-              <Icon name='globe' color='blue' style={{ marginLeft: '9.5em' }}/>
+              <Icon name='globe' color='blue' style={{ position: 'absolute', right: 0, top: 120, margin: '0.5rem' }}/>
             </a>
           </Card.Meta>
         <Card.Description>
