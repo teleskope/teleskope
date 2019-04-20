@@ -13,9 +13,9 @@ import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import ListCompanies from '../pages/ListCompanies';
 import ListStudents from '../pages/ListStudents';
-
 import ShowCompany from '../pages/ShowCompany';
 import ShowStudent from '../pages/ShowStudent';
+import Profile from '../pages/Profile';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -32,8 +32,7 @@ class App extends React.Component {
               <Route path="/companies" component={ListCompanies}/>
               <Route path="/students/:studentId" component={ShowStudent} />
               <Route path="/students" component={ListStudents}/>
-
-              {/* <ProtectedRoute path="/profile" component={Profile}/> */}
+              <ProtectedRoute path="/profile/:profileId" component={Profile}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
             </Switch>
