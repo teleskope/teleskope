@@ -9,7 +9,7 @@ class Landing extends React.Component {
   render() {
     return (
 
-      <div >
+      <div style={{ marginTop: '4em' }} >
         <Segment id="teleskope-background" attached="top" inverted padded="very" size="large" textAlign="center">
           <Header as="h1" size="huge">TeleSkope</Header>
           <Header as="h2" size="medium">Helping employers find stars</Header>

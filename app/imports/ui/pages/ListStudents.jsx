@@ -33,7 +33,7 @@ class ListStudents extends React.Component {
   renderPage() {
     const { students } = this.props;
     return (
-        <Container>
+        <Container style={{ marginTop: '80px' }}>
           <Grid>
             <Grid.Row>
               <Header as="h2" floated='left'>Promising employees</Header>

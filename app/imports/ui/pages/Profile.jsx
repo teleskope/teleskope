@@ -4,6 +4,9 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Header, Icon, Image, Loader, Segment, Grid, Menu, Button, Dropdown } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Profiles } from '../../api/profile/profile';
+import ProfileSkillsDropdown from '../components/ProfileSkillsDropdown';
+import DropdownExampleMultipleSelection from '../components/DropdownTest';
+
 
 class Profile extends Component {
 
@@ -15,7 +18,7 @@ class Profile extends Component {
 
   renderPage() {
     return (
-        <Grid>
+        <Grid style={{ marginTop: '2em' }}>
           <Grid.Row columns={2}>
             <Grid.Column >
               <Image src={'https://media1.giphy.com/media/MuE0xWbEohUrxbm77r/giphy.gif'} id="profile-pic" floated='right'/>
@@ -55,8 +58,9 @@ class Profile extends Component {
             <Container text>
               <Header as='h2'>Skills</Header>
             </Container>
+            <DropdownExampleMultipleSelection/>
+            <ProfileSkillsDropdown/>
           </Grid.Row>
-
         </Grid>
     );
   }
