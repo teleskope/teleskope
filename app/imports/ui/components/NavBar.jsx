@@ -13,12 +13,12 @@ class NavBar extends React.Component {
     return (this.props.ready) ? this.renderNavBar() : <Loader active>Retrieving data</Loader>;
   }
   renderNavBar() {
-    const menuStyle = { marginBottom: '10px' };
+    const menuStyle = { marginBottom: '100px' };
     //WHY IS _id UNDEFINED????????
     // const { _id } = this.props.profile[0];
 
     return (
-      <Menu style={menuStyle} attached="top" borderless inverted>
+      <Menu style={menuStyle} borderless inverted fixed="top">
         <Menu.Item as={NavLink} activeClassName="" exact to="/">
           <Header inverted as='h1'>TeleSkope</Header>
         </Menu.Item>
