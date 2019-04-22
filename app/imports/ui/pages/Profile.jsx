@@ -60,6 +60,7 @@ class Profile extends Component {
             </Container>
 
           </Grid.Row>
+
         </Grid>
     );
   }
