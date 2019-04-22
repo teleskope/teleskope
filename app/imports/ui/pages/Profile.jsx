@@ -58,9 +58,7 @@ class Profile extends Component {
               <Header as='h2'>Skills</Header>
               <ProfileSkillsDropdown/>
             </Container>
-
           </Grid.Row>
-
         </Grid>
     );
   }
