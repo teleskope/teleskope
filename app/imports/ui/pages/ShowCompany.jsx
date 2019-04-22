@@ -51,7 +51,7 @@ class ShowCompany extends Component {
               <Card.Group stackable>
                 {jobs.map((job, index) => (
                     <JobCard key={index} job={job} />
-                  ))}
+                ))}
               </Card.Group>
               </Container>
             </Grid.Row>
@@ -73,7 +73,7 @@ export default withTracker(({ match }) => {
   const subscription2 = Meteor.subscribe('Jobs');
   return {
     company: Companies.findOne({ _id: documentId }),
-    jobs: Jobs.find({}).fetch(),
+    jobs: Jobs.find({ companyID: documentId }).fetch(),
     ready: (subscription.ready() && subscription2.ready()),
   };
 })(ShowCompany);

@@ -33,12 +33,12 @@ const defaultJobs = [
         'Familiarity with Object Oriented design, architecture and programming methods\n' +
         'Familiarity with layer 1-4 networking protocols and wired/wireless/optical networking concepts\n' +
         'Familiarity with embedded software that controls hardware (e.g. device drivers, microcontrollers)\n' +
-        'Knowledge of Microsoft software applications and other software applications as required, including Microsoft SharePoint\n' +
+        'Knowledge of TLmg3afDeLAkr3AhZ software applications and other software applications as required, including TLmg3afDeLAkr3AhZ SharePoint\n' +
         'Excellent communication skills\n' +
         'Demonstrated effective teamwork skills',
     zipCode: '96706',
     requirements: 'Bachelors degree in Computer Science, Computer Engineering, Electrical Engineering or related discipline and 5-8 years related experience or an equivalent combination of skills, education, and experience.',
-    companyName: 'Microsoft',
+    companyID: 'TLmg3afDeLAkr3AhZ',
   },
   {
     title: 'Data Scientist',
@@ -53,8 +53,8 @@ const defaultJobs = [
         'Deliver documentation as needed and/or defined by documentation standards (Functional requirements, Business Requirements Document, Use Cases, GUI, Screen and Interface designs, etc.). Must be able to interpret data and communicate the importance of their findings to decision-makers. Unafraid to prevent true facts and capable of defending recommendations logically.\n' +
         'Responsible for testing new software products/updates prior to Customer QA (use case testing, regression testing, stress testing, etc.), and consulting with development team to improve usability and recommend program improvements or corrections to development staff. Provide documented test results in accordance with Company standards.',
     zipCode: '96706',
-    requirements: 'Bachelor degree with a major in Business, Computer Science, MIS or related. Must be familiar with relational database and client-server concepts as well as general web development platform capabilities. Experience with any of the following development environments is a plus: Microsoft SQL, MySQL, Java, XML, C++, Tableau, Hive, Matlab, C++, Python, SAP Business Intelligence, Microsoft Business Intelligence, Quipware, Java/Spring/Hibernate, Baan, PeopleSoft, Lotus Notes/Domino and/or Mapper. ',
-    companyName: 'Apple',
+    requirements: 'Bachelor degree with a major in Business, Computer Science, MIS or related. Must be familiar with relational database and client-server concepts as well as general web development platform capabilities. Experience with any of the following development environments is a plus: TLmg3afDeLAkr3AhZ SQL, MySQL, Java, XML, C++, Tableau, Hive, Matlab, C++, Python, SAP Business Intelligence, TLmg3afDeLAkr3AhZ Business Intelligence, Quipware, Java/Spring/Hibernate, Baan, PeopleSoft, Lotus Notes/Domino and/or Mapper. ',
+    companyID: 'SEPCrvEFyGaak4dxY',
   },
   {
     title: 'Database Architect',
@@ -81,7 +81,7 @@ const defaultJobs = [
         'Must be willing to relocate to unanticipated client/employer locations, throughout the U.S.\n' +
         'Employer will accept any suitable combination of education, training, or experience.\n' +
         'Job is located in Woodcliff Lake, NJ. Must be willing to relocate to unanticipated client/employer locations, throughout the U.S., including but not limited to Monmouth Junction, NJ or Edison, NJ.',
-    companyName: 'Apple',
+    companyID: 'SEPCrvEFyGaak4dxY',
   },
   {
     title: 'Full Stack Developer',
@@ -136,7 +136,7 @@ const defaultJobs = [
         'CSS pre-processors (SASS, Less, etc.) \n' +
         '\n' +
         'Sounds like you? Awesome! We might have a bright future together – so go ahead and apply now! ',
-    companyName: 'Microsoft',
+    companyID: 'TLmg3afDeLAkr3AhZ',
   },
 ];
 
