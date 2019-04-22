@@ -16,13 +16,13 @@ class ShowCompany extends Component {
 
     renderPage() {
       return (
-          <Grid>
+          <Grid style={{ marginTop: '2em' }}>
             <Grid.Row columns={2}>
               <Grid.Column>
                 <Image src={this.props.company.image} size='huge'/>
               </Grid.Column>
               <Grid.Column>
-                <Header as='h1'>{this.props.company.companyName}</Header>
+                <Header as='h1'>{this.props.company.name}</Header>
                 <Header as='h3'><Icon className="map marker alternate icon"/>
                   {this.props.company.address}
                 </Header>

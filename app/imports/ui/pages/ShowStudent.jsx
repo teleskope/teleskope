@@ -15,7 +15,7 @@ class ShowStudent extends Component {
 
   renderPage() {
     return (
-        <Grid>
+        <Grid style={{ marginTop: '2em' }}>
           <Grid.Row columns={2}>
             <Grid.Column>
               <Image src={'..images/RussHanneman.jpg'} size='huge'/>

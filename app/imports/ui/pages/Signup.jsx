@@ -50,7 +50,7 @@ export default class Signup extends React.Component {
       : <StudentRegistration />;
 
     return (
-        <Container>
+        <Container style={{ marginTop: '80px' }}>
           <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
             <Grid.Column>
               <Header as="h2" textAlign="center">
