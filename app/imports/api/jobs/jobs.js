@@ -8,10 +8,10 @@ const Jobs = new Mongo.Collection('Jobs');
 /** Create a schema to constrain the structure of documents associated with this collection. */
 const JobsSchema = new SimpleSchema({
   title: String,
-      employmentType: {
-  type: String,
-      allowedValues: ['Full Time', 'Part Time'],
-      defaultValue: 'Full Time',
+  employmentType: {
+    type: String,
+    allowedValues: ['Full Time', 'Part Time'],
+    defaultValue: 'Full Time',
   },
   date: String,
   description: String,

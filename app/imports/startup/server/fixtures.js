@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import createCompanies from '/imports/fixtures/companies.js';
 import createUsers from './accounts.js';
-import createJobs from './imports/fixtures/jobs.js';
+import createJobs from '/imports/fixtures/jobs.js';
 
 const runFixtures = function () {
   const shouldRun = Meteor.users.find().count() === 0;

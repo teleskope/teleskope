@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Container, Header, Icon, Grid, Segment, Menu } from 'semantic-ui-react';
+import { Button, Loader, Container, Header, Icon, Grid } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
+import zipcodes from 'zipcodes';
 import { Jobs } from '../../api/jobs/jobs';
 
 class ShowJob extends Component {
@@ -12,29 +13,50 @@ class ShowJob extends Component {
   }
 
     renderPage() {
+    const city = zipcodes.lookup(this.props.jobs.zipCode);
       return (
           <Grid>
-            <Grid.Row columns={2}>
+            <Grid.Row centered>
+                <Header as='h1'>{this.props.jobs.title}</Header>
+            </Grid.Row>
+            <Container textAlign='center'>
+              <Grid columns={3}>
+            <Grid.Row>
               <Grid.Column>
+              <Header as='h3'>{this.props.jobs.employmentType}</Header>
               </Grid.Column>
               <Grid.Column>
-                <Header as='h1'>{this.props.jobs.title}</Header>
-                <Header as='h3'><Icon className="map marker alternate icon"/>
-                  {this.props.jobs.address}
-                </Header>
+                <Header as='h3'><Icon className="map marker alternate icon"/>{`${city.city}, ${city.state}`}</Header>
+              </Grid.Column>
+              <Grid.Column>
+              <div>
+                <Button
+                    color='blue'
+                    content='Apply'
+                    icon='space shuttle'
+                    toggle
+                />
+                <Button inverted
+                  color='blue'
+                  content='Follow'
+                  icon='star'
+                  toggle
+                  />
+              </div>
               </Grid.Column>
             </Grid.Row>
-            <Segment></Segment>
-            <Grid.Row>
+              </Grid>
+            </Container>
+            <Grid.Row centered>
               <Container text>
-              <Header as='h2'>Job Description</Header>
-                {this.props.jobs.summary}
+                <Header as='h2'>Our Requirements</Header>
+                {this.props.jobs.requirements}
               </Container>
             </Grid.Row>
-            <Segment></Segment>
-            <Grid.Row>
+            <Grid.Row centered>
               <Container text>
-                <Header as='h2'>Current Openings</Header>
+              <Header as='h2'>Job Description</Header>
+                {this.props.jobs.description}
               </Container>
             </Grid.Row>
           </Grid>
@@ -43,12 +65,12 @@ class ShowJob extends Component {
 }
 
 ShowJob.propTypes = {
-  jobs: PropTypes.array,
+  jobs: PropTypes.object,
   ready: PropTypes.bool,
 };
 
 export default withTracker(({ match }) => {
-  const documentId = match.params.companyId;
+  const documentId = match.params.jobId;
 
   const subscription = Meteor.subscribe('Jobs');
   return {

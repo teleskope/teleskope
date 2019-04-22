@@ -31,7 +31,7 @@ class App extends React.Component {
               <Route path="/signup" component={Signup}/>
               <Route path="/companies/:companyId" component={ShowCompany} />
               <Route path="/companies" component={ListCompanies}/>
-              <Route path="/jobs" component={ShowJob} />
+              <Route path="/jobs/:jobId" component={ShowJob} />
               <Route path="/students/:studentId" component={ShowStudent} />
               <Route path="/students" component={ListStudents}/>
 

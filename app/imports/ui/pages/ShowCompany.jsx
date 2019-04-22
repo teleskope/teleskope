@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Container, Image, Header, Icon, Grid, Segment, Menu, Card } from 'semantic-ui-react';
+import { Loader, Container, Image, Header, Icon, Grid, Menu, Card } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Companies } from '../../api/company/company';
 import { Jobs } from '../../api/jobs/jobs';
@@ -35,25 +35,25 @@ class ShowCompany extends Component {
                 </Container>
               </Grid.Column>
             </Grid.Row>
-            <Segment></Segment>
             <Grid.Row>
               <Container text>
               <Header as='h2'>Company Description</Header>
                 {this.props.company.summary}
               </Container>
             </Grid.Row>
-            <Segment></Segment>
             <Grid.Row>
               <Container text>
                 <Header as='h2'>Current Openings</Header>
               </Container>
             </Grid.Row>
             <Grid.Row>
+              <Container>
               <Card.Group stackable>
                 {jobs.map((job, index) => (
-                    <JobCard key={index} job={job}/>
-                ))}
+                    <JobCard key={index} job={job} />
+                  ))}
               </Card.Group>
+              </Container>
             </Grid.Row>
           </Grid>
       );
@@ -73,7 +73,7 @@ export default withTracker(({ match }) => {
   const subscription2 = Meteor.subscribe('Jobs');
   return {
     company: Companies.findOne({ _id: documentId }),
-    jobs: Jobs.find({ companyName: this.props.company.name }).fetch(),
+    jobs: Jobs.find({}).fetch(),
     ready: (subscription.ready() && subscription2.ready()),
   };
 })(ShowCompany);
