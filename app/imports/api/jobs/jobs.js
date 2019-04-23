@@ -8,19 +8,16 @@ const Jobs = new Mongo.Collection('Jobs');
 /** Create a schema to constrain the structure of documents associated with this collection. */
 const JobsSchema = new SimpleSchema({
   title: String,
-      employmentType: {
-  type: String,
-      allowedValues: ['Full Time', 'Part Time'],
-      defaultValue: 'Full Time',
+  employmentType: {
+    type: String,
+    allowedValues: ['Full Time', 'Part Time'],
+    defaultValue: 'Full Time',
   },
   date: String,
-      description: String,
-    location: String,
-    /* Add this back in when we figure out how to implement skills
-     skills: Array[skill_ids],
-     */
-    requirements: String,
-    companyID: String,
+  description: String,
+  zipCode: String,
+  requirements: String,
+  companyID: String,
 }, { tracker: Tracker });
 
 Jobs.attachSchema(JobsSchema);

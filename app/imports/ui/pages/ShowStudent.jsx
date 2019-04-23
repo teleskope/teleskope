@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Icon, Image, Loader, Segment, Grid, Menu, Button } from 'semantic-ui-react';
+import { Container, Header, Icon, Image, Loader, Grid, Menu, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Profiles } from '../../api/profile/profile';
 
@@ -41,13 +41,11 @@ class ShowStudent extends Component {
               </Container>
             </Grid.Column>
           </Grid.Row>
-          <Segment></Segment>
           <Grid.Row>
             <Container text>
               <Header as='h2'>Skills</Header>
             </Container>
           </Grid.Row>
-          <Segment></Segment>
           <Grid.Row>
             <Container text>
               <Header as='h2'> About this Student</Header>
