@@ -38,7 +38,7 @@ const defaultJobs = [
         'Demonstrated effective teamwork skills',
     zipCode: '96706',
     requirements: 'Bachelors degree in Computer Science, Computer Engineering, Electrical Engineering or related discipline and 5-8 years related experience or an equivalent combination of skills, education, and experience.',
-    companyID: 'TLmg3afDeLAkr3AhZ',
+    companyID: 'LfmcyoDXsTWmPMMLn',
   },
   {
     title: 'Data Scientist',
@@ -53,7 +53,7 @@ const defaultJobs = [
         'Deliver documentation as needed and/or defined by documentation standards (Functional requirements, Business Requirements Document, Use Cases, GUI, Screen and Interface designs, etc.). Must be able to interpret data and communicate the importance of their findings to decision-makers. Unafraid to prevent true facts and capable of defending recommendations logically.\n' +
         'Responsible for testing new software products/updates prior to Customer QA (use case testing, regression testing, stress testing, etc.), and consulting with development team to improve usability and recommend program improvements or corrections to development staff. Provide documented test results in accordance with Company standards.',
     zipCode: '96706',
-    requirements: 'Bachelor degree with a major in Business, Computer Science, MIS or related. Must be familiar with relational database and client-server concepts as well as general web development platform capabilities. Experience with any of the following development environments is a plus: TLmg3afDeLAkr3AhZ SQL, MySQL, Java, XML, C++, Tableau, Hive, Matlab, C++, Python, SAP Business Intelligence, TLmg3afDeLAkr3AhZ Business Intelligence, Quipware, Java/Spring/Hibernate, Baan, PeopleSoft, Lotus Notes/Domino and/or Mapper. ',
+    requirements: 'Bachelor degree with a major in Business, Computer Science, MIS or related. Must be familiar with relational database and client-server concepts as well as general web development platform capabilities. Experience with any of the following development environments is a plus: SQL, MySQL, Java, XML, C++, Tableau, Hive, Matlab, C++, Python, SAP Business Intelligence, TLmg3afDeLAkr3AhZ Business Intelligence, Quipware, Java/Spring/Hibernate, Baan, PeopleSoft, Lotus Notes/Domino and/or Mapper. ',
     companyID: 'SEPCrvEFyGaak4dxY',
   },
   {
