@@ -3,6 +3,8 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Segment, Form, Message } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 export default class CompanyRegistration extends Component {
   constructor(props) {
@@ -48,7 +50,7 @@ export default class CompanyRegistration extends Component {
         Meteor.call('addUserRoleCompany');
         Meteor.call('createUserProfile', profile);
         Meteor.call('createUserCompany', company);
-         // browserHistory.push('/login');
+        this.props.history.push('/profile');
       }
     });
   }
@@ -132,3 +134,7 @@ export default class CompanyRegistration extends Component {
     );
   }
 }
+
+CompanyRegistration.propTypes = {
+  history: PropTypes.object,
+};
