@@ -5,6 +5,7 @@ import { Companies } from '/imports/api/company/company';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import CompanyCard from '../components/company/CompanyCard';
+import {Skills} from '/imports/api/skill/skill';
 
 const filterOptions = [
   {
@@ -35,6 +36,14 @@ class ListCompanies extends React.Component {
     return (
         <Container style={{ marginTop: '80px' }}>
           <Grid>
+
+
+            <Grid.Row>
+              <Header as="h2" floated='left'>{this.props.skills[0].name}</Header>
+              <Header as="h2" floated='left'>{this.props.skills[1].name}</Header>
+            </Grid.Row>
+
+
             <Grid.Row>
               <Header as="h2" floated='left'>We think you may like</Header>
             </Grid.Row>
@@ -85,13 +94,16 @@ class ListCompanies extends React.Component {
 
 ListCompanies.propTypes = {
   companies: PropTypes.array.isRequired,
+  skills: PropTypes.array,
   ready: PropTypes.bool.isRequired,
 };
 
 export default withTracker(() => {
   const subscription = Meteor.subscribe('Companies');
+  const subSkills = Meteor.subscribe('Skills');
   return {
     companies: Companies.find({}, { limit: 5 }).fetch(),
-    ready: subscription.ready(),
+    skills: Skills.find({}).fetch(),
+    ready: subscription.ready() && subSkills.ready(),
   };
 })(ListCompanies);
