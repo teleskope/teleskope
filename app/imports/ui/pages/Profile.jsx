@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Icon, Image, Loader, Segment, Grid, Menu, Button, Dropdown } from 'semantic-ui-react';
+import { Container, Header, Icon, Image, Loader, Grid, Menu, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Profiles } from '../../api/profile/profile';
 import ProfileSkillsDropdown from '../components/ProfileSkillsDropdown';
-import DropdownExampleMultipleSelection from '../components/DropdownTest';
 
 
 class Profile extends Component {
@@ -57,9 +56,9 @@ class Profile extends Component {
           <Grid.Row>
             <Container text>
               <Header as='h2'>Skills</Header>
+              <ProfileSkillsDropdown/>
             </Container>
-            <DropdownExampleMultipleSelection/>
-            <ProfileSkillsDropdown/>
+
           </Grid.Row>
         </Grid>
     );
