@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Container, Image, Header, Icon, Grid, Segment, Menu } from 'semantic-ui-react';
+import { Loader, Container, Image, Header, Icon, Grid, Menu, Card } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Companies } from '../../api/company/company';
-
+import { Jobs } from '../../api/jobs/jobs';
+import JobCard from '../components/job/JobCard';
 
 class ShowCompany extends Component {
-
   render() {
-    return this.props.ready
-        ? this.renderPage()
-        : <Loader active>Getting data</Loader>;
+    return this.props.ready ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
     renderPage() {
+    const { jobs } = this.props;
       return (
           <Grid>
             <Grid.Row columns={2}>
@@ -22,7 +21,7 @@ class ShowCompany extends Component {
                 <Image src={this.props.company.image} size='huge'/>
               </Grid.Column>
               <Grid.Column>
-                <Header as='h1'>{this.props.company.companyName}</Header>
+                <Header as='h1'>{this.props.company.name}</Header>
                 <Header as='h3'><Icon className="map marker alternate icon"/>
                   {this.props.company.address}
                 </Header>
@@ -36,17 +35,24 @@ class ShowCompany extends Component {
                 </Container>
               </Grid.Column>
             </Grid.Row>
-            <Segment></Segment>
             <Grid.Row>
               <Container text>
               <Header as='h2'>Company Description</Header>
                 {this.props.company.summary}
               </Container>
             </Grid.Row>
-            <Segment></Segment>
             <Grid.Row>
               <Container text>
                 <Header as='h2'>Current Openings</Header>
+              </Container>
+            </Grid.Row>
+            <Grid.Row>
+              <Container>
+              <Card.Group stackable>
+                {jobs.map((job, index) => (
+                    <JobCard key={index} job={job} />
+                ))}
+              </Card.Group>
               </Container>
             </Grid.Row>
           </Grid>
@@ -56,6 +62,7 @@ class ShowCompany extends Component {
 
 ShowCompany.propTypes = {
   company: PropTypes.object,
+  jobs: PropTypes.array,
   ready: PropTypes.bool,
 };
 
@@ -63,8 +70,10 @@ export default withTracker(({ match }) => {
   const documentId = match.params.companyId;
 
   const subscription = Meteor.subscribe('Companies');
+  const subscription2 = Meteor.subscribe('Jobs');
   return {
     company: Companies.findOne({ _id: documentId }),
-    ready: subscription.ready(),
+    jobs: Jobs.find({ companyID: documentId }).fetch(),
+    ready: (subscription.ready() && subscription2.ready()),
   };
 })(ShowCompany);
