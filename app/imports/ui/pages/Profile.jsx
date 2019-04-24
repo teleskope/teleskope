@@ -4,8 +4,10 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Header, Icon, Image, Loader, Grid, Menu, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Profiles } from '../../api/profile/profile';
+import ProfileSkillsDropdown from '../components/ProfileSkillsDropdown';
 
-class ShowStudent extends Component {
+
+class Profile extends Component {
 
   render() {
     return this.props.ready
@@ -17,14 +19,12 @@ class ShowStudent extends Component {
     return (
         <Grid style={{ marginTop: '2em' }}>
           <Grid.Row columns={2}>
-            <Grid.Column>
-              <Image src={'..images/RussHanneman.jpg'} size='huge'/>
+            <Grid.Column >
+              <Image src={'https://media1.giphy.com/media/MuE0xWbEohUrxbm77r/giphy.gif'}
+                     style={{ width: '335px' }} floated='right'/>
             </Grid.Column>
             <Grid.Column>
-              <Header as='h1'>{this.props.student.firstName} {this.props.student.lastName}</Header>
-              <Header as='h3'><Icon className="map marker alternate icon"/>
-                {this.props.student.address}
-              </Header>
+              <Header as='h1'>{this.props.profile.firstName} {this.props.profile.lastName}</Header>
               <Container>
                 <Menu borderless text>
                   <Menu.Item><Icon size='large' className="twitter icon"/></Menu.Item>
@@ -33,23 +33,27 @@ class ShowStudent extends Component {
                   <Menu.Item><Icon size='large' className="envelope outline icon"/></Menu.Item>
                 </Menu>
                 <Button
-                    color='blue'
-                    content='Interested'
-                    icon='space shuttle'
+                    color='green'
+                    content='Edit Profile'
+                    icon='edit'
                     toggle
                 />
               </Container>
             </Grid.Column>
           </Grid.Row>
+          <br></br>
+          <Grid.Row>
+            <Container text>
+              <Header as='h2'>About</Header>
+              {this.props.profile.summary}
+            </Container>
+          </Grid.Row>
+          <br></br>
+          <br></br>
           <Grid.Row>
             <Container text>
               <Header as='h2'>Skills</Header>
-            </Container>
-          </Grid.Row>
-          <Grid.Row>
-            <Container text>
-              <Header as='h2'> About this Student</Header>
-              {this.props.student.summary}
+              <ProfileSkillsDropdown/>
             </Container>
           </Grid.Row>
         </Grid>
@@ -57,17 +61,17 @@ class ShowStudent extends Component {
   }
 }
 
-ShowStudent.propTypes = {
-  student: PropTypes.object,
+Profile.propTypes = {
+  profile: PropTypes.object,
   ready: PropTypes.bool,
 };
 
 export default withTracker(({ match }) => {
-  const documentId = match.params.studentId;
+  const documentId = match.params.profileId;
 
   const subscription = Meteor.subscribe('Profiles');
   return {
-    student: Profiles.findOne({ _id: documentId }),
+    profile: Profiles.findOne({ _id: documentId }),
     ready: subscription.ready(),
   };
-})(ShowStudent);
+})(Profile);

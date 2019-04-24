@@ -9,7 +9,7 @@ class Landing extends React.Component {
   render() {
     return (
 
-      <div >
+      <div style={{ marginTop: '4em' }} >
         <Segment id="teleskope-background" attached="top" inverted padded="very" size="large" textAlign="center">
           <Header as="h1" size="huge">TeleSkope</Header>
           <Header as="h2" size="medium">Helping employers find stars</Header>
@@ -20,17 +20,6 @@ class Landing extends React.Component {
           <Link to={'/signup'} key="CompanySignup">
             <Button>Company</Button>
           </Link>
-
-          {this.props.currentUser ? (
-            [<Link to={'/signup'} key="test1">
-              <Button>test 1</Button>
-            </Link>,
-            <Link to={'/signup'} key="test2">
-              <Button>test 2</Button>
-            </Link>,
-            ]
-          ) : ''}
-
         </Segment>
 
         <Segment padded="very" basic>

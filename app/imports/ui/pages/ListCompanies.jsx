@@ -33,7 +33,7 @@ class ListCompanies extends React.Component {
   renderPage() {
     const { companies } = this.props;
     return (
-        <Container>
+        <Container style={{ marginTop: '80px' }}>
           <Grid>
             <Grid.Row>
               <Header as="h2" floated='left'>We think you may like</Header>

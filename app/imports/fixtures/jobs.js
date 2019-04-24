@@ -141,7 +141,7 @@ const defaultJobs = [
 ];
 
 function addData(data) {
-  console.log(`  Adding: ${data.title}`);
+  console.log(`  Adding: ${data.title} (${data.employmentType})`);
   Jobs.insert(data);
 }
 
@@ -149,7 +149,7 @@ export default function createJobs() {
   /** Initialize the collection if empty. */
   if (Jobs.find().count() === 0) {
     if (defaultJobs) {
-      console.log('Creating default companies.');
+      console.log('Creating default jobs.');
       defaultJobs.map(data => addData(data));
     }
   }

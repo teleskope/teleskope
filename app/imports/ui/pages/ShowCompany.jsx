@@ -15,7 +15,7 @@ class ShowCompany extends Component {
     renderPage() {
     const { jobs } = this.props;
       return (
-          <Grid>
+          <Grid style={{ marginTop: '2em' }}>
             <Grid.Row columns={2}>
               <Grid.Column>
                 <Image src={this.props.company.image} size='huge'/>

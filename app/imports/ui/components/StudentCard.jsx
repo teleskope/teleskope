@@ -11,9 +11,13 @@ const imageStyle = {
 };
 
 export default function StudentCard(props) {
-  const { firstName, lastName, website, _id, email, summary } = props.student;
+  const { firstName, lastName, website, _id, owner, summary } = props.student;
   const [favorited, setFavorited] = useState(false);
   const summaryMaxLen = 150;
+  const email01 = 'mailto:';
+  const email02 = email01.concat(owner);
+  const emailLink = email02.concat('?Subject=Applying for a job');
+
   return (
       <Card raised>
           <div style={{ position: 'relative' }}>
@@ -30,9 +34,9 @@ export default function StudentCard(props) {
           </div>
         <Card.Content>
           <Card.Meta>
-            <span >{email}</span>
+            <a href={emailLink} target="_top" style={{ color: '#0E6EB8' }} >{owner}</a>
             <a href={website}>
-              <Icon name='globe' color='blue' style={{ marginLeft: '9.5em' }}/>
+              <Icon name='globe' color='blue' style={{ position: 'absolute', right: 0, top: 157, margin: '0.5rem' }}/>
             </a>
           </Card.Meta>
         <Card.Description>
