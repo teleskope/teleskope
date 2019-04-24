@@ -20,8 +20,6 @@ class ProfileSkillsDropdown extends React.Component {
   renderDropdown() {
     return (
       <Container>
-
-
         <Dropdown
           placeholder='Skill'
           fluid
