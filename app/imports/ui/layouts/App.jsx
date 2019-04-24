@@ -15,6 +15,7 @@ import ListCompanies from '../pages/ListCompanies';
 import ListStudents from '../pages/ListStudents';
 import ShowCompany from '../pages/ShowCompany';
 import ShowStudent from '../pages/ShowStudent';
+import Profile from '../pages/Profile';
 import ShowJob from '../pages/ShowJob';
 import Profile from '../pages/Profile';
 
