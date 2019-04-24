@@ -10,24 +10,12 @@ class ProfileSkillsDropdown extends React.Component {
     return (this.props.ready) ? this.renderDropdown() : <Loader active>Retrieving data</Loader>;
   }
 
-
   skillOptions = this.props.skills.map((skill) => ({
     key: skill._id,
     text: skill.name,
     value: skill.name,
     description: skill.description,
   }));
-
-
-  // render() {
-  //     if (this.props.ready) {
-  //       console.log('Got Skills');
-  //       return this.renderDropdown();
-  //     } else {
-  //       console.log('Retrieving Skills');
-  //       return <Loader active>Getting data</Loader>;
-  //     }
-  // }
 
   renderDropdown() {
     return (
