@@ -149,7 +149,7 @@ export default function createJobs() {
   /** Initialize the collection if empty. */
   if (Jobs.find().count() === 0) {
     if (defaultJobs) {
-      console.log('Creating default companies.');
+      console.log('Creating default jobs.');
       defaultJobs.map(data => addData(data));
     }
   }

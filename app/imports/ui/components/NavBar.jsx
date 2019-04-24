@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Header, Loader, Icon } from 'semantic-ui-react';
+import { Menu, Dropdown, Header, Loader } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import { Profiles } from '/imports/api/profile/profile';
 
@@ -12,24 +12,24 @@ class NavBar extends React.Component {
   render() {
     return (this.props.ready) ? this.renderNavBar() : <Loader active>Retrieving data</Loader>;
   }
+
   renderNavBar() {
     const menuStyle = { marginBottom: '100px' };
-    //WHY IS _id UNDEFINED????????
-    // const { _id } = this.props.profile[0];
+    const userId = Meteor.userId();
 
     return (
       <Menu style={menuStyle} borderless inverted fixed="top">
         <Menu.Item as={NavLink} activeClassName="" exact to="/">
           <Header inverted as='h1'>TeleSkope</Header>
         </Menu.Item>
-        {Roles.userIsInRole(Meteor.userId(), 'student') || Roles.userIsInRole(Meteor.userId(), 'company') ? (
+        {(Roles.userIsInRole(userId, 'student') || Roles.userIsInRole(userId, 'company')) ? (
             <Menu.Item as={NavLink}
-                        activeClassName="active"
-                        exact to={`/profile/${this.props.profile[0]._id}`}
-                        key='profile'
-                        >
-                        My Profile
-              </Menu.Item>
+                activeClassName="active"
+                exact to={`/profile/${this.props.profile._id}`}
+                key='profile'
+                >
+                My Profile
+            </Menu.Item>
         ) : ''}
         {this.props.currentUser ? (
               [<Menu.Item as={NavLink}
@@ -69,16 +69,15 @@ class NavBar extends React.Component {
 /** Declare the types of all properties. */
 NavBar.propTypes = {
   currentUser: PropTypes.string,
-  profile: PropTypes.array,
+  profile: PropTypes.object,
   ready: PropTypes.bool.isRequired,
-
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 const subscription = Meteor.subscribe('Profiles');
 const NavBarContainer = withTracker(() => ({
   currentUser: Meteor.user() ? Meteor.user().username : '',
-  profile: Profiles.find({ owner: Meteor.user() ? Meteor.user().username : '' }).fetch(),
+  profile: Profiles.findOne({ owner: Meteor.user() ? Meteor.user().username : '' }),
   ready: subscription.ready(),
 }))(NavBar);
 

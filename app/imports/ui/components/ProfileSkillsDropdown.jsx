@@ -1,8 +1,8 @@
-import React from 'react'
-import { Dropdown, Header, Loader, Container } from 'semantic-ui-react'
+import React from 'react';
+import { Dropdown, Loader, Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Meteor } from "meteor/meteor";
+import { Meteor } from 'meteor/meteor';
 import { Skills } from '../../api/skill/skill';
 
 class ProfileSkillsDropdown extends React.Component {
@@ -29,7 +29,7 @@ class ProfileSkillsDropdown extends React.Component {
           options={this.skillOptions}
         />
       </Container>
-    )
+    );
   }
 }
 

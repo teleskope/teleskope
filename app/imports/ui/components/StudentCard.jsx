@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Icon, Image, Segment } from 'semantic-ui-react';
+import { Card, Icon, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 const imageStyle = {
@@ -14,6 +14,10 @@ export default function StudentCard(props) {
   const { firstName, lastName, website, _id, owner, summary } = props.student;
   const [favorited, setFavorited] = useState(false);
   const summaryMaxLen = 150;
+  const email01 = 'mailto:';
+  const email02 = email01.concat(owner);
+  const emailLink = email02.concat('?Subject=Applying for a job');
+
   return (
       <Card raised>
           <div style={{ position: 'relative' }}>
@@ -30,7 +34,7 @@ export default function StudentCard(props) {
           </div>
         <Card.Content>
           <Card.Meta>
-            <a href={'mailto:' + owner + '?Subject=Hello'} target="_top" id="blue-a-hyperlink" >{owner}</a>
+            <a href={emailLink} target="_top" style={{ color: '#0E6EB8' }} >{owner}</a>
             <a href={website}>
               <Icon name='globe' color='blue' style={{ position: 'absolute', right: 0, top: 157, margin: '0.5rem' }}/>
             </a>

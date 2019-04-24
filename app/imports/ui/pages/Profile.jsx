@@ -20,14 +20,11 @@ class Profile extends Component {
         <Grid style={{ marginTop: '2em' }}>
           <Grid.Row columns={2}>
             <Grid.Column >
-              <Image src={'https://media1.giphy.com/media/MuE0xWbEohUrxbm77r/giphy.gif'} id="profile-pic" floated='right'/>
+              <Image src={'https://media1.giphy.com/media/MuE0xWbEohUrxbm77r/giphy.gif'}
+                     style={{ width: '335px' }} floated='right'/>
             </Grid.Column>
             <Grid.Column>
               <Header as='h1'>{this.props.profile.firstName} {this.props.profile.lastName}</Header>
-               {/*TODO: Address is not displaying*/}
-              <Header as='h3'><Icon className="map marker alternate icon"/>
-                {this.props.profile.address}
-              </Header>
               <Container>
                 <Menu borderless text>
                   <Menu.Item><Icon size='large' className="twitter icon"/></Menu.Item>
@@ -47,7 +44,7 @@ class Profile extends Component {
           <br></br>
           <Grid.Row>
             <Container text>
-              <Header as='h2'> About</Header>
+              <Header as='h2'>About</Header>
               {this.props.profile.summary}
             </Container>
           </Grid.Row>

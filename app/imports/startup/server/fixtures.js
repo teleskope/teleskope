@@ -2,15 +2,15 @@ import { Meteor } from 'meteor/meteor';
 import createCompanies from '/imports/fixtures/companies.js';
 import createUsers from './accounts.js';
 import createJobs from './job.js';
-import createSkills from '../../fixtures/skills.js';
+import createSkills from '/imports/fixtures/skills.js';
 
 const runFixtures = function () {
   const shouldRun = Meteor.users.find().count() === 0;
   if (shouldRun) {
       createUsers();
       createCompanies();
-      createJobs();
       createSkills();
+      // createJobs();
   }
 };
 
