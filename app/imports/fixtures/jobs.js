@@ -141,7 +141,7 @@ const defaultJobs = [
 ];
 
 function addData(data) {
-  console.log(`  Adding: ${data.title}`);
+  console.log(`  Adding: ${data.title} (${data.employmentType})`);
   Jobs.insert(data);
 }
 
