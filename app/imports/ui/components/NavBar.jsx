@@ -11,11 +11,11 @@ import { Profiles } from '/imports/api/profile/profile';
 class NavBar extends React.Component {
   render() {
     const menuStyle = {
-      marginBottom: '10px',
+      margin: '0px',
       backgroundColor: '#455880',
     };
     return (
-      <Menu style={menuStyle} borderless inverted fixed="top">
+      <Menu style={menuStyle} borderless inverted>
         <Menu.Item as={NavLink} activeClassName="" exact to="/">
         <Image src='images/ts_white_logo.png' size='tiny'/><Image src='images/teleskope_horizontal.svg'/>
         </Menu.Item>

@@ -9,7 +9,7 @@ class Landing extends React.Component {
   render() {
     return (
 
-      <div style={{ marginTop: '4em' }} >
+      <div>
         <Segment id="teleskope-background" attached="top" inverted padded="very" size="large" textAlign="center">
           <Image src='images/teleskope_horizontal.svg' centered size='large'/>
           <Header as="h2" size="medium">Helping employers find stars</Header>
@@ -23,30 +23,46 @@ class Landing extends React.Component {
         </Segment>
 
         <Segment padded="very" basic>
-          <Grid container centered stackable columns={3}>
-            <Grid.Row>
-              <div style={{ height: '100%', width: 'auto' }}>
-               <Image src='images/matchgraphic.png'/>
-              </div>
+          <Grid container centered stackable>
+            <Grid.Row textAlign='center' columns={3}>
+              <Grid.Column textAlign='center'>
+                <div style={{ maxWidth: '250px', margin: 'auto' }}>
+                  <Image src='images/student.png' centered/>
+                  <h3>For Students</h3>
+                  <i>{'“Teleskope helped me realize that I have no discernable skills that employers would find useful!”'}</i>
+                </div>
+              </Grid.Column>
+              <Grid.Column textAlign='center' verticalAlign='middle'><h2><i>Match your skill set with the skills employers are looking for</i></h2></Grid.Column>
+              <Grid.Column textAlign='center'>
+                <div style={{ maxWidth: '250px', margin: 'auto' }}>
+                  <Image src='images/company.png' centered/>
+                  <h3>For Companies</h3>
+                  <i>{'This is the perfect tool to match our hiring managers with passionate compatible candidates.'}</i>
+                </div>
+
+              </Grid.Column>
             </Grid.Row>
-            <Grid.Column textAlign='center'>
-              <Icon size='huge' name="star outline" />
-              <Header as="h1" >1,000</Header>
-              <Header as="h3" >Companies looking for stars</Header>
-            </Grid.Column>
+            <Grid.Row columns={3}>
+              <Grid.Column textAlign='center'>
+                <Icon size='huge' name="star outline" />
+                <Header as="h1" >1,000</Header>
+                <Header as="h3" >Companies looking for stars</Header>
+              </Grid.Column>
 
-            <Grid.Column textAlign='center'>
-              <Icon size='huge' name="connectdevelop" />
-              <Header as="h1" >2,000</Header>
-              <Header as="h3" >connections made</Header>
-            </Grid.Column>
+              <Grid.Column textAlign='center'>
+                <Icon size='huge' name="connectdevelop" />
+                <Header as="h1" >2,000</Header>
+                <Header as="h3" >connections made</Header>
+              </Grid.Column>
 
-            <Grid.Column textAlign='center'>
-              <Icon size='huge' name="money bill alternate outline" />
-              <Header as="h1" >1,210</Header>
-              <Header as="h3" >Career opportunities available</Header>
+              <Grid.Column textAlign='center'>
+                <Icon size='huge' name="money bill alternate outline" />
+                <Header as="h1" >1,210</Header>
+                <Header as="h3" >Career opportunities available</Header>
 
-            </Grid.Column>
+              </Grid.Column>
+            </Grid.Row>
+
 
           </Grid>
         </Segment>
