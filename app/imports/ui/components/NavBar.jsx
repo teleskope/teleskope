@@ -3,54 +3,60 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Header, Loader } from 'semantic-ui-react';
+import { Menu, Dropdown, Image, Button } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import { Profiles } from '/imports/api/profile/profile';
 
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
   render() {
-    return (this.props.ready) ? this.renderNavBar() : <Loader active>Retrieving data</Loader>;
-  }
-
-  renderNavBar() {
-    const menuStyle = { marginBottom: '100px' };
-    const userId = Meteor.userId();
-
+    const menuStyle = {
+      marginBottom: '10px',
+      backgroundColor: '#455880',
+    };
     return (
       <Menu style={menuStyle} borderless inverted fixed="top">
         <Menu.Item as={NavLink} activeClassName="" exact to="/">
-          <Header inverted as='h1'>TeleSkope</Header>
+        <Image src='images/ts_white_logo.png' size='tiny'/><Image src='images/teleskope_horizontal.svg'/>
         </Menu.Item>
-        {(Roles.userIsInRole(userId, 'student') || Roles.userIsInRole(userId, 'company')) ? (
-            <Menu.Item as={NavLink}
-                activeClassName="active"
-                exact to={`/profile/${this.props.profile._id}`}
-                key='profile'
-                >
-                My Profile
-            </Menu.Item>
-        ) : ''}
         {this.props.currentUser ? (
-              [<Menu.Item as={NavLink}
+            [
+              <Menu.Item as={NavLink}
+                        activeClassName="active"
+                        exact to="/profile"
+                        key='profile'>
+                        My Profile
+              </Menu.Item>,
+              <Menu.Item as={NavLink}
                          activeClassName="active"
                          exact to="/companies"
                          key='companies'>
-              Companies
+                         Companies
               </Menu.Item>,
-              <Menu.Item as={NavLink} activeClassName="active" exact to="/students" key='students'>Students</Menu.Item>]
+              <Menu.Item as={NavLink}
+                         activeClassName="active"
+                         exact to="/students"
+                         key='students'>
+                         Students
+              </Menu.Item>,
+            ]
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
             <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
         ) : ''}
         <Menu.Item position="right">
           {this.props.currentUser === '' ? (
-            <Dropdown text="Login" pointing="top right" icon={'user'}>
-              <Dropdown.Menu>
-                <Dropdown.Item icon="user" text="Sign In" as={NavLink} exact to="/signin"/>
-                <Dropdown.Item icon="add user" text="Sign Up" as={NavLink} exact to="/signup"/>
-              </Dropdown.Menu>
-            </Dropdown>
+            <div>
+              <Button content='Login' secondary inverted basic
+                      as={NavLink}
+                      to='/signin'
+              />
+              <Button content='Create Account' primary
+                      as={NavLink}
+                      to='/signup'
+              />
+            </div>
+
           ) : (
             <Dropdown text={this.props.currentUser} pointing="top right" icon={'user'}>
               <Dropdown.Menu>

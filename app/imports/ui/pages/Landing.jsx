@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Icon, Header, Button, Segment } from 'semantic-ui-react';
+import { Grid, Icon, Header, Button, Segment, Image } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, Link } from 'react-router-dom';
@@ -11,20 +11,24 @@ class Landing extends React.Component {
 
       <div style={{ marginTop: '4em' }} >
         <Segment id="teleskope-background" attached="top" inverted padded="very" size="large" textAlign="center">
-          <Header as="h1" size="huge">TeleSkope</Header>
+          <Image src='images/teleskope_horizontal.svg' centered size='large'/>
           <Header as="h2" size="medium">Helping employers find stars</Header>
-          <Header as="h3">New?  Choose a role below and register!</Header>
+
           <Link to={'/signup'} key="StudentSignup">
-            <Button>Student</Button>
+            <Button>{'I\'m a Student'}</Button>
           </Link>
           <Link to={'/signup'} key="CompanySignup">
-            <Button>Company</Button>
+            <Button>{'I\'m an Employer'}</Button>
           </Link>
         </Segment>
 
         <Segment padded="very" basic>
           <Grid container centered stackable columns={3}>
-
+            <Grid.Row>
+              <div style={{ height: '100%', width: 'auto' }}>
+               <Image src='images/matchgraphic.png'/>
+              </div>
+            </Grid.Row>
             <Grid.Column textAlign='center'>
               <Icon size='huge' name="star outline" />
               <Header as="h1" >1,000</Header>

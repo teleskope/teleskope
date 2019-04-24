@@ -1,4 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 #teleskope-background {
   background: url('images/spiral-of-stars.jpeg') no-repeat center center fixed;
   background-size: cover;
+}
+
+body {
+  background-color: #F5F0F0;
+}
+
+h1, h2, h3, h4, h5, p, span {
+  font-family: 'Lato', sans-serif;
 }
