@@ -10,14 +10,15 @@ class ProfileSkillsDropdown extends React.Component {
     return (this.props.ready) ? this.renderDropdown() : <Loader active>Retrieving data</Loader>;
   }
 
-  skillOptions = this.props.skills.map((skill) => ({
-    key: skill._id,
-    text: skill.name,
-    value: skill.name,
-    description: skill.description,
-  }));
-
   renderDropdown() {
+    const descriptionMaxLen = 75;
+    const skillOptions = this.props.skills.map((skill, index) => ({
+      key: index,
+      text: skill.name,
+      value: skill.name,
+      description: `${skill.description.substring(0, descriptionMaxLen)}...`,
+    }));
+
     return (
       <Container>
         <Dropdown
@@ -26,7 +27,7 @@ class ProfileSkillsDropdown extends React.Component {
           multiple
           search
           selection
-          options={this.skillOptions}
+          options={skillOptions}
         />
       </Container>
     );
