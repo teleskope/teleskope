@@ -6,6 +6,7 @@ import { Container, Header, Icon, Image, Loader, Grid, Menu, Button } from 'sema
 import { withTracker } from 'meteor/react-meteor-data';
 import { Profiles } from '../../api/profile/profile';
 import ProfileSkillsDropdown from '../components/ProfileSkillsDropdown';
+import { Roles } from 'meteor/alanning:roles';
 
 class Profile extends Component {
 
