@@ -63,7 +63,6 @@ const defaultCompanies = [
         zipCode: '96706',
         requirements: 'Bachelors degree in Computer Science, Computer Engineering, Electrical Engineering or related discipline and 5-8 years related experience or an equivalent combination of skills, education, and experience.',
         skills: ['Machine Learning', 'Data Science'],
-
       },
     ],
   },
