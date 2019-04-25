@@ -5,6 +5,7 @@ import { Container, Header, Icon, Image, Loader, Grid, Menu, Button } from 'sema
 import { withTracker } from 'meteor/react-meteor-data';
 import { Profiles } from '../../api/profile/profile';
 import ProfileSkillsDropdown from '../components/ProfileSkillsDropdown';
+import { Roles } from 'meteor/alanning:roles';
 
 
 class Profile extends Component {
@@ -50,12 +51,14 @@ class Profile extends Component {
           </Grid.Row>
           <br></br>
           <br></br>
-          <Grid.Row>
-            <Container text>
-              <Header as='h2'>Skills</Header>
-              <ProfileSkillsDropdown/>
-            </Container>
-          </Grid.Row>
+          {(Roles.userIsInRole(Meteor.userId(), 'student')) ? (
+            <Grid.Row>
+              <Container text>
+                <Header as='h2'>Skills</Header>
+                <ProfileSkillsDropdown/>
+              </Container>
+            </Grid.Row>
+              ) : ''};
         </Grid>
     );
   }

@@ -22,7 +22,7 @@ class ProfileSkillsDropdown extends React.Component {
     return (
       <Container>
         <Dropdown
-          placeholder='Skill'
+          placeholder='Add a skill'
           fluid
           multiple
           search
