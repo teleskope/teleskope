@@ -33,18 +33,21 @@ export default function CompanyCard(props) {
           </div>
         <Card.Content>
           <Card.Header></Card.Header>
-          <Card.Meta>
-            <Icon name='map marker alternate'/>
-            <span>{`${city.city}, ${city.state}`}</span>
-          </Card.Meta>
+          {city != null ? (
+            <Card.Meta>
+              <Icon name='map marker alternate'/>
+              <span>{`${city.city}, ${city.state}`}</span>
+            </Card.Meta>
+          ) : ''}
           {/* <Card.Description>{summary.substring(0, summaryMaxLen) + '...'}</Card.Description> */}
-          <List>
-            <Icon name='globe' />
-            <a href={website}>{website}</a>
-          </List>
+          {website != null ? (
+            <List>
+              <Icon name='globe' />
+              <a href={website}>{website}</a>
+            </List>
+          ) : ''}
         </Card.Content>
         <Card.Content extra>
-
             <Link to={`/companies/${_id}`}>
               <List.Item>{'3 Listed Opportunities'}</List.Item>
             </Link>
