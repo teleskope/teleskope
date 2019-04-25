@@ -7,18 +7,19 @@ const Profiles = new Mongo.Collection('Profiles');
 
 /** Create a schema to constrain the structure of documents associated with this collection. */
 const ProfileSchema = new SimpleSchema({
-    owner: String,
-    role: String,
-    firstName: String,
-    lastName: String,
-    website: String,
+    owner: { type: String, required: true },
+    role: { type: String, required: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
     skills: [String],
     summary: String,
     /* Find a way to have user input experiences individually, such as separate fields etc */
     experience: String,
-    /* TODO: profile image
+    website: String,
+    linkedin: String,
+    twitter: String,
+    github: String,
     image: String,
-     */
 }, { requiredByDefault: false, tracker: Tracker });
 
 Profiles.attachSchema(ProfileSchema);
