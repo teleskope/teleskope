@@ -36,15 +36,25 @@ Meteor.methods({
     Profiles.insert(profile);
   },
 
-  followCompany: function (companyId) {
-    console.log(companyId);
-    // check(companyId, String);
-    // const profile = async () => {
-    //   const email = Meteor.user().emails[0].address;
-    //   await Profiles.find({ owner: email });
-    // };
-    
-    // Profiles.update(profile, { $addToSet: { 'following.$': companyId } });
+  followCompany: function (id) {
+    check(id, String);
+    const email = Meteor.user().emails[0].address;
+    const profile = Profiles.findOne({ owner: email });
+    Profiles.update(profile._id, { $push: { following: id } });
+  },
+
+  unfollowCompany: function (id) {
+    check(id, String);
+    const email = Meteor.user().emails[0].address;
+    const profile = Profiles.findOne({ owner: email });
+    Profiles.update(profile._id, { $pull: { following: id } });
+  },
+
+  isFavorited: function (id) {
+    check(id, String);
+    const email = Meteor.user().emails[0].address;
+    const profile = Profiles.findOne({ owner: email }).following.includes(id);
+    return profile;
   },
 });
 
