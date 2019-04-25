@@ -15,10 +15,10 @@ const ProfileSchema = new SimpleSchema({
   linkedin: String,
   twitter: String,
   github: String,
-  skills: Array,
-  'skills.$': String,
   following: Array,
   'following.$': String,
+  skills: Array,
+  'skills.$': String,
   summary: String,
   /* Find a way to have user input experiences individually, such as separate fields etc */
   experience: String,

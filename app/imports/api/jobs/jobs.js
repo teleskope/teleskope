@@ -18,7 +18,7 @@ const JobsSchema = new SimpleSchema({
   zipCode: String,
   requirements: String,
   companyID: String,
-  skills: Array,
+  skills: { type: Array, required: false },
   'skills.$': String,
 }, { tracker: Tracker });
 
