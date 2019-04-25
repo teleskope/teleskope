@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 import { Card, Icon, Image, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import zipcodes from 'zipcodes';
+import { Profiles } from '../../../api/profile/profile';
 
 const imageStyle = {
   width: '100%',
@@ -14,8 +16,19 @@ const imageStyle = {
 export default function CompanyCard(props) {
   const { name, website, _id, zipCode, image } = props.company;
   const city = zipcodes.lookup(zipCode);
+  const email = Meteor.user().emails[0].address;
+  const profile = Profiles.findOne({ owner: email });
+  const isFavorited = Profiles.findOne({ _id: profile._id }).following.includes(_id);
+  const [favorited, setFavorited] = useState(isFavorited);
 
-  const [favorited, setFavorited] = useState(false);
+  const handleFollow = () => {
+    setFavorited(!favorited);
+    if (!favorited) {
+      Profiles.update(profile._id, { $push: { following: _id } });
+    } else {
+      Profiles.update(profile._id, { $pull: { following: _id } });
+    }
+  };
 
   return (
       <Card raised>
@@ -28,9 +41,10 @@ export default function CompanyCard(props) {
             </Link>
             <Icon
               link
-              name={ favorited ? 'heart' : 'heart outline'}
+              name={ favorited ? 'star' : 'star outline'}
               style={{ position: 'absolute', right: 0, top: 0, margin: '0.5rem' }}
-              onClick={(() => setFavorited(!favorited))}
+              onClick={(() => handleFollow())}
+              color={ favorited ? 'yellow' : 'black'}
             />
           </div>
         <Card.Content>
@@ -61,4 +75,5 @@ export default function CompanyCard(props) {
 CompanyCard.propTypes = {
   company: PropTypes.object.isRequired,
   match: PropTypes.string,
+  onFollow: PropTypes.func,
 };

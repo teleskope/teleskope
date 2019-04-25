@@ -25,6 +25,10 @@ const filterOptions = [
 ];
 
 class ListCompanies extends React.Component {
+  // handleFollow = (companyId) => {
+  //   Meteor.call('followCompany', companyId);
+  // }
+
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
@@ -41,7 +45,11 @@ class ListCompanies extends React.Component {
             <Grid.Row>
               <Card.Group stackable>
                   {companies.map((company, index) => (
-                        <CompanyCard key={index} company={company}/>
+                        <CompanyCard
+                          key={index}
+                          company={company}
+                          onFollow={this.handleFollow}
+                        />
                   ))}
                 </Card.Group>
             </Grid.Row>

@@ -35,6 +35,17 @@ Meteor.methods({
     profile.role = Roles.userIsInRole(Meteor.userId(), ['company']) ? 'company' : 'student';
     Profiles.insert(profile);
   },
+
+  followCompany: function (companyId) {
+    console.log(companyId);
+    // check(companyId, String);
+    // const profile = async () => {
+    //   const email = Meteor.user().emails[0].address;
+    //   await Profiles.find({ owner: email });
+    // };
+    
+    // Profiles.update(profile, { $addToSet: { 'following.$': companyId } });
+  },
 });
 
 
