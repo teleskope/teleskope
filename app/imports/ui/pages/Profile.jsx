@@ -67,13 +67,11 @@ Profile.propTypes = {
 };
 
 export default withTracker(({ match }) => {
-  // const documentId = match.params.profileId;
+  const documentId = match.params.profileId;
+
   const subscription = Meteor.subscribe('Profiles');
-  const userEmail = async () => {
-    await Meteor.user().emails[0].address;
-  };
   return {
-    profile: Profiles.findOne({ owner: userEmail }),
+    profile: Profiles.findOne({ _id: documentId }),
     ready: subscription.ready(),
   };
 })(Profile);
