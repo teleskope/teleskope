@@ -7,7 +7,6 @@ const Skills = new Mongo.Collection('Skills');
 const SkillSchema = new SimpleSchema({
   name: String,
   description: String,
-  owners: [String],
 }, { tracker: Tracker });
 
 Skills.attachSchema(SkillSchema);

@@ -10,7 +10,7 @@ const CompanySchema = new SimpleSchema({
   zipCode: { type: String, required: true },
   website: String,
   summary: String,
-  owner: Array,
+  owner: { Array, required: true },
   'owner.$': String,
 }, { tracker: Tracker, requiredByDefault: false });
 

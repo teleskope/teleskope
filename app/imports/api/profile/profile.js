@@ -6,20 +6,24 @@ import { Tracker } from 'meteor/tracker';
 const Profiles = new Mongo.Collection('Profiles');
 
 /** Create a schema to constrain the structure of documents associated with this collection. */
-const ProfileSchema = new SimpleSchema({
-    owner: String,
-    role: String,
-    firstName: String,
-    lastName: String,
-    website: String,
-    skills: [String],
-    summary: String,
-    /* Find a way to have user input experiences individually, such as separate fields etc */
-    experience: String,
-    /* TODO: profile image
-    image: String,
-     */
-}, { requiredByDefault: false, tracker: Tracker });
+    const ProfileSchema = new SimpleSchema({
+      owner: { type: String, required: true },
+      role: { type: String, required: true },
+      firstName: { type: String, required: true },
+      lastName: { type: String, required: true },
+      website: String,
+      linkedin: String,
+      twitter: String,
+      github: String,
+      following: Array,
+      'following.$': String,
+      skills: Array,
+      'skills.$': String,
+      summary: String,
+      /* Find a way to have user input experiences individually, such as separate fields etc */
+      experience: String,
+      image: String,
+    }, { requiredByDefault: false, tracker: Tracker });
 
 Profiles.attachSchema(ProfileSchema);
 
