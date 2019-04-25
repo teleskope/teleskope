@@ -12,6 +12,21 @@ const CompanySchema = new SimpleSchema({
   summary: String,
   owner: { Array, required: true },
   'owner.$': String,
+  jobs: {
+    title: String,
+    employmentType: {
+      type: String,
+      allowedValues: ['Full Time', 'Part Time'],
+      defaultValue: 'Full Time',
+    },
+    date: String,
+    description: String,
+    zipCode: String,
+    requirements: String,
+    companyID: String,
+    skills: { type: Array, required: false },
+    'skills.$': String,
+},
 }, { tracker: Tracker, requiredByDefault: false });
 
 Companies.attachSchema(CompanySchema);
