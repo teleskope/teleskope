@@ -23,7 +23,7 @@ class NavBar extends React.Component {
             [
               <Menu.Item as={NavLink}
                         activeClassName="active"
-                        exact to="/profile"
+                        exact to="/profile/"
                         key='profile'>
                         My Profile
               </Menu.Item>,

@@ -12,19 +12,7 @@ const ProfileSchema = new SimpleSchema({
     firstName: String,
     lastName: String,
     website: String,
-    /* Add this back when we figure out how to implement skills
-    https://react.semantic-ui.com/modules/dropdown/#types-multiple-selection
-
-    skills: Array[skill_ids],
-    OR
-    skills:{
-      type: String,
-      allowedValues: [
-        { key: 'angular', text: 'Angular', value: 'angular' },
-        { key: 'css', text: 'CSS', value: 'css' },
-      ],
-    },
-     */
+    skills: [String],
     summary: String,
     /* Find a way to have user input experiences individually, such as separate fields etc */
     experience: String,
