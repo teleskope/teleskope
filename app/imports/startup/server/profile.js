@@ -49,13 +49,6 @@ Meteor.methods({
     const profile = Profiles.findOne({ owner: email });
     Profiles.update(profile._id, { $pull: { following: id } });
   },
-
-  isFavorited: function (id) {
-    check(id, String);
-    const email = Meteor.user().emails[0].address;
-    const profile = Profiles.findOne({ owner: email }).following.includes(id);
-    return profile;
-  },
 });
 
 

@@ -20,7 +20,6 @@ export default function CompanyCard(props) {
   const profile = Profiles.findOne({ owner: email });
   const isFavorited = Profiles.findOne({ _id: profile._id }).following.includes(_id);
   const [favorited, setFavorited] = useState(isFavorited);
-  console.log(Meteor.call('isFavorited', _id))
 
   const handleFollow = () => {
     setFavorited(!favorited);
