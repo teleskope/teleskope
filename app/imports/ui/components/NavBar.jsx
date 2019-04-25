@@ -2,31 +2,40 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Image, Button } from 'semantic-ui-react';
+import { withRouter, NavLink, Link } from 'react-router-dom';
+import { Menu, Dropdown, Image, Button, Loader } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import { Profiles } from '/imports/api/profile/profile';
 
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
   render() {
+    return (this.props.ready) ? this.renderNavBar() : <Loader active>Retrieving data</Loader>;
+  }
+
+  renderNavBar() {
     const menuStyle = {
       margin: '0px',
       backgroundColor: '#455880',
     };
+    const userId = Meteor.userId();
+
     return (
       <Menu style={menuStyle} borderless inverted>
         <Menu.Item as={NavLink} activeClassName="" exact to="/">
         <Image src='images/ts_white_logo.png' size='tiny'/><Image src='images/teleskope_horizontal.svg'/>
         </Menu.Item>
+        {(Roles.userIsInRole(userId, 'student') || Roles.userIsInRole(userId, 'company')) ? (
+            <Menu.Item as={NavLink}
+                 activeClassName="active"
+                 exact to={`/profile/${this.props.profile._id}`}
+                 key='profile'
+                 >
+                 My Profile
+            </Menu.Item>
+        ) : ''}
         {this.props.currentUser ? (
             [
-              <Menu.Item as={NavLink}
-                        activeClassName="active"
-                        exact to="/profile"
-                        key='profile'>
-                        My Profile
-              </Menu.Item>,
               <Menu.Item as={NavLink}
                          activeClassName="active"
                          exact to="/companies"
@@ -47,16 +56,13 @@ class NavBar extends React.Component {
         <Menu.Item position="right">
           {this.props.currentUser === '' ? (
             <div>
-              <Button content='Login' secondary inverted basic
-                      as={NavLink}
-                      to='/signin'
-              />
-              <Button content='Create Account' primary
-                      as={NavLink}
-                      to='/signup'
-              />
+              <Link to={'/signin'} key="signin">
+                <Button content='Login' secondary inverted basic/>
+              </Link>
+              <Link to={'/signup'} key="signup">
+                <Button content='Create Account' primary/>
+              </Link>
             </div>
-
           ) : (
             <Dropdown text={this.props.currentUser} pointing="top right" icon={'user'}>
               <Dropdown.Menu>
