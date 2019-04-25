@@ -71,8 +71,7 @@ const defaultCompanies = [
     zipCode: '95015',
     website: 'https://www.apple.com',
     summary: 'Apple Inc. is an American multinational technology company headquartered in Cupertino, California, that designs, develops, and sells consumer electronics, computer software, and online services. It is considered one of the Big Four of technology along with Amazon, Google, and Facebook.',
-    jobs: [
-      {
+    jobs: [{
         title: 'Full Stack Developer',
         employmentType: 'Full Time',
         date: '12/25/2009',

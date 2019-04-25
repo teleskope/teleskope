@@ -22,6 +22,7 @@
       "firstName": "John",
       "lastName": "Doe",
       "website": "https://www.doejohn.com",
+      "skills": "Data Science",
       "address": "123 asdf lane",
       "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!"
     },
@@ -31,6 +32,7 @@
       "firstName": "Jeff",
       "lastName": "Taki",
       "website": "https://www.doejohn.com",
+      "skills": "Data Science",
       "address": "123 asdf lane",
       "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!"
     },
@@ -40,6 +42,7 @@
       "firstName": "Matt",
       "lastName": "Kim",
       "website": "https://www.doejohn.com",
+      "skille": "Bioinformatics",
       "address": "123 asdf lane",
       "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!"
     },
@@ -58,6 +61,7 @@
       "firstName":"Steve",
       "lastName": "Jobs",
       "website": "https://www.stevejobs.com",
+      "skills": "Machine Learning",
       "address": "123 asdf lane",
       "summary": "Hi, I am undeclared and I dropped out after a semester, but I am working on my startup and need a job to help fund it."
     },
@@ -67,6 +71,7 @@
       "firstName": "Bill",
       "lastName": "Gates",
       "website": "https://www.stevejobs.com",
+      "skills": "Bioinformatics",
       "address": "123 asdf lane",
       "summary": "Hi, I am undeclared and I dropped out after a semester, but I am working on my startup and need a job to help fund it."
     }
