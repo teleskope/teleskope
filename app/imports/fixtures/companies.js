@@ -3,7 +3,7 @@ import { Companies } from '/imports/api/company/company.js';
 /* eslint-disable max-len */
 const defaultCompanies = [
   {
-    owner: ['microsoft@example.com'],
+    owners: ['microsoft@example.com'],
     name: 'Microsoft',
     address: 'One Microsoft Way',
     zipCode: '98052',
@@ -65,7 +65,7 @@ const defaultCompanies = [
     ],
   },
   {
-    owner: ['apple@example.com'],
+    owners: ['apple@example.com'],
     name: 'Apple',
     address: 'One Apple Way',
     zipCode: '95015',
