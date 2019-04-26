@@ -1,5 +1,6 @@
 import { Skills } from '/imports/api/skill/skill.js';
-import defaultSkills from './Data/skills';
+import defaultSkills from './data/skills';
+/* eslint-disable no-console */
 
 function addData(data) {
   console.log(`  Adding Skill: ${data.name}`);

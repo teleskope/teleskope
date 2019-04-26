@@ -1,6 +1,6 @@
 import { Companies } from '/imports/api/company/company.js';
-import defaultCompanies from './Data/companies';
-
+import defaultCompanies from './data/companies';
+/* eslint-disable no-console */
 
 function addData(data) {
   console.log(`  Adding: ${data.name}`);
