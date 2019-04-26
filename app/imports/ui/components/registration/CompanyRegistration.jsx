@@ -41,26 +41,9 @@ export default class CompanyRegistration extends Component {
       }
     };
 
-    if (!companyName) {
-      reportError(new Meteor.Error(400, 'Company Name fields may not be empty'), (err) => {
-        if (err) {
-          this.setState({ error: err.reason });
-        }
-      });
-    } else if (!firstName || !lastName) {
-      reportError(new Meteor.Error(400, 'Name fields may not be empty'), (err) => {
-        if (err) {
-          this.setState({ error: err.reason });
-        }
-      });
-    } else if (!address || !zipCode) {
-      reportError(new Meteor.Error(400, 'Address fields may not be empty'), (err) => {
-        if (err) {
-          this.setState({ error: err.reason });
-        }
-      });
-    } else if (zipcodes.lookup(zipCode) == null) {
-      reportError(new Meteor.Error(400, 'ZIP code doesn\'t exist'), (err) => {
+    if (zipcodes.lookup(zipCode) == null) {
+      reportError(new Meteor.Error(400, 'Unidentifiable ZIP code.  ' +
+          '                                           Please enter a different ZIP code'), (err) => {
         if (err) {
           this.setState({ error: err.reason });
         }
