@@ -25,7 +25,7 @@ export default class StudentRegistration extends Component {
     this.setState({ [name]: value });
   }
 
-  /**  TODO: Handle Signup submission using Meteor's account mechanism. */
+  // TODO: reimplement handleSubmit and redirect signup to landing profile
   handleSubmit() {
     const { email, password, firstName, lastName } = this.state;
     //

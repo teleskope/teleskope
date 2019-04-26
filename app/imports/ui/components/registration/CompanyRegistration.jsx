@@ -30,7 +30,7 @@ export default class CompanyRegistration extends Component {
     this.setState({ [name]: value });
   }
 
-  // TODO: reimplement handleSubmit
+  // TODO: reimplement handleSubmit and redirect signup to landing profile
   handleSubmit() {
     const { email, password, companyName, address, zipCode, firstName, lastName } = this.state;
     const reportError = (error, callback) => {

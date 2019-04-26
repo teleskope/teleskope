@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Container, Header, Icon, Grid, Menu, Card, Button } from 'semantic-ui-react';
+import { Loader, Container, Header, Icon, Grid, Card, Image } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Companies } from '../../api/company/company';
 import { Profiles } from '../../api/profile/profile';
