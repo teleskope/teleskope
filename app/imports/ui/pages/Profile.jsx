@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
+import zipcodes from 'zipcodes';
 import { Container, Header, Icon, Image, Loader, Grid, Menu, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Profiles } from '../../api/profile/profile';
 import ProfileSkillsDropdown from '../components/ProfileSkillsDropdown';
-import { Roles } from 'meteor/alanning:roles';
-import zipcodes from 'zipcodes';
-import { Card } from 'semantic-ui-react/dist/commonjs/views/Card';
-
 
 class Profile extends Component {
 
@@ -24,7 +21,7 @@ class Profile extends Component {
     const email01 = 'mailto:';
     const email02 = email01.concat(owner);
     const emailLink = email02.concat('?Subject=Hello');
-    let iconName = new Array(100);
+    const iconName = new Array(100);
     if (socials) {
       socials.map(function (social, index) {
       iconName[index] = social.provider;
@@ -37,7 +34,7 @@ class Profile extends Component {
         <Grid style={{ marginTop: '2em' }}>
           <Grid.Row columns={2}>
             <Grid.Column >
-              <Image src={image != null ? image :
+              <Image src={image !== undefined ? image :
                     'https://media1.giphy.com/media/MuE0xWbEohUrxbm77r/giphy.gif'}
                      style={{ width: '335px' }} floated='right'/>
             </Grid.Column>
@@ -82,14 +79,12 @@ class Profile extends Component {
           </Grid.Row>
           <br></br>
           <br></br>
-          {(Roles.userIsInRole(Meteor.userId(), 'student')) ? (
             <Grid.Row>
               <Container text>
                 <Header as='h2'>Skills</Header>
                 <ProfileSkillsDropdown/>
               </Container>
             </Grid.Row>
-              ) : ''};
         </Grid>
     );
   }

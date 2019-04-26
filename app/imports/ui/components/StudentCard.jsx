@@ -21,9 +21,9 @@ export default function StudentCard(props) {
   return (
       <Card raised>
           <div style={{ position: 'relative' }}>
-            <Image src={image != null ? image :
+            <Image src={(image !== undefined) ? image :
                 'https://media1.giphy.com/media/MuE0xWbEohUrxbm77r/giphy.gif'}
-                 style={imageStyle} entered />
+                 style={imageStyle} centered />
             <Link to={`/students/${_id}`} style={{ color: 'white' }}>
               <h1 style={{ position: 'absolute', left: 0, top: 0, margin: '0.5rem' }}>{firstName} {lastName}</h1>
             </Link>
