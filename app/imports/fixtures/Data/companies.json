@@ -1,5 +1,5 @@
 {
-  "defaultCompanies": [
+  "defaultCompanies":[
     {
       "owners":["microsoft@example.com"],
       "name":"Microsoft",
@@ -7,7 +7,7 @@
       "zipCode":"98052",
       "website":"https://www.microsoft.com",
       "summary":"Microsoft Corporation is an American multinational technology company with headquarters in Redmond, Washington. It develops, manufactures, licenses, supports and sells computer software, consumer electronics, personal computers, and related services.",
-    "jobs": [
+      "jobs":[
         {
           "title":"Data Scientist",
           "employmentType":"Full Time",
@@ -17,17 +17,16 @@
           "requirements":"Bachelor degree with a major in Business, Computer Science, MIS or related. Must be familiar with relational database and client-server concepts as well as general web development platform capabilities. Experience with any of the following development environments is a plus: SQL, MySQL, Java, XML, C++, Tableau, Hive, Matlab, C++, Python, SAP Business Intelligence, TLmg3afDeLAkr3AhZ Business Intelligence, Quipware, Java/Spring/Hibernate, Baan, PeopleSoft, Lotus Notes/Domino and/or Mapper. ",
           "skills":["Graphic Design","Data Science"]
         },
-      {
-        "title":"Software Engineer",
-        "employmentType":"Full Time",
-        "date":"12/25/2009",
-        "description":"What You'll Do: \nUnder minimal direction, design and implement a mixture of real-time embedded and application software for both classified and unclassified programs. Assure security of embedded and application software by performing innovative security analyses to identify security risks and engineering security hardening solutions. \n\nDuties and Responsibilities:\nProvide technical leadership, design, develop, test and maintain real-time embedded and application software on network systems\nProvide technical leadership in developing innovative security analysis tools and software hardening techniques\nInteract with customer to understand requirements, identify risks, and implement solutions to deliver needed functionality with high quality and attention to detail\nOptimize software to meet real-time requirements\nPerform unit, subsystem, and regression testing on software/system components\nSupport system and field testing as required\nDocument design, interfaces, and user interfaces\nCollaborate with multi-disciplined team on existing and new software solutions.\nTravel to other LGS locations or customer sites as necessary\nUnderstand and adhere to all LGS Ethical and Compliance policies\nProactively ensure a safe work environment and adhere to LGS EH&S policies and procedures\nPerform other duties as assigned\nAbility to obtain/retain a government security clearance at the level necessary to perform the duties of the position\nSkills and Knowledge:\nExperience developing software for real-time environments\nExperience with multiple programming methods and languages, including C, C++, C#\nExperience with multiple scripting languages, including Perl, Python, BASH\nExperience developing APIs for command and control over unreliable communications links\nExperience developing in the Linux environment and implementing Linux applications\nFamiliarity with Object Oriented design, architecture and programming methods\nFamiliarity with layer 1-4 networking protocols and wired/wireless/optical networking concepts\nFamiliarity with embedded software that controls hardware (e.g. device drivers, microcontrollers)\nKnowledge of TLmg3afDeLAkr3AhZ software applications and other software applications as required, including TLmg3afDeLAkr3AhZ SharePoint\nExcellent communication skills\nDemonstrated effective teamwork skills",
-        "zipCode":"96706",
-        "requirements":"Bachelors degree in Computer Science, Computer Engineering, Electrical Engineering or related discipline and 5-8 years related experience or an equivalent combination of skills, education, and experience.",
-        "skills":["Machine Learning","Data Science"]
-      }
+        {
+          "title":"Software Engineer",
+          "employmentType":"Full Time",
+          "date":"12/25/2009",
+          "description":"What You'll Do: \nUnder minimal direction, design and implement a mixture of real-time embedded and application software for both classified and unclassified programs. Assure security of embedded and application software by performing innovative security analyses to identify security risks and engineering security hardening solutions. \n\nDuties and Responsibilities:\nProvide technical leadership, design, develop, test and maintain real-time embedded and application software on network systems\nProvide technical leadership in developing innovative security analysis tools and software hardening techniques\nInteract with customer to understand requirements, identify risks, and implement solutions to deliver needed functionality with high quality and attention to detail\nOptimize software to meet real-time requirements\nPerform unit, subsystem, and regression testing on software/system components\nSupport system and field testing as required\nDocument design, interfaces, and user interfaces\nCollaborate with multi-disciplined team on existing and new software solutions.\nTravel to other LGS locations or customer sites as necessary\nUnderstand and adhere to all LGS Ethical and Compliance policies\nProactively ensure a safe work environment and adhere to LGS EH&S policies and procedures\nPerform other duties as assigned\nAbility to obtain/retain a government security clearance at the level necessary to perform the duties of the position\nSkills and Knowledge:\nExperience developing software for real-time environments\nExperience with multiple programming methods and languages, including C, C++, C#\nExperience with multiple scripting languages, including Perl, Python, BASH\nExperience developing APIs for command and control over unreliable communications links\nExperience developing in the Linux environment and implementing Linux applications\nFamiliarity with Object Oriented design, architecture and programming methods\nFamiliarity with layer 1-4 networking protocols and wired/wireless/optical networking concepts\nFamiliarity with embedded software that controls hardware (e.g. device drivers, microcontrollers)\nKnowledge of TLmg3afDeLAkr3AhZ software applications and other software applications as required, including TLmg3afDeLAkr3AhZ SharePoint\nExcellent communication skills\nDemonstrated effective teamwork skills",
+          "zipCode":"96706",
+          "requirements":"Bachelors degree in Computer Science, Computer Engineering, Electrical Engineering or related discipline and 5-8 years related experience or an equivalent combination of skills, education, and experience.",
+          "skills":["Machine Learning","Data Science"]
+        }
       ]
-
     },
     {
       "owners":["apple@example.com"],
@@ -36,7 +35,7 @@
       "zipCode":"95015",
       "website":"https://www.apple.com",
       "summary":"Apple Inc. is an American multinational technology company headquartered in Cupertino, California, that designs, develops, and sells consumer electronics, computer software, and online services. It is considered one of the Big Four of technology along with Amazon, Google, and Facebook.",
-      "jobs": [
+      "jobs":[
         {
           "title":"Full Stack Developer",
           "employmentType":"Full Time",
@@ -55,7 +54,6 @@
           "requirements":"Master’s degree in Computer Science, Computer Applications, Information Technology, or a related field.\nMinimum 1 year of experience in the offered position, Software Engineer, Programmer/Developer, Technology Lead, or related position.\nMinimum 1 year of experience in the above-listed skills.\nOR\nBachelor’s degree in Computer Science, Computer Applications, Information Technology, or a related field.\n6 years of experience in the offered position, Software Engineer, Programmer/Developer, Technology Lead, or related position.\n6 years of experience in the above-listed skills.\nMust be willing to relocate to unanticipated client/employer locations, throughout the U.S.\nEmployer will accept any suitable combination of education, training, or experience.\nJob is located in Woodcliff Lake, NJ. Must be willing to relocate to unanticipated client/employer locations, throughout the U.S., including but not limited to Monmouth Junction, NJ or Edison, NJ.",
           "skills":["BioInformatics","Data Science","Machine Learning","Graphic Design"]
         }
-
       ]
     }
   ]

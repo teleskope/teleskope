@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import createCompanies from '/imports/fixtures/companies.js';
+import createCompanies from '../../fixtures/companies.js';
 import createUsers from './accounts.js';
 import createSkills from '../../fixtures/skills.js';
 
