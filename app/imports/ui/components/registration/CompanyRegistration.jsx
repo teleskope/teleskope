@@ -91,7 +91,7 @@ export default class CompanyRegistration extends Component {
   }
 
   render() {
-    // if (Meteor.userId()) return <Redirect to='/profile' />;
+    if (Meteor.userId()) return <Redirect to='/' />;
 
     return (
       <React.Fragment>
