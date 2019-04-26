@@ -4,7 +4,6 @@ import { Meteor } from 'meteor/meteor';
 import { Loader, Container, Image, Header, Icon, Grid, Menu, Card } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Companies } from '../../api/company/company';
-import { Jobs } from '../../api/jobs/jobs';
 import JobCard from '../components/job/JobCard';
 
 class ShowCompany extends Component {
@@ -13,7 +12,7 @@ class ShowCompany extends Component {
   }
 
     renderPage() {
-    const { jobs } = this.props;
+      const { jobs } = this.props.company;
       return (
           <Grid style={{ marginTop: '2em' }}>
             <Grid.Row columns={2}>
@@ -62,7 +61,6 @@ class ShowCompany extends Component {
 
 ShowCompany.propTypes = {
   company: PropTypes.object,
-  jobs: PropTypes.array,
   ready: PropTypes.bool,
 };
 
@@ -70,10 +68,8 @@ export default withTracker(({ match }) => {
   const documentId = match.params.companyId;
 
   const subscription = Meteor.subscribe('Companies');
-  const subscription2 = Meteor.subscribe('Jobs');
   return {
     company: Companies.findOne({ _id: documentId }),
-    jobs: Jobs.find({ companyID: documentId }).fetch(),
-    ready: (subscription.ready() && subscription2.ready()),
+    ready: subscription.ready(),
   };
 })(ShowCompany);

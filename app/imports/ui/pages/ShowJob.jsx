@@ -4,7 +4,6 @@ import { Meteor } from 'meteor/meteor';
 import { Button, Loader, Container, Header, Icon, Grid } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import zipcodes from 'zipcodes';
-import { Jobs } from '../../api/jobs/jobs';
 
 class ShowJob extends Component {
 

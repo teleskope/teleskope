@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import createCompanies from '/imports/fixtures/companies.js';
 import createUsers from './accounts.js';
-import createJobs from '/imports/fixtures/jobs.js';
 import createSkills from '../../fixtures/skills.js';
 
 const runFixtures = function () {
@@ -10,7 +9,6 @@ const runFixtures = function () {
       createUsers();
       createCompanies();
       createSkills();
-      createJobs();
   }
 };
 
