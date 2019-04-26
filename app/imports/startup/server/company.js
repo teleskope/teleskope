@@ -20,7 +20,7 @@ Meteor.methods({
     // check(data.zipCode, String);
     // TODO: Validation of inserted company data and cleaning of specialchars
     const company = data;
-    company.owner = Meteor.user().emails[0].address;
+    company.owners = [Meteor.user().emails[0].address];
     Companies.insert(company);
   },
 });
