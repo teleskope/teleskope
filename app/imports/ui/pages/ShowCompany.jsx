@@ -14,6 +14,7 @@ class ShowCompany extends Component {
   }
 
     renderPage() {
+      // TODO: Need to add 'image' and 'socials' property to company
       const { jobs, zipCode, image, summary, name, address } = this.props.company;
       const city = zipcodes.lookup(zipCode);
       // TODO: Display owners emails
@@ -25,6 +26,7 @@ class ShowCompany extends Component {
           <Grid style={{ marginTop: '2em' }}>
             <Grid.Row columns={2}>
               <Grid.Column>
+                {/*TODO: Should assign default image to property and then display the property*/}
                 <Image src={image !== undefined ? image :
                     'https://www.bigredcloud.com/wp-content/uploads/Tthree-ways-your-company-can-benefit-from-' +
                     'collaborating-with-other-companies.jpg'}

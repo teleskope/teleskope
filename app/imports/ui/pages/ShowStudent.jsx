@@ -22,6 +22,8 @@ class ShowStudent extends Component {
     const email02 = email01.concat(owner);
     const emailLink = email02.concat('?Subject=Hello');
     const iconName = new Array(100);
+    // TODO: This is a retarded way of finding the matching icon.  Instead, should compile a list of the social media
+    //        icons semantic has and then match the social.provider with the social media icons.
     if (socials) {
       socials.map(function (social, index) {
         iconName[index] = social.provider;
@@ -34,6 +36,7 @@ class ShowStudent extends Component {
         <Grid style={{ marginTop: '2em' }}>
           <Grid.Row columns={2}>
             <Grid.Column>
+              {/*TODO: Should assign default image to property and then display the property*/}
               <Image src={image !== undefined ? image :
                   'https://media1.giphy.com/media/MuE0xWbEohUrxbm77r/giphy.gif'}
                      style={{ width: '335px' }} floated='right'/>
@@ -49,6 +52,9 @@ class ShowStudent extends Component {
                       <Menu.Item href={website} target='_blank'>
                         <Icon size='large' name='globe'/></Menu.Item>
                   ) : ''}
+                  {/*TODO: As mentioned above, need to try a different way of finding the correct social media icon*/}
+                        {/*If there is no matching social media icon, consider displaying the text and hyperlinking*/}
+                        {/*it instead of having a default user icon for better readability.*/}
                   {socials ? (socials.map((social, index) => (
                       <Menu.Item href={social.link} key={index} target='_blank'>
                         <Icon size='large' className={iconName[index]}/>
