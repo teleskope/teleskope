@@ -68,9 +68,8 @@ export default withTracker(({ match }) => {
   const documentId = match.params.companyId;
 
   const subscription = Meteor.subscribe('Companies');
-  const subscription2 = Meteor.subscribe('Jobs');
   return {
     company: Companies.findOne({ _id: documentId }),
-    ready: (subscription.ready() && subscription2.ready()),
+    ready: subscription.ready(),
   };
 })(ShowCompany);
