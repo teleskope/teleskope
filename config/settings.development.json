@@ -5,7 +5,6 @@
     { "email": "jeff@foo.com", "password": "asdf1234", "role": "student" },
     { "email": "matt@foo.com", "password": "asdf1234", "role": "student" },
     { "email": "josh@foo.com", "password": "asdf1234", "role": "student" },
-    { "email": "darius@foo.com", "password": "asdf1234", "role": "student" },
     { "email": "microsoft@example.com",
       "password": "asdf1234",
       "role": "company"
@@ -22,115 +21,48 @@
       "role": "student",
       "firstName": "John",
       "lastName": "Doe",
-      "website": "http://www.theejohndoe.com/",
-      "socials": [
-        {
-          "provider": "linkedin",
-          "link": "https://www.linkedin.com/in/john-doe-1775b9160/"
-        },
-        {
-          "provider": "twitter",
-          "link": "https://twitter.com/johndoefromx?lang=en"
-        }
-      ],
+      "website": "https://www.doejohn.com",
       "skills": ["Data Science"],
-      "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!",
-      "image": "https://pbs.twimg.com/profile_images/682327338755854336/gl1v_Qf6_400x400.jpg"
+      "address": "123 asdf lane",
+      "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!"
     },
     {
       "owner": "jeff@foo.com",
       "role": "student",
       "firstName": "Jeff",
       "lastName": "Taki",
-      "website": "https://j-taki.github.io/",
-      "socials": [
-        {
-          "provider": "linkedin",
-          "link": "https://www.linkedin.com/in/jeff-takiguchi/"
-        },
-        {
-          "provider": "github",
-          "link": "https://github.com/jtaki"
-        }
-      ],
-      "skills": ["Data Science", "Machine Learning"],
-      "zipCode": "96817",
-      "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!",
-      "image": "https://pbs.twimg.com/profile_images/594306023688708096/VvZiL92D_400x400.jpg"
+      "website": "https://www.doejohn.com",
+      "skills": ["Data Science"],
+      "address": "123 asdf lane",
+      "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!"
     },
     {
       "owner": "matt@foo.com",
       "role": "student",
       "firstName": "Matt",
       "lastName": "Kim",
-      "socials": [
-        {
-          "provider": "linkedin",
-          "link": "https://www.linkedin.com/in/matthew-kim-4b70b9b9/"
-        },
-        {
-          "provider": "github",
-          "link": "https://github.com/mattkim009"
-        }
-      ],
-      "skills": ["Data Science", "Machine Learning", "Bioinformatics", "Graphic Design"],
-      "zipCode": "96817",
-      "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!",
-      "image": "images/jared_dunn_profile.jpg"
+      "website": "https://www.doejohn.com",
+      "skills": ["Bioinformatics"],
+      "address": "123 asdf lane",
+      "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!"
     },
     {
       "owner": "josh@foo.com",
       "role": "student",
       "firstName": "Josh",
       "lastName": "Walters",
-      "website": "https://joshnwalters.github.io/",
-      "socials": [
-        {
-          "provider": "github",
-          "link": "https://github.com/joshnwalters"
-        },
-        {
-          "provider": "twitter",
-          "link": "https://twitter.com/dineshisreal"
-        }
-      ],
-      "zipCode": "96817",
-      "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!",
-      "image": "https://pbs.twimg.com/profile_images/971627904785362944/QaEi1qFH_400x400.jpg"
-
-    },
-    {
-      "owner": "darius@foo.com",
-      "role": "student",
-      "firstName": "Darius",
-      "lastName": "DeSpain",
-      "website": "https://darius-despain.github.io/",
-      "socials": [
-        {
-          "provider": "linkedin",
-          "link": "https://www.linkedin.com/in/darius-despain-90ab27178/"
-        },
-        {
-          "provider": "github",
-          "link": "https://github.com/darius-despain"
-        },
-        {
-          "provider": "twitter",
-          "link": "https://twitter.com/darius_despain"
-        }
-      ],
-      "zipCode": "96817",
-      "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!",
-      "image": "https://www.troundup.com/wp-content/uploads/2017/04/erlich-html-shirt-450x600.jpg"
+      "website": "https://www.doejohn.com",
+      "address": "123 asdf lane",
+      "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!"
     },
     {
       "owner": "apple@example.com",
       "role": "company",
       "firstName":"Steve",
       "lastName": "Jobs",
-      "website": "https://en.wikipedia.org/wiki/Steve_Jobs",
+      "website": "https://www.stevejobs.com",
       "skills": ["Machine Learning"],
-      "zipCode": "95015",
+      "address": "123 asdf lane",
       "summary": "Hi, I am undeclared and I dropped out after a semester, but I am working on my startup and need a job to help fund it."
     },
     {
@@ -138,9 +70,9 @@
       "role": "company",
       "firstName": "Bill",
       "lastName": "Gates",
-      "website": "https://en.wikipedia.org/wiki/Bill_Gates",
+      "website": "https://www.stevejobs.com",
       "skills": ["Bioinformatics"],
-      "zipCode": "98052",
+      "address": "123 asdf lane",
       "summary": "Hi, I am undeclared and I dropped out after a semester, but I am working on my startup and need a job to help fund it."
     }
   ]
