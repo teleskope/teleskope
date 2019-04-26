@@ -1,12 +1,12 @@
 {
-  "defaultSkills": [
+  "defaultSkills":[
     {
       "name":"Machine Learning",
       "description":"Machine learning is a subfield of computer science that evolved from the study of pattern recognition and computational learning theory in artificial intelligence. Machine learning explores the study and construction of algorithms that can learn from and make predictions on data."
     },
     {
-      "name": "Bioinformatics",
-      "description": "Bioinformatics is an interdisciplinary field combining computer science, statistics, mathematics, and engineering that develops methods and software tools for understanding biological data."
+      "name":"Bioinformatics",
+      "description":"Bioinformatics is an interdisciplinary field combining computer science, statistics, mathematics, and engineering that develops methods and software tools for understanding biological data."
     },
     {
       "name":"Data Science",
@@ -15,7 +15,6 @@
     {
       "name":"Graphic Design",
       "description":"Graphic design is the process of visual communication and problem-solving using one or more of typography, photography and illustration."
-    },
+    }
   ]
-}
 }
