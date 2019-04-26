@@ -12,7 +12,7 @@ class ShowCompany extends Component {
   }
 
     renderPage() {
-    const { jobs } = this.props.company;
+      const { jobs } = this.props.company;
       return (
           <Grid style={{ marginTop: '2em' }}>
             <Grid.Row columns={2}>
