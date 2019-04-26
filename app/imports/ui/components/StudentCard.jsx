@@ -11,7 +11,7 @@ const imageStyle = {
 };
 
 export default function StudentCard(props) {
-  const { firstName, lastName, website, _id, owner, summary } = props.student;
+  const { firstName, lastName, website, _id, owner, summary, image } = props.student;
   const [favorited, setFavorited] = useState(false);
   const summaryMaxLen = 150;
   const email01 = 'mailto:';
@@ -21,7 +21,9 @@ export default function StudentCard(props) {
   return (
       <Card raised>
           <div style={{ position: 'relative' }}>
-            <Image src='https://via.placeholder.com/150' style={imageStyle} centered></Image>
+            <Image src={(image !== undefined) ? image :
+                'https://media1.giphy.com/media/MuE0xWbEohUrxbm77r/giphy.gif'}
+                 style={imageStyle} centered />
             <Link to={`/students/${_id}`} style={{ color: 'white' }}>
               <h1 style={{ position: 'absolute', left: 0, top: 0, margin: '0.5rem' }}>{firstName} {lastName}</h1>
             </Link>
@@ -35,13 +37,15 @@ export default function StudentCard(props) {
         <Card.Content>
           <Card.Meta>
             <a href={emailLink} target="_top" style={{ color: '#0E6EB8' }} >{owner}</a>
-            <a href={website}>
-              <Icon name='globe' color='blue' style={{ position: 'absolute', right: 0, top: 157, margin: '0.5rem' }}/>
-            </a>
+            { website ? (
+              <a href={website}>
+                <Icon name='globe' color='blue' style={{ position: 'absolute', right: 0, top: 157,
+                  margin: '0.5rem' }}/>
+              </a>
+            ) : ''}
           </Card.Meta>
         <Card.Description>
-          {
-           summary ? `${summary.substring(0, summaryMaxLen)}...` : ''
+          {summary ? `${summary.substring(0, summaryMaxLen)}...` : ''
           }</Card.Description>
         </Card.Content>
          {/* TODO: list skills for extra card content????? */}
