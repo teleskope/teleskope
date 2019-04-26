@@ -91,7 +91,7 @@ ListCompanies.propTypes = {
 export default withTracker(() => {
   const subscription = Meteor.subscribe('Companies');
   return {
-    companies: Companies.find({}, { limit: 5 }).fetch(),
+    companies: Companies.find({}, { limit: 10 }).fetch(),
     ready: subscription.ready(),
   };
 })(ListCompanies);

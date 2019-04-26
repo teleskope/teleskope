@@ -20,6 +20,10 @@ if (Profiles.find().count() === 0) {
 }
 
 Meteor.methods({
+  addUserRoleStudent: function () {
+    if (!this.userId) throw new Meteor.Error('403', 'Access Denied', 'You must be logged in');
+    Roles.addUsersToRoles(this.userId, 'student');
+  },
   createUserProfile: function (data) {
     console.log(data);
     check(data, Object);

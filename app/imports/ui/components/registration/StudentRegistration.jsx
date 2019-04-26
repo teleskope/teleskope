@@ -25,21 +25,41 @@ export default class StudentRegistration extends Component {
     this.setState({ [name]: value });
   }
 
-  /**  TODO: Handle Signup submission using Meteor's account mechanism. */
+  // TODO: reimplement handleSubmit and redirect signup to landing profile
   handleSubmit() {
     const { email, password, firstName, lastName } = this.state;
-    const profile = {
-      firstName,
-      lastName,
-    };
-    Accounts.createUser({ email, username: email, password }, (err) => {
-      if (err) {
-        this.setState({ error: err.reason });
-      } else {
-        Meteor.call('createUserProfile', profile);
-        this.props.history.push('/profile');
-      }
-    });
+    //
+    // const reportError = (error, callback) => {
+    //   if (callback) {
+    //     callback(error);
+    //   } else {
+    //     throw error;
+    //   }
+    // };
+    //
+    // if (!firstName || !lastName) {
+    //   reportError(new Meteor.Error(400, 'Name fields may not be empty'), (err) => {
+    //     if (err) {
+    //       this.setState({ error: err.reason });
+    //     }
+    //   });
+    // } else {
+      const profile = {
+        firstName,
+        lastName,
+      };
+      Accounts.createUser({ email, username: email, password, role: ['student'] }, (err) => {
+        if (err) {
+          this.setState({ error: err.reason });
+        } else {
+          Meteor.call('addUserRoleStudent');
+          Meteor.call('createUserProfile', profile);
+          // this.props.history.push('/');
+        }
+      });
+    // }
+
+
   }
 
   render() {
@@ -55,6 +75,7 @@ export default class StudentRegistration extends Component {
                 type="email"
                 placeholder="E-mail address"
                 onChange={this.handleChange}
+                required
             />
             <Form.Group widths='equal'>
               <Form.Input fluid
@@ -63,6 +84,7 @@ export default class StudentRegistration extends Component {
                   type="text"
                   placeholder="First Name"
                   onChange={this.handleChange}
+                  required
               />
               <Form.Input fluid
                   label="Last Name"
@@ -70,6 +92,7 @@ export default class StudentRegistration extends Component {
                   type="text"
                   placeholder="Last Name"
                   onChange={this.handleChange}
+                  required
               />
             </Form.Group>
             <Form.Input
@@ -80,6 +103,7 @@ export default class StudentRegistration extends Component {
                 placeholder="Password"
                 type="password"
                 onChange={this.handleChange}
+                required
             />
             <Form.Button content="Submit"/>
           </Segment>

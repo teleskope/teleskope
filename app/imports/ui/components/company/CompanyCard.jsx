@@ -12,7 +12,7 @@ const imageStyle = {
 };
 
 export default function CompanyCard(props) {
-  const { name, website, _id, zipCode } = props.company;
+  const { name, website, _id, zipCode, image } = props.company;
   const city = zipcodes.lookup(zipCode);
 
   const [favorited, setFavorited] = useState(false);
@@ -20,7 +20,9 @@ export default function CompanyCard(props) {
   return (
       <Card raised>
           <div style={{ position: 'relative' }}>
-            <Image src='https://via.placeholder.com/150' style={imageStyle} centered></Image>
+            <Image src={image !== undefined ? image :
+                'https://www.bigredcloud.com/wp-content/uploads/Tthree-ways-your-company-can-benefit-from-' +
+                'collaborating-with-other-companies.jpg'} style={imageStyle} centered />
             <Link to={`/companies/${_id}`} style={{ color: 'white' }}>
               <h1 style={{ position: 'absolute', left: 0, top: 0, margin: '0.5rem' }}>{name}</h1>
             </Link>
@@ -33,18 +35,21 @@ export default function CompanyCard(props) {
           </div>
         <Card.Content>
           <Card.Header></Card.Header>
-          <Card.Meta>
-            <Icon name='map marker alternate'/>
-            <span>{`${city.city}, ${city.state}`}</span>
-          </Card.Meta>
+          {city != null ? (
+            <Card.Meta>
+              <Icon name='map marker alternate'/>
+              <span>{`${city.city}, ${city.state}`}</span>
+            </Card.Meta>
+          ) : ''}
           {/* <Card.Description>{summary.substring(0, summaryMaxLen) + '...'}</Card.Description> */}
-          <List>
-            <Icon name='globe' />
-            <a href={website}>{website}</a>
-          </List>
+          {website != null ? (
+            <List>
+              <Icon name='globe' />
+              <a href={website}>{website}</a>
+            </List>
+          ) : ''}
         </Card.Content>
         <Card.Content extra>
-
             <Link to={`/companies/${_id}`}>
               <List.Item>{'3 Listed Opportunities'}</List.Item>
             </Link>

@@ -13,13 +13,14 @@ class Landing extends React.Component {
         <Segment id="teleskope-background" attached="top" inverted padded="very" size="large" textAlign="center">
           <Image src='images/teleskope_horizontal.svg' centered size='large'/>
           <Header as="h2" size="medium">Helping employers find stars</Header>
-
-          <Link to={'/signup'} key="StudentSignup">
-            <Button>{'I\'m a Student'}</Button>
-          </Link>
-          <Link to={'/signup'} key="CompanySignup">
-            <Button>{'I\'m an Employer'}</Button>
-          </Link>
+          {!Meteor.user() ? ([
+            <Link to={'/signup'} key="StudentSignup">
+              <Button>{'I\'m a Student'}</Button>
+            </Link>,
+            <Link to={'/signup'} key="CompanySignup">
+              <Button>{'I\'m an Employer'}</Button>
+            </Link>,
+          ]) : ''}
         </Segment>
 
         <Segment padded="very" basic>
