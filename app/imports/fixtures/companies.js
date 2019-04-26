@@ -23,6 +23,7 @@ const defaultCompanies = [
           'Responsible for testing new software products/updates prior to Customer QA (use case testing, regression testing, stress testing, etc.), and consulting with development team to improve usability and recommend program improvements or corrections to development staff. Provide documented test results in accordance with Company standards.',
       zipCode: '96706',
       requirements: 'Bachelor degree with a major in Business, Computer Science, MIS or related. Must be familiar with relational database and client-server concepts as well as general web development platform capabilities. Experience with any of the following development environments is a plus: SQL, MySQL, Java, XML, C++, Tableau, Hive, Matlab, C++, Python, SAP Business Intelligence, TLmg3afDeLAkr3AhZ Business Intelligence, Quipware, Java/Spring/Hibernate, Baan, PeopleSoft, Lotus Notes/Domino and/or Mapper. ',
+      skills: ['Graphic Design', 'Data Science'],
 
     },
 
@@ -61,6 +62,8 @@ const defaultCompanies = [
             'Demonstrated effective teamwork skills',
         zipCode: '96706',
         requirements: 'Bachelors degree in Computer Science, Computer Engineering, Electrical Engineering or related discipline and 5-8 years related experience or an equivalent combination of skills, education, and experience.',
+        skills: ['Machine Learning', 'Data Science'],
+
       },
     ],
   },
@@ -124,7 +127,9 @@ const defaultCompanies = [
             'CSS pre-processors (SASS, Less, etc.) \n' +
             '\n' +
             'Sounds like you? Awesome! We might have a bright future together – so go ahead and apply now! ',
-      },
+      skills: ['BioInformatics', 'Data Science', 'Machine Learning', 'Graphic Design'],
+
+    },
       {
         title: 'Database Architect',
         employmentType: 'Part Time',
@@ -150,6 +155,7 @@ const defaultCompanies = [
             'Must be willing to relocate to unanticipated client/employer locations, throughout the U.S.\n' +
             'Employer will accept any suitable combination of education, training, or experience.\n' +
             'Job is located in Woodcliff Lake, NJ. Must be willing to relocate to unanticipated client/employer locations, throughout the U.S., including but not limited to Monmouth Junction, NJ or Edison, NJ.',
+        skills: ['BioInformatics', 'Data Science', 'Machine Learning', 'Graphic Design'],
       },
     ],
   },
