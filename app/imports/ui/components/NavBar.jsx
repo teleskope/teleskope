@@ -25,7 +25,7 @@ class NavBar extends React.Component {
         <Menu.Item as={NavLink} activeClassName="" exact to="/">
         <Image src='images/ts_white_logo.png' size='tiny'/><Image src='images/teleskope_horizontal.svg'/>
         </Menu.Item>
-        {(Roles.userIsInRole(userId, 'student') || Roles.userIsInRole(userId, 'company')) ? (
+        {((Roles.userIsInRole(userId, 'student') || Roles.userIsInRole(userId, 'company')) && this.props.profile) ? (
             <Menu.Item as={NavLink}
                  activeClassName="active"
                  exact to={`/profile/${this.props.profile._id}`}

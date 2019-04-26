@@ -54,7 +54,7 @@ export default class StudentRegistration extends Component {
         } else {
           Meteor.call('addUserRoleStudent');
           Meteor.call('createUserProfile', profile);
-          // this.props.history.push('/profile');
+          // this.props.history.push('/');
         }
       });
     }
