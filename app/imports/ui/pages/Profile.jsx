@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import zipcodes from 'zipcodes';
-import { Container, Header, Icon, Image, Loader, Grid, Menu, Button } from 'semantic-ui-react';
+import { Container, Header, Icon, Image, Loader, Grid, Menu } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Profiles } from '../../api/profile/profile';
 import ProfileSkillsDropdown from '../components/ProfileSkillsDropdown';
+import EditProfile from '../components/EditProfile';
 
 class Profile extends Component {
 
@@ -24,9 +25,9 @@ class Profile extends Component {
     const iconName = new Array(100);
     if (socials) {
       socials.map(function (social, index) {
-      iconName[index] = social.provider;
-      iconName[index].concat(' icon');
-      return iconName[index];
+        iconName[index] = social.provider;
+        iconName[index].concat(' icon');
+        return iconName[index];
       });
     }
 
@@ -59,12 +60,7 @@ class Profile extends Component {
                     <Header.Content>{`${city.city}, ${city.state}`}</Header.Content>
                   </Header>
                 ) : ''}
-                <Button
-                    color='green'
-                    content='Edit Profile'
-                    icon='edit'
-                    toggle
-                />
+                <EditProfile/>
               </Container>
             </Grid.Column>
           </Grid.Row>
