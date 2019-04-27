@@ -16,15 +16,16 @@ class ShowCompany extends Component {
     };
   }
 
+
   handleFollow = () => {
-    const { following } = this.props.profile;
     const companyId = this.props.company._id;
-    const isFavorited = following.includes(companyId);
-    this.setState({ isFavorited: isFavorited });
-    if (!this.state.isFavorited) {
-      Meteor.call('followCompany', this.props.company._id);
+    const followed = this.props.profile.following.includes(companyId);
+    if (!followed) {
+      Meteor.call('followCompany', companyId);
+      this.setState({ isFavorited: true });
     } else {
-      Meteor.call('unfollowCompany', this.props.company._id);
+      Meteor.call('unfollowCompany', companyId);
+      this.setState({ isFavorited: false });
     }
   };
 
