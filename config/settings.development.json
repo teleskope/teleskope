@@ -35,7 +35,8 @@
       ],
       "skills": ["Data Science"],
       "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!",
-      "image": "https://pbs.twimg.com/profile_images/682327338755854336/gl1v_Qf6_400x400.jpg"
+      "image": "https://pbs.twimg.com/profile_images/682327338755854336/gl1v_Qf6_400x400.jpg",
+      "following": []
     },
     {
       "owner": "jeff@foo.com",
@@ -56,7 +57,8 @@
       "skills": ["Data Science", "Machine Learning"],
       "zipCode": "96817",
       "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!",
-      "image": "https://pbs.twimg.com/profile_images/594306023688708096/VvZiL92D_400x400.jpg"
+      "image": "https://pbs.twimg.com/profile_images/594306023688708096/VvZiL92D_400x400.jpg",
+      "following": []
     },
     {
       "owner": "matt@foo.com",
@@ -76,7 +78,8 @@
       "skills": ["Data Science", "Machine Learning", "Bioinformatics", "Graphic Design"],
       "zipCode": "96817",
       "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!",
-      "image": "https://i.ytimg.com/vi/8i0z4oykaUQ/maxresdefault.jpg"
+      "image": "https://i.ytimg.com/vi/8i0z4oykaUQ/maxresdefault.jpg",
+      "following": []
     },
     {
       "owner": "josh@foo.com",
@@ -96,7 +99,8 @@
       ],
       "zipCode": "96817",
       "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!",
-      "image": "https://pbs.twimg.com/profile_images/971627904785362944/QaEi1qFH_400x400.jpg"
+      "image": "https://pbs.twimg.com/profile_images/971627904785362944/QaEi1qFH_400x400.jpg",
+      "following": []
 
     },
     {
@@ -121,7 +125,8 @@
       ],
       "zipCode": "96817",
       "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!",
-      "image": "https://www.troundup.com/wp-content/uploads/2017/04/erlich-html-shirt-450x600.jpg"
+      "image": "https://www.troundup.com/wp-content/uploads/2017/04/erlich-html-shirt-450x600.jpg",
+      "following": []
     },
     {
       "owner": "apple@example.com",
