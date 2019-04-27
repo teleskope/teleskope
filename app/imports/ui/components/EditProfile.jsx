@@ -11,7 +11,6 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import zipcodes from 'zipcodes';
 import { Profiles, ProfileSchema } from '../../api/profile/profile';
-// import { Menu } from 'semantic-ui-react/dist/commonjs/collections/Menu';
 
 function submit(data) {
   const { firstName, lastName, website, summary, image, socials, zipCode, _id } = data;
@@ -62,6 +61,7 @@ export default function EditProfile(props){
         </Modal>
     );
  // }
+
 }
 
 /** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
