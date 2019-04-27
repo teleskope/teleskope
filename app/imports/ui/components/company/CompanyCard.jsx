@@ -12,7 +12,7 @@ const imageStyle = {
 };
 
 export default function CompanyCard(props) {
-  const { name, website, _id, zipCode, jobs } = props.company;
+  const { name, website, _id, zipCode, jobs, image } = props.company;
   const city = zipcodes.lookup(zipCode);
   const handleFollow = () => {
     props.onFollow(props.favorited, _id);

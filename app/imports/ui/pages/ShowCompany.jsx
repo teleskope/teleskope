@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Loader, Container, Header, Icon, Grid, Card, Image } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
+import zipcodes from 'zipcodes';
 import { Companies } from '../../api/company/company';
 import { Profiles } from '../../api/profile/profile';
 import JobCard from '../components/job/JobCard';
-import zipcodes from 'zipcodes';
+
 
 class ShowCompany extends Component {
   constructor() {
@@ -100,7 +101,6 @@ ShowCompany.propTypes = {
   company: PropTypes.object,
   profile: PropTypes.object,
   ready: PropTypes.bool,
-  profile: PropTypes.object,
 };
 
 export default withTracker(({ match }) => {
