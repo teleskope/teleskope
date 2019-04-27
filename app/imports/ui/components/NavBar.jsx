@@ -28,7 +28,7 @@ class NavBar extends React.Component {
         {((Roles.userIsInRole(userId, 'student') || Roles.userIsInRole(userId, 'company')) && this.props.profile) ? (
             <Menu.Item as={NavLink}
                  activeClassName="active"
-                 exact to={`/profile/${this.props.profile._id}`}
+                 exact to={'/profile/'}
                  key='profile'
                  >
                  My Profile

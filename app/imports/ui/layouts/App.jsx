@@ -34,7 +34,7 @@ class App extends React.Component {
               <Route path="/jobs/:jobId" component={ShowJob} />
               <Route path="/students/:studentId" component={ShowStudent} />
               <Route path="/students" component={ListStudents}/>
-              <ProtectedRoute path="/profile/:profileId" component={Profile}/>
+              <ProtectedRoute path="/profile" component={Profile}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
             </Switch>

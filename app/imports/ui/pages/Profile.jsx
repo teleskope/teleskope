@@ -6,7 +6,6 @@ import { Container, Header, Icon, Image, Loader, Grid, Menu, Button } from 'sema
 import { withTracker } from 'meteor/react-meteor-data';
 import { Profiles } from '../../api/profile/profile';
 import ProfileSkillsDropdown from '../components/ProfileSkillsDropdown';
-import { Roles } from 'meteor/alanning:roles';
 
 class Profile extends Component {
 
@@ -96,12 +95,12 @@ Profile.propTypes = {
   ready: PropTypes.bool,
 };
 
-export default withTracker(({ match }) => {
-  const documentId = match.params.profileId;
+export default withTracker(() => {
+  const owner = Meteor.user().username;
 
   const subscription = Meteor.subscribe('Profiles');
   return {
-    profile: Profiles.findOne({ _id: documentId }),
+    profile: Profiles.findOne({ owner: owner }),
     ready: subscription.ready(),
   };
 })(Profile);
