@@ -25,7 +25,7 @@ class ShowJob extends Component {
               <Header as='h3'>{this.props.jobs.employmentType}</Header>
               </Grid.Column>
               <Grid.Column>
-                <Header as='h3'><Icon className="map marker alternate icon"/>{`${city.city}, ${city.state}`}</Header>
+                <Header as='h3'><Icon name="map marker alternate"/>{`${city.city}, ${city.state}`}</Header>
               </Grid.Column>
               <Grid.Column>
               <div>
