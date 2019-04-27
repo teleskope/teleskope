@@ -26,6 +26,14 @@ const CompanySchema = new SimpleSchema({
     'jobs.$.requirements': String,
     'jobs.$.skills': Array,
     'jobs.$.skills.$': String,
+  socials: { type: Array },
+  'socials.$': Object,
+  'socials.$.provider': String,
+  'socials.$.link': String,
+  image: String,
+
+  // Not using email property for now
+  email: String,
 }, { tracker: Tracker, requiredByDefault: false });
 
 Companies.attachSchema(CompanySchema);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Icon, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
@@ -12,7 +12,6 @@ const imageStyle = {
 
 export default function StudentCard(props) {
   const { firstName, lastName, website, _id, owner, summary, image } = props.student;
-  const [favorited, setFavorited] = useState(false);
   const summaryMaxLen = 150;
   const email01 = 'mailto:';
   const email02 = email01.concat(owner);
@@ -27,12 +26,6 @@ export default function StudentCard(props) {
             <Link to={`/students/${_id}`} style={{ color: 'white' }}>
               <h1 style={{ position: 'absolute', left: 0, top: 0, margin: '0.5rem' }}>{firstName} {lastName}</h1>
             </Link>
-            <Icon
-              link
-              name={ favorited ? 'heart' : 'heart outline'}
-              style={{ position: 'absolute', right: 0, top: 0, margin: '0.5rem' }}
-              onClick={(() => setFavorited(!favorited))}
-            />
           </div>
         <Card.Content>
           <Card.Meta>

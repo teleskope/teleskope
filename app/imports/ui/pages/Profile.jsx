@@ -6,7 +6,6 @@ import { Container, Header, Icon, Image, Loader, Grid, Menu, Button } from 'sema
 import { withTracker } from 'meteor/react-meteor-data';
 import { Profiles } from '../../api/profile/profile';
 import ProfileSkillsDropdown from '../components/ProfileSkillsDropdown';
-import { Roles } from 'meteor/alanning:roles';
 
 class Profile extends Component {
 
@@ -22,14 +21,7 @@ class Profile extends Component {
     const email01 = 'mailto:';
     const email02 = email01.concat(owner);
     const emailLink = email02.concat('?Subject=Hello');
-    const iconName = new Array(100);
-    if (socials) {
-      socials.map(function (social, index) {
-      iconName[index] = social.provider;
-      iconName[index].concat(' icon');
-      return iconName[index];
-      });
-    }
+    const socialIcon = ['twitter', 'github', 'linkedin'];
 
     return (
         <Grid style={{ marginTop: '2em' }}>
@@ -52,7 +44,7 @@ class Profile extends Component {
                   ) : ''}
                   {socials ? (socials.map((social, index) => (
                     <Menu.Item href={social.link} key={index} target='_blank'>
-                      <Icon size='large' className={iconName[index]}/>
+                      <Icon size='large' className={social.provider}/>
                     </Menu.Item>
                   ))) : ''}
                 </Menu>
