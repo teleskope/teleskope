@@ -12,9 +12,8 @@ const imageStyle = {
 };
 
 export default function CompanyCard(props) {
-  const { name, website, _id, zipCode, image } = props.company;
+  const { name, website, _id, zipCode, jobs } = props.company;
   const city = zipcodes.lookup(zipCode);
-
   const handleFollow = () => {
     props.onFollow(props.favorited, _id);
   };
@@ -54,7 +53,7 @@ export default function CompanyCard(props) {
         </Card.Content>
         <Card.Content extra>
             <Link to={`/companies/${_id}`}>
-              <List.Item>{'3 Listed Opportunities'}</List.Item>
+              <List.Item>{`${jobs.length} Listed Opportunities`}</List.Item>
             </Link>
         </Card.Content>
       </Card>
