@@ -43,7 +43,7 @@ class ShowStudent extends Component {
               <Container>
                 <Menu borderless text>
                   <Menu.Item href={emailLink}>
-                    <Icon size='large' className="envelope outline icon"/>
+                    <Icon size='large' name="envelope outline"/>
                   </Menu.Item>
                   {website ? (
                       <Menu.Item href={website} target='_blank'>
@@ -51,7 +51,7 @@ class ShowStudent extends Component {
                   ) : ''}
                   {socials ? (socials.map((social, index) => (
                       <Menu.Item href={social.link} key={index} target='_blank'>
-                        <Icon size='large' className={iconName[index]}/>
+                        <Icon size='large' name={iconName[index]}/>
                       </Menu.Item>
                   ))) : ''}
                 </Menu>

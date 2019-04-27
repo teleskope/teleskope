@@ -33,16 +33,36 @@ Meteor.methods({
     const profile = data;
     profile.owner = Meteor.user().emails[0].address;
     profile.role = Roles.userIsInRole(Meteor.userId(), ['company']) ? 'company' : 'student';
+    profile.following = [];
     Profiles.insert(profile);
+  },
+
+  followCompany: function (id) {
+    check(id, String);
+    const email = Meteor.user().emails[0].address;
+    const profile = Profiles.findOne({ owner: email });
+    Profiles.update(profile._id, { $push: { following: id } });
+  },
+
+  unfollowCompany: function (id) {
+    check(id, String);
+    const email = Meteor.user().emails[0].address;
+    const profile = Profiles.findOne({ owner: email });
+    Profiles.update(profile._id, { $pull: { following: id } });
   },
 });
 
-
+if (Meteor.isServer) {
 /** This subscription publishes all the documents regardless of the user */
-Meteor.publish('Profiles', function publish() {
-  return Profiles.find();
-});
+  Meteor.publish('Profiles', function publish() {
+    return Profiles.find();
+  });
 
-Meteor.publish('UserProfile', function publish() {
-  return Profiles.find({ owner: this.user().emails[0].address });
-});
+  Meteor.publish('UserProfile', function publish() {
+    if (this.userId) {
+      const email = Meteor.user().username;
+      return Profiles.find({ owner: email });
+    }
+    return this.ready();
+  });
+}

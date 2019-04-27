@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Icon, Image, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
@@ -12,10 +12,11 @@ const imageStyle = {
 };
 
 export default function CompanyCard(props) {
-  const { name, website, _id, zipCode, image } = props.company;
+  const { name, website, _id, zipCode, jobs, image } = props.company;
   const city = zipcodes.lookup(zipCode);
-
-  const [favorited, setFavorited] = useState(false);
+  const handleFollow = () => {
+    props.onFollow(props.favorited, _id);
+  };
 
   return (
       <Card raised>
@@ -28,9 +29,10 @@ export default function CompanyCard(props) {
             </Link>
             <Icon
               link
-              name={ favorited ? 'heart' : 'heart outline'}
+              name={ props.favorited ? 'star' : 'star outline'}
               style={{ position: 'absolute', right: 0, top: 0, margin: '0.5rem' }}
-              onClick={(() => setFavorited(!favorited))}
+              onClick={(() => handleFollow())}
+              color={ props.favorited ? 'yellow' : 'black'}
             />
           </div>
         <Card.Content>
@@ -51,7 +53,7 @@ export default function CompanyCard(props) {
         </Card.Content>
         <Card.Content extra>
             <Link to={`/companies/${_id}`}>
-              <List.Item>{'3 Listed Opportunities'}</List.Item>
+              <List.Item>{`${jobs.length} Listed Opportunities`}</List.Item>
             </Link>
         </Card.Content>
       </Card>
@@ -61,4 +63,6 @@ export default function CompanyCard(props) {
 CompanyCard.propTypes = {
   company: PropTypes.object.isRequired,
   match: PropTypes.string,
+  onFollow: PropTypes.func,
+  favorited: PropTypes.bool,
 };

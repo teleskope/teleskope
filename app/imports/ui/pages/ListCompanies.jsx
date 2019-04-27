@@ -5,6 +5,7 @@ import { Companies } from '/imports/api/company/company';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import CompanyCard from '../components/company/CompanyCard';
+import { Profiles } from '../../api/profile/profile';
 
 const filterOptions = [
   {
@@ -25,12 +26,21 @@ const filterOptions = [
 ];
 
 class ListCompanies extends React.Component {
+  handleFollow = (favorited, companyId) => {
+    if (!favorited) {
+      Meteor.call('followCompany', companyId);
+    } else {
+      Meteor.call('unfollowCompany', companyId);
+    }
+  }
+
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
+    const favorites = this.props.profile.following;
     const { companies } = this.props;
     return (
         <Container style={{ marginTop: '80px' }}>
@@ -40,9 +50,16 @@ class ListCompanies extends React.Component {
             </Grid.Row>
             <Grid.Row>
               <Card.Group stackable>
-                  {companies.map((company, index) => (
-                        <CompanyCard key={index} company={company}/>
-                  ))}
+                  {companies.map((company, index) => {
+                    const isFavorited = favorites.includes(company._id);
+                    return (
+                      <CompanyCard
+                          key={index}
+                          company={company}
+                          onFollow={this.handleFollow}
+                          favorited={isFavorited}
+                      />);
+                    })}
                 </Card.Group>
             </Grid.Row>
             <Divider />
@@ -72,9 +89,16 @@ class ListCompanies extends React.Component {
             </Grid.Row>
             <Grid.Row>
               <Card.Group stackable>
-                {companies.map((company, index) => (
-                      <CompanyCard key={index} company={company}/>
-                  ))}
+                {companies.map((company, index) => {
+                  const isFavorited = favorites.includes(company._id);
+                  return (
+                    <CompanyCard
+                        key={index}
+                        company={company}
+                        onFollow={this.handleFollow}
+                        favorited={isFavorited}
+                    />);
+                    })}
                 </Card.Group>
             </Grid.Row>
           </Grid>
@@ -86,12 +110,15 @@ class ListCompanies extends React.Component {
 ListCompanies.propTypes = {
   companies: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
+  profile: PropTypes.object.isRequired,
 };
 
 export default withTracker(() => {
-  const subscription = Meteor.subscribe('Companies');
+  const sub1 = Meteor.subscribe('Companies');
+  const sub2 = Meteor.subscribe('UserProfile');
   return {
-    companies: Companies.find({}, { limit: 10 }).fetch(),
-    ready: subscription.ready(),
+    companies: Companies.find({}, { limit: 5 }).fetch(),
+    profile: Profiles.findOne({}),
+    ready: sub1.ready() && sub2.ready(),
   };
 })(ListCompanies);

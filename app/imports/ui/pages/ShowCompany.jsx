@@ -3,12 +3,33 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Loader, Container, Header, Icon, Grid, Card, Image } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
+import zipcodes from 'zipcodes';
 import { Companies } from '../../api/company/company';
 import { Profiles } from '../../api/profile/profile';
 import JobCard from '../components/job/JobCard';
-import zipcodes from 'zipcodes';
+
 
 class ShowCompany extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isFavorited: null,
+    };
+  }
+
+
+  handleFollow = () => {
+    const companyId = this.props.company._id;
+    const followed = this.props.profile.following.includes(companyId);
+    if (!followed) {
+      Meteor.call('followCompany', companyId);
+      this.setState({ isFavorited: true });
+    } else {
+      Meteor.call('unfollowCompany', companyId);
+      this.setState({ isFavorited: false });
+    }
+  };
+
   render() {
     return this.props.ready ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
