@@ -9,6 +9,25 @@ import JobCard from '../components/job/JobCard';
 import zipcodes from 'zipcodes';
 
 class ShowCompany extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isFavorited: null,
+    };
+  }
+
+  handleFollow = () => {
+    const { following } = this.props.profile;
+    const companyId = this.props.company._id;
+    const isFavorited = following.includes(companyId);
+    this.setState({ isFavorited: isFavorited });
+    if (!this.state.isFavorited) {
+      Meteor.call('followCompany', this.props.company._id);
+    } else {
+      Meteor.call('unfollowCompany', this.props.company._id);
+    }
+  };
+
   render() {
     return this.props.ready ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
@@ -80,6 +99,7 @@ ShowCompany.propTypes = {
   company: PropTypes.object,
   profile: PropTypes.object,
   ready: PropTypes.bool,
+  profile: PropTypes.object,
 };
 
 export default withTracker(({ match }) => {
