@@ -1,11 +1,12 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Container, Grid, Header, Loader, Card, Divider, Dropdown } from 'semantic-ui-react';
-import { Companies } from '/imports/api/company/company';
-import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import CompanyCard from '../components/company/CompanyCard';
+import { withTracker } from 'meteor/react-meteor-data';
+import { Companies } from '/imports/api/company/company';
 import { Profiles } from '../../api/profile/profile';
+import CompanyCard from '../components/company/CompanyCard';
+
 
 const filterOptions = [
   {
