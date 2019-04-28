@@ -55,5 +55,68 @@
         "skills":["BioInformatics","Data Science","Machine Learning","Graphic Design"]
       }
     ]
+  },
+  {
+    "owners":["hawaii@example.com"],
+    "name":"University of Hawaii",
+    "address":"111 Maile way",
+    "zipCode":"96822",
+    "website":"https://www.hawaii.edu",
+    "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
+    "jobs":[]
+  },
+  {
+    "owners":["hawaiianelectric@example.com"],
+    "name":"Hawaiian Electric Company",
+    "address":"123 electic avenue",
+    "zipCode":"96819",
+    "website":"https://www.heco.com",
+    "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
+    "jobs":[]
+  },
+  {
+    "owners":["amazon@example.com"],
+    "name":"Amazon",
+    "address":"123 pikes place",
+    "zipCode":"98004",
+    "website":"https://www.amazon.com",
+    "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
+    "jobs":[]
+  },
+  {
+    "owners":["facebook@example.com"],
+    "name":"Facebook",
+    "address":"123 hacker lane",
+    "zipCode":"94025",
+    "website":"https://www.facebook.com",
+    "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
+    "jobs":[]
+  },
+  {
+    "owners":["dod@example.com"],
+    "name":"Department of Defense",
+    "address":"52 Area",
+    "zipCode":"89119",
+    "website":"https://www.whitehouse.gov",
+    "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
+    "jobs":[]
+  },
+  {
+    "owners":["trump@example.com"],
+    "name":"Trump Enterprises",
+    "address":"1600 pennsylvania ave",
+    "zipCode":"20500",
+    "website":"https://www.donaldjtrump.com",
+    "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
+    "jobs":[]
+  },
+  {
+    "owners":["hawaiian@example.com"],
+    "name":"Hawaiian Airlines",
+    "address":"3357 Koapaka st",
+    "zipCode":"96819",
+    "website":"https://www.hawaiianairlines.com",
+    "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
+    "jobs":[]
   }
 ]
