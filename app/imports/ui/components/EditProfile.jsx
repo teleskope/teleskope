@@ -61,7 +61,6 @@ export default function EditProfile(props){
         </Modal>
     );
  // }
-
 }
 
 /** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
