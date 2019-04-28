@@ -6,6 +6,7 @@
     "address":"One Microsoft Way",
     "zipCode":"98052",
     "website":"https://www.microsoft.com",
+    "image": "https://www.irishtimes.com/polopoly_fs/1.3463714.1523901184!/image/image.jpg_gen/derivatives/box_620_330/image.jpg",
     "summary":"Microsoft Corporation is an American multinational technology company with headquarters in Redmond, Washington. It develops, manufactures, licenses, supports and sells computer software, consumer electronics, personal computers, and related services.",
     "jobs":[
       {
@@ -31,6 +32,7 @@
   {
     "owners":["apple@example.com"],
     "name":"Apple",
+    "image":"https://media-cdn.tripadvisor.com/media/photo-w/01/c2/78/e4/apple-infinite-loop.jpg",
     "address":"One Apple Way",
     "zipCode":"95015",
     "website":"https://www.apple.com",
@@ -68,6 +70,7 @@
   {
     "owners":["hawaiianelectric@example.com"],
     "name":"Hawaiian Electric Company",
+    "image":"https://media.glassdoor.com/l/225660/hawaiian-electric-company-office.jpg",
     "address":"123 electic avenue",
     "zipCode":"96819",
     "website":"https://www.heco.com",
@@ -77,6 +80,7 @@
   {
     "owners":["amazon@example.com"],
     "name":"Amazon",
+    "image":"https://media.glassdoor.com/l/1b/a1/c3/0a/a-meeting-room-in-amazon-s-clichy-office.jpg",
     "address":"123 pikes place",
     "zipCode":"98004",
     "website":"https://www.amazon.com",
@@ -86,6 +90,7 @@
   {
     "owners":["facebook@example.com"],
     "name":"Facebook",
+    "image":"https://media.glassdoor.com/l/9f/bf/7c/ca/facebook-sf.jpg",
     "address":"123 hacker lane",
     "zipCode":"94025",
     "website":"https://www.facebook.com",
@@ -115,6 +120,7 @@
     "name":"Hawaiian Airlines",
     "address":"3357 Koapaka st",
     "zipCode":"96819",
+    "image":"https://985thesportshub.com/wp-content/uploads/sites/88/2018/10/HAL-Featured-Image.jpg",
     "website":"https://www.hawaiianairlines.com",
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]
