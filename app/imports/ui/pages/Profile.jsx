@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import zipcodes from 'zipcodes';
-import { Container, Header, Icon, Image, Loader, Grid, Menu } from 'semantic-ui-react';
+import { Container, Header, Icon, Image, Loader, Grid, Menu, Button, Modal, Segment } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Profiles } from '../../api/profile/profile';
+import { Profiles, ProfileSchema } from '../../api/profile/profile';
 import ProfileSkillsDropdown from '../components/ProfileSkillsDropdown';
 import EditProfile from '../components/EditProfile';
 
@@ -60,7 +60,7 @@ class Profile extends Component {
                     <Header.Content>{`${city.city}, ${city.state}`}</Header.Content>
                   </Header>
                 ) : ''}
-                <EditProfile/>
+                <EditProfile profile={this.props.profile}/>
               </Container>
             </Grid.Column>
           </Grid.Row>
