@@ -51,7 +51,7 @@ class ListCompanies extends React.Component {
             </Grid.Row>
             <Grid.Row>
               <Card.Group stackable>
-                  {companies.map((company, index) => {
+                  {companies.slice(0, 3).map((company, index) => {
                     const isFavorited = favorites.includes(company._id);
                     return (
                       <CompanyCard

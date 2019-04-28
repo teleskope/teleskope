@@ -11,7 +11,7 @@ function addData(data) {
 
 function mapJobsToCompanies() {
   const companies = _.map(defaultCompanies, (company) => {
-    if (company.jobs.length === 0) return company;
+    if (company.jobs.length !== 0) return company;
     const newCompany = company;
     defaultJobs.forEach(job => {
       const newJob = job;
@@ -30,7 +30,6 @@ export default function createCompanies() {
     if (defaultCompanies && defaultJobs) {
       console.log('Creating default companies.');
       const companies = mapJobsToCompanies();
-      console.log(companies);
       companies.map(data => addData(data));
     }
   }
