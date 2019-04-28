@@ -96,7 +96,7 @@ Profile.propTypes = {
 };
 
 export default withTracker(() => {
-  const owner = Meteor.user().username;
+  const owner = async () => Meteor.user().username;
 
   const subscription = Meteor.subscribe('Profiles');
   return {
