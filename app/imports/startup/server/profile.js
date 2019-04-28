@@ -31,6 +31,14 @@ Meteor.methods({
     check(data.lastName, String);
     // TODO: Validation of inserted company data and cleaning of specialchars
     const profile = data;
+    profile.website = '';
+    profile.image = 'https://media1.giphy.com/media/MuE0xWbEohUrxbm77r/giphy.gif';
+    profile.zipCode = '';
+    profile.following = [];
+    profile.skill = [];
+    profile.summary = '';
+    profile.experience = '';
+    profile.socials = [];
     profile.owner = Meteor.user().emails[0].address;
     profile.role = Roles.userIsInRole(Meteor.userId(), ['company']) ? 'company' : 'student';
     Profiles.insert(profile);
