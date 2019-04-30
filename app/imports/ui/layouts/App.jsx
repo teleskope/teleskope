@@ -16,6 +16,7 @@ import ListStudents from '../pages/ListStudents';
 import ShowCompany from '../pages/ShowCompany';
 import ShowStudent from '../pages/ShowStudent';
 import Profile from '../pages/Profile';
+import Dashboard from '../pages/Dashboard';
 
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
@@ -35,6 +36,7 @@ class App extends React.Component {
               <ProtectedRoute path="/students" component={ListStudents}/>
               <ProtectedRoute path="/profile" component={Profile}/>
               <ProtectedRoute path="/signout" component={Signout}/>
+              <ProtectedRoute path="/dashboard" component={Dashboard}/>
               <Route component={NotFound}/>
             </Switch>
             <Footer/>
