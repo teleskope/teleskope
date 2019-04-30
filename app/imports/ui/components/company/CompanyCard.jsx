@@ -9,6 +9,7 @@ const imageStyle = {
   height: 'auto',
   objectFit: 'cover',
   maxHeight: '150px',
+  filter: 'brightness(70%)',
 };
 
 export default function CompanyCard(props) {
@@ -21,9 +22,7 @@ export default function CompanyCard(props) {
   return (
       <Card raised>
           <div style={{ position: 'relative' }}>
-            <Image src={image !== undefined ? image :
-                'https://www.bigredcloud.com/wp-content/uploads/Tthree-ways-your-company-can-benefit-from-' +
-                'collaborating-with-other-companies.jpg'} style={imageStyle} centered />
+            <Image src={image !== undefined ? image : 'images/defaultCompany.jpg'} style={imageStyle} centered />
             <Link to={`/companies/${_id}`} style={{ color: 'white' }}>
               <h1 style={{ position: 'absolute', left: 0, top: 0, margin: '0.5rem' }}>{name}</h1>
             </Link>
@@ -32,7 +31,7 @@ export default function CompanyCard(props) {
               name={ props.favorited ? 'star' : 'star outline'}
               style={{ position: 'absolute', right: 0, top: 0, margin: '0.5rem' }}
               onClick={(() => handleFollow())}
-              color={ props.favorited ? 'yellow' : 'black'}
+              color={ props.favorited ? 'yellow' : 'yellow'}
             />
           </div>
         <Card.Content>

@@ -11,6 +11,7 @@ const CompanySchema = new SimpleSchema({
   website: String,
   summary: String,
   owners: { type: Array, required: true },
+  image: String,
   'owners.$': String,
   jobs: { type: Array },
     'jobs.$': Object,
