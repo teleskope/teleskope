@@ -85,6 +85,7 @@ class ListCompanies extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     const companies = this.props.companies;
+    console.log(this.props.profile);
     const favorites = this.props.profile.following;
     const sortedCompanies = this.sortCompanies(this.state.sort);
 

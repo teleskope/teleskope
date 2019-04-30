@@ -8,6 +8,20 @@
     "website":"https://www.microsoft.com",
     "image": "https://www.irishtimes.com/polopoly_fs/1.3463714.1523901184!/image/image.jpg_gen/derivatives/box_620_330/image.jpg",
     "summary":"Microsoft Corporation is an American multinational technology company with headquarters in Redmond, Washington. It develops, manufactures, licenses, supports and sells computer software, consumer electronics, personal computers, and related services.",
+    "socials": [
+      {
+        "provider": "linkedin",
+        "link": "https://www.linkedin.com/company/microsoft/"
+      },
+      {
+        "provider": "twitter",
+        "link": "https://twitter.com/microsoft"
+      },
+      {
+        "provider": "github",
+        "link": "https://github.com/Microsoft"
+      }
+    ],
     "jobs":[
       {
         "title":"Data Scientist",
@@ -37,6 +51,20 @@
     "zipCode":"95015",
     "website":"https://www.apple.com",
     "summary":"Apple Inc. is an American multinational technology company headquartered in Cupertino, California, that designs, develops, and sells consumer electronics, computer software, and online services. It is considered one of the Big Four of technology along with Amazon, Google, and Facebook.",
+    "socials": [
+      {
+        "provider": "linkedin",
+        "link": "https://www.linkedin.com/company/apple/about"
+      },
+      {
+        "provider": "twitter",
+        "link": "https://twitter.com/apple"
+      },
+      {
+        "provider": "github",
+        "link": "https://github.com/apple"
+      }
+    ],
     "jobs":[
       {
         "title":"Full Stack Developer",
@@ -64,6 +92,8 @@
     "address":"111 Maile way",
     "zipCode":"96822",
     "website":"https://www.hawaii.edu",
+    "image": "images/defaultCompany.jpg",
+    "socials": [],
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]
   },
@@ -74,6 +104,7 @@
     "address":"123 electic avenue",
     "zipCode":"96819",
     "website":"https://www.heco.com",
+    "socials": [],
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]
   },
@@ -84,6 +115,7 @@
     "address":"123 pikes place",
     "zipCode":"98004",
     "website":"https://www.amazon.com",
+    "socials": [],
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]
   },
@@ -94,6 +126,7 @@
     "address":"123 hacker lane",
     "zipCode":"94025",
     "website":"https://www.facebook.com",
+    "socials": [],
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]
   },
@@ -103,6 +136,8 @@
     "address":"52 Area",
     "zipCode":"89119",
     "website":"https://www.whitehouse.gov",
+    "image": "images/defaultCompany.jpg",
+    "socials": [],
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]
   },
@@ -112,6 +147,8 @@
     "address":"1600 pennsylvania ave",
     "zipCode":"20500",
     "website":"https://www.donaldjtrump.com",
+    "image": "images/defaultCompany.jpg",
+    "socials": [],
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]
   },
@@ -121,6 +158,7 @@
     "address":"3357 Koapaka st",
     "zipCode":"96819",
     "image":"https://985thesportshub.com/wp-content/uploads/sites/88/2018/10/HAL-Featured-Image.jpg",
+    "socials": [],
     "website":"https://www.hawaiianairlines.com",
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]

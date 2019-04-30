@@ -34,9 +34,7 @@ class ShowStudent extends Component {
         <Grid style={{ marginTop: '2em' }}>
           <Grid.Row columns={2}>
             <Grid.Column>
-              <Image src={image !== undefined ? image :
-                  'https://media1.giphy.com/media/MuE0xWbEohUrxbm77r/giphy.gif'}
-                     style={{ width: '335px' }} floated='right'/>
+              <Image src={image} style={{ width: '335px' }} floated='right'/>
             </Grid.Column>
             <Grid.Column>
               <Header as='h1'>{firstName} {lastName}</Header>

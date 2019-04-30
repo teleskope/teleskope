@@ -8,12 +8,14 @@
     { "email": "darius@foo.com", "password": "asdf1234", "role": "student" },
     { "email": "microsoft@example.com",
       "password": "asdf1234",
-      "role": "company"
+      "role": "company",
+      "following": []
     },
     {
       "email": "apple@example.com",
       "password": "asdf1234",
-      "role": "company"
+      "role": "company",
+      "following": []
     }
   ],
   "defaultProfiles": [
@@ -136,7 +138,9 @@
       "website": "https://en.wikipedia.org/wiki/Steve_Jobs",
       "skills": ["Machine Learning"],
       "zipCode": "95015",
-      "summary": "Hi, I am undeclared and I dropped out after a semester, but I am working on my startup and need a job to help fund it."
+      "summary": "Hi, I am undeclared and I dropped out after a semester, but I am working on my startup and need a job to help fund it.",
+      "image": "https://cdn.britannica.com/s:300x300/04/171104-004-E39686C4.jpg",
+      "following": []
     },
     {
       "owner": "microsoft@example.com",
@@ -146,7 +150,9 @@
       "website": "https://en.wikipedia.org/wiki/Bill_Gates",
       "skills": ["Bioinformatics"],
       "zipCode": "98052",
-      "summary": "Hi, I am undeclared and I dropped out after a semester, but I am working on my startup and need a job to help fund it."
+      "summary": "Hi, I am undeclared and I dropped out after a semester, but I am working on my startup and need a job to help fund it.",
+      "image": "https://pbs.twimg.com/profile_images/988775660163252226/XpgonN0X_400x400.jpg",
+      "following": []
     }
   ]
 }

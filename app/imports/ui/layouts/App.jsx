@@ -16,7 +16,7 @@ import ListStudents from '../pages/ListStudents';
 import ShowCompany from '../pages/ShowCompany';
 import ShowStudent from '../pages/ShowStudent';
 import Profile from '../pages/Profile';
-import ShowJob from '../pages/ShowJob';
+
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -31,7 +31,6 @@ class App extends React.Component {
               <Route path="/signup" component={Signup}/>
               <ProtectedRoute path="/companies/:companyId" component={ShowCompany} />
               <ProtectedRoute path="/companies" component={ListCompanies}/>
-              <ProtectedRoute path="/jobs/:jobId" component={ShowJob} />
               <ProtectedRoute path="/students/:studentId" component={ShowStudent} />
               <ProtectedRoute path="/students" component={ListStudents}/>
               <ProtectedRoute path="/profile" component={Profile}/>
@@ -51,16 +50,16 @@ class App extends React.Component {
  * @param {any} { component: Component, ...rest }
  */
 const ProtectedRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) => {
-      const isLogged = Meteor.userId() !== null;
-      return isLogged ?
-          (<Component {...props} />) :
-          (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
-      );
-    }}
-  />
+    <Route
+        {...rest}
+        render={(props) => {
+          const isLogged = Meteor.userId() !== null;
+          return isLogged ?
+              (<Component {...props} />) :
+              (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
+              );
+        }}
+    />
 );
 
 /**
