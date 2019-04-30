@@ -9,6 +9,7 @@ import { Companies } from '/imports/api/company/company';
 import { Profiles } from '../../api/profile/profile';
 import CompanyCard from '../components/company/CompanyCard';
 
+
 const filterOptions = [
   {
     key: 'Alphabetical',
@@ -110,7 +111,11 @@ class ListCompanies extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    const favorites = this.props.profile.following;
+    const companies = this.props.companies;
+    let favorites = null;
+    if (Roles.userIsInRole(Meteor.userId(), 'student')) {
+      favorites = this.props.profile.following;
+    }
     const sortedCompanies = this.sortCompanies(this.state.sort);
 
     return (
