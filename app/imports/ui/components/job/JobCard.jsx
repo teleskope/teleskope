@@ -70,6 +70,12 @@ export default function JobCard(props) {
             </div>
             <Container style={modalComponent} text>
               <Modal.Description>
+                <Header>Location</Header>
+                <p>{city.city}, {city.state}</p>
+              </Modal.Description>
+            </Container>
+            <Container style={modalComponent} text>
+              <Modal.Description>
                 <Header>Requirements</Header>
                 <p>{requirements}</p>
               </Modal.Description>
