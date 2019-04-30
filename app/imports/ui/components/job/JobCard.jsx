@@ -58,13 +58,6 @@ export default function JobCard(props) {
                       inverted
                       toggle
                   />
-                  <Button
-                      content='Follow'
-                      icon='star'
-                      color='black'
-                      inverted
-                      toggle
-                  />
                 </Container>
               </Modal.Content>
             </div>
