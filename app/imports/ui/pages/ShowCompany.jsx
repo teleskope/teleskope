@@ -46,10 +46,7 @@ class ShowCompany extends Component {
           <Grid style={{ marginTop: '2em' }}>
             <Grid.Row columns={2}>
               <Grid.Column>
-                <Image src={image !== undefined ? image :
-                    'https://www.bigredcloud.com/wp-content/uploads/Tthree-ways-your-company-can-benefit-from-' +
-                    'collaborating-with-other-companies.jpg'}
-                       style={{ width: '335px' }} floated='right'/>
+                <Image src={image} style={{ width: '335px' }} floated='right'/>
               </Grid.Column>
               <Grid.Column>
                 <Header as='h1'>{name}</Header>
