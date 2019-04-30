@@ -119,7 +119,7 @@ class ShowCompany extends Component {
 
       return null;
     }
-    return <Modal style={modal} trigger={<Button
+    return <Modal id='modal' trigger={<Button
         content='Edit'
         color='black'
         floated='right'
@@ -128,7 +128,7 @@ class ShowCompany extends Component {
       <Grid container centered>
         <Grid.Column>
           <Header as="h2" textAlign="center">Edit Company</Header>
-          <AutoForm schema={CompanySchema} onSubmit={this.submit} model={this.props.doc}>
+          <AutoForm schema={CompanySchema} onSubmit={this.submit} model={this.props.company}>
             <Segment>
               <TextField name='name'/>
               <TextField name='owners'/>
