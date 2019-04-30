@@ -29,10 +29,10 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
-              <Route path="/companies/:companyId" component={ShowCompany} />
-              <Route path="/companies" component={ListCompanies}/>
-              <Route path="/students/:studentId" component={ShowStudent} />
-              <Route path="/students" component={ListStudents}/>
+              <ProtectedRoute path="/companies/:companyId" component={ShowCompany} />
+              <ProtectedRoute path="/companies" component={ListCompanies}/>
+              <ProtectedRoute path="/students/:studentId" component={ShowStudent} />
+              <ProtectedRoute path="/students" component={ListStudents}/>
               <ProtectedRoute path="/profile" component={Profile}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
@@ -50,16 +50,16 @@ class App extends React.Component {
  * @param {any} { component: Component, ...rest }
  */
 const ProtectedRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) => {
-      const isLogged = Meteor.userId() !== null;
-      return isLogged ?
-          (<Component {...props} />) :
-          (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
-      );
-    }}
-  />
+    <Route
+        {...rest}
+        render={(props) => {
+          const isLogged = Meteor.userId() !== null;
+          return isLogged ?
+              (<Component {...props} />) :
+              (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
+              );
+        }}
+    />
 );
 
 /**
