@@ -3,35 +3,6 @@ import { Card, Header, Modal, Button, Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import zipcodes from 'zipcodes';
 
-const cardHeader = {
-  backgroundColor: '#455880',
-  fontFamily: 'Lato, sans-serif',
-  color: '#F5F0F0',
-};
-
-const modal = {
-  backgroundColor: '#F5F0F0',
-};
-const modalHeader = {
-  backgroundColor: '#455880',
-  fontFamily: 'Lato, sans-serif',
-  color: '#F5F0F0',
-  paddingBottom: '10px',
-  paddingTop: '10px',
-  paddingLeft: '30px',
-};
-
-const modalComponent = {
-  paddingTop: '10px',
-  paddingBottom: '10px',
-  fontFamily: 'lato, sans-serif',
-};
-
-const modalFooter = {
-  backgroundColor: '#455880',
-  paddingTop: '15px',
-  paddingBottom: '15px',
-};
 
 
 export default function JobCard(props) {
@@ -39,15 +10,15 @@ export default function JobCard(props) {
   const city = zipcodes.lookup(zipCode);
 
   return (
-      <Card style={modal} raised>
-        <Card.Content style={cardHeader}>
-          <Header style={cardHeader}>{title} <Modal style={modal} trigger={<Button
+      <Card id='modal' raised>
+        <Card.Content id='cardHeader'>
+          <Header id='cardHeader'>{title} <Modal id='modal' trigger={<Button
               content='View Job'
               color='black'
               floated='right'
               inverted
           />} closeIcon>
-            <div style={modalHeader}>
+            <div id='modalHeader'>
               <Modal.Header as='h1'>{title}</Modal.Header>
               <Modal.Content>
                 <Container>
@@ -61,25 +32,25 @@ export default function JobCard(props) {
                 </Container>
               </Modal.Content>
             </div>
-            <Container style={modalComponent} text>
+            <Container id='modalComponent' text>
               <Modal.Description>
                 <Header>Location</Header>
                 <p>{city.city}, {city.state}</p>
               </Modal.Description>
             </Container>
-            <Container style={modalComponent} text>
+            <Container id='modalComponent' text>
               <Modal.Description>
                 <Header>Requirements</Header>
                 <p>{requirements}</p>
               </Modal.Description>
             </Container>
-            <Container style={modalComponent} text>
+            <Container id='modalComponent' text>
               <Modal.Description>
                 <Header>Description</Header>
                 <p>{description}</p>
               </Modal.Description>
             </Container>
-            <Container style={modalFooter}/>
+            <Container id='modalFooter'/>
           </Modal>
           </Header>
         </Card.Content>

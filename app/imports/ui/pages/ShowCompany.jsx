@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Container, Header, Icon, Grid, Card, Image, Menu, Modal, Button } from 'semantic-ui-react';
+import { Loader, Container, Header, Icon, Grid, Card, Image, Menu, Modal, Button, Segment } from 'semantic-ui-react';
+import AutoForm from 'uniforms-semantic/AutoForm';
+import TextField from 'uniforms-semantic/TextField';
+import NumField from 'uniforms-semantic/NumField';
+import LongTextField from 'uniforms-semantic/LongTextField';
+import SubmitField from 'uniforms-semantic/SubmitField';
+import HiddenField from 'uniforms-semantic/HiddenField';
+import ErrorsField from 'uniforms-semantic/ErrorsField';
 import { withTracker } from 'meteor/react-meteor-data';
 import zipcodes from 'zipcodes';
-import { Companies } from '../../api/company/company';
+import { Companies, CompanySchema } from '../../api/company/company';
 import { Profiles } from '../../api/profile/profile';
 import JobCard from '../components/job/JobCard';
 // import { Menu } from 'semantic-ui-react/dist/commonjs/collections/Menu';
@@ -30,7 +37,7 @@ class ShowCompany extends Component {
 
       return null;
     }
-    return <Modal style={modal} trigger={<Button
+    return <Modal id='modal' trigger={<Button
         content='Edit'
         color='black'
         floated='right'
@@ -39,7 +46,7 @@ class ShowCompany extends Component {
       <Grid container centered>
         <Grid.Column>
           <Header as="h2" textAlign="center">Edit Company</Header>
-          <AutoForm schema={CompanySchema} onSubmit={this.submit} model={this.props.doc}>
+          <AutoForm schema={CompanySchema} onSubmit={this.submit} model={this.props.company}>
             <Segment>
               <TextField name='name'/>
               <TextField name='owners'/>
@@ -155,10 +162,10 @@ export default withTracker(({ match }) => {
   const documentId = match.params.companyId;
 
   const subscription = Meteor.subscribe('Companies');
-  const subscription2 = Meteor.subscribe('Profiles');
+  const subscription2 = Meteor.subscribe('userProfile');
   return {
     company: Companies.findOne({ _id: documentId }),
-    profile: Profiles.findOne({ _id: Meteor.userId() }),
+    profile: Profiles.findOne({}),
     ready: (subscription.ready() && subscription2.ready()),
   };
 })(ShowCompany);

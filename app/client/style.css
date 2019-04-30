@@ -31,8 +31,8 @@ h1, h2, h3, h4, h5, p, span {
 }
 
 #modalComponent  {
-  paddingTop: 10px;
-  paddingBottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #modalFooter {
