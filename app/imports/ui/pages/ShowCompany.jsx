@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Container, Header, Icon, Grid, Card, Image, Menu } from 'semantic-ui-react';
+import { Loader, Container, Header, Icon, Grid, Card, Image, Menu, Modal, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import zipcodes from 'zipcodes';
 import { Companies } from '../../api/company/company';
@@ -16,6 +16,45 @@ class ShowCompany extends Component {
     this.state = {
       isFavorited: null,
     };
+  }
+
+
+  renderEditModal() {
+    const { role } = this.props.profile;
+    if (role !== 'company') {
+      return null;
+    }
+    const profileWebsite = this.props.profile.website;
+    const isOwned = this.props.company.owners.contains(profileWebsite);
+    if (!isOwned) {
+
+      return null;
+    }
+    return <Modal style={modal} trigger={<Button
+        content='Edit'
+        color='black'
+        floated='right'
+        inverted
+    />} closeIcon>
+      <Grid container centered>
+        <Grid.Column>
+          <Header as="h2" textAlign="center">Edit Company</Header>
+          <AutoForm schema={CompanySchema} onSubmit={this.submit} model={this.props.doc}>
+            <Segment>
+              <TextField name='name'/>
+              <TextField name='owners'/>
+              <TextField name='address'/>
+              <NumField name='zipCode' decimal={false}/>
+              <LongTextField name='summary'/>
+              <TextField name='website'/>
+              <SubmitField value='Submit'/>
+              <ErrorsField/>
+              <HiddenField name='_id' />
+            </Segment>
+          </AutoForm>
+        </Grid.Column>
+      </Grid>
+    </Modal>;
   }
 
 
