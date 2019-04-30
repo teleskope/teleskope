@@ -93,6 +93,7 @@
     "zipCode":"96822",
     "website":"https://www.hawaii.edu",
     "image": "images/defaultCompany.jpg",
+    "socials": [],
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]
   },
@@ -103,6 +104,7 @@
     "address":"123 electic avenue",
     "zipCode":"96819",
     "website":"https://www.heco.com",
+    "socials": [],
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]
   },
@@ -113,6 +115,7 @@
     "address":"123 pikes place",
     "zipCode":"98004",
     "website":"https://www.amazon.com",
+    "socials": [],
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]
   },
@@ -123,6 +126,7 @@
     "address":"123 hacker lane",
     "zipCode":"94025",
     "website":"https://www.facebook.com",
+    "socials": [],
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]
   },
@@ -133,6 +137,7 @@
     "zipCode":"89119",
     "website":"https://www.whitehouse.gov",
     "image": "images/defaultCompany.jpg",
+    "socials": [],
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]
   },
@@ -143,6 +148,7 @@
     "zipCode":"20500",
     "website":"https://www.donaldjtrump.com",
     "image": "images/defaultCompany.jpg",
+    "socials": [],
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]
   },
@@ -152,6 +158,7 @@
     "address":"3357 Koapaka st",
     "zipCode":"96819",
     "image":"https://985thesportshub.com/wp-content/uploads/sites/88/2018/10/HAL-Featured-Image.jpg",
+    "socials": [],
     "website":"https://www.hawaiianairlines.com",
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]

@@ -7,6 +7,7 @@ import zipcodes from 'zipcodes';
 import { Companies } from '../../api/company/company';
 import { Profiles } from '../../api/profile/profile';
 import JobCard from '../components/job/JobCard';
+import { Menu } from 'semantic-ui-react/dist/commonjs/collections/Menu';
 
 
 class ShowCompany extends Component {
@@ -35,13 +36,19 @@ class ShowCompany extends Component {
   }
 
     renderPage() {
-      const { jobs, zipCode, image, summary, name, address } = this.props.company;
+      const { jobs, zipCode, image, summary, name, address, owners, socials, website } = this.props.company;
       const city = zipcodes.lookup(zipCode);
-      // TODO: Display owners emails
-      // const email01 = 'mailto:';
-      // const email02 = email01.concat(owners[0]);
-      // const emailLink = email02.concat('?Subject=Hello');
-
+      const email01 = 'mailto:';
+      const email02 = email01.concat(owners[0]);
+      const emailLink = email02.concat('?Subject=Hello');
+      const iconName = new Array(100);
+      if (socials) {
+        socials.map(function (social, index) {
+          iconName[index] = social.provider;
+          iconName[index].concat(' icon');
+          return iconName[index];
+        });
+      }
       return (
           <Grid style={{ marginTop: '2em' }}>
             <Grid.Row columns={2}>
@@ -50,21 +57,26 @@ class ShowCompany extends Component {
               </Grid.Column>
               <Grid.Column>
                 <Header as='h1'>{name}</Header>
+                <Menu borderless text>
+                  <Menu.Item href={emailLink}>
+                    <Icon size='large' name="envelope outline"/>
+                  </Menu.Item>
+                  {website ? (
+                      <Menu.Item href={website} target='_blank'>
+                        <Icon size='large' name='globe'/></Menu.Item>
+                  ) : ''}
+                  {socials ? (socials.map((social, index) => (
+                      <Menu.Item href={social.link} key={index} target='_blank'>
+                        <Icon size='large' name={iconName[index]}/>
+                      </Menu.Item>
+                  ))) : ''}
+                </Menu>
                 <Header as='h3'><Icon className="map marker alternate icon"/>{address} {zipCode}</Header>
                 {city ? (
                     <Header as='h4'>
                       <Header.Content>{`${city.city}, ${city.state}`}</Header.Content>
                     </Header>
                 ) : ''}
-                {/*TODO: Need to make a socials for company*/}
-                {/*<Container>*/}
-                  {/*<Menu borderless text>*/}
-                  {/*<Menu.Item><Icon size='large' className="twitter icon"/></Menu.Item>*/}
-                  {/*<Menu.Item><Icon size='large' className="linkedin icon"/></Menu.Item>*/}
-                  {/*<Menu.Item><Icon size='large' className="github icon"/></Menu.Item>*/}
-                  {/*<Menu.Item><Icon size='large' className="envelope outline icon"/></Menu.Item>*/}
-                  {/*</Menu>*/}
-                {/*</Container>*/}
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
