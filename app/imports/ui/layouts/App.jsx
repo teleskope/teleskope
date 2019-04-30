@@ -29,11 +29,11 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
-              <Route path="/companies/:companyId" component={ShowCompany} />
-              <Route path="/companies" component={ListCompanies}/>
-              <Route path="/jobs/:jobId" component={ShowJob} />
-              <Route path="/students/:studentId" component={ShowStudent} />
-              <Route path="/students" component={ListStudents}/>
+              <ProtectedRoute path="/companies/:companyId" component={ShowCompany} />
+              <ProtectedRoute path="/companies" component={ListCompanies}/>
+              <ProtectedRoute path="/jobs/:jobId" component={ShowJob} />
+              <ProtectedRoute path="/students/:studentId" component={ShowStudent} />
+              <ProtectedRoute path="/students" component={ListStudents}/>
               <ProtectedRoute path="/profile" component={Profile}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
