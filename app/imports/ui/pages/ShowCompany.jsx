@@ -108,6 +108,45 @@ class ShowCompany extends Component {
   }
 
 
+  renderEditModal() {
+    const { role } = this.props.profile;
+    if (role !== 'company') {
+      return null;
+    }
+    const profileWebsite = this.props.profile.website;
+    const isOwned = this.props.company.owners.contains(profileWebsite);
+    if (!isOwned) {
+
+      return null;
+    }
+    return <Modal style={modal} trigger={<Button
+        content='Edit'
+        color='black'
+        floated='right'
+        inverted
+    />} closeIcon>
+      <Grid container centered>
+        <Grid.Column>
+          <Header as="h2" textAlign="center">Edit Company</Header>
+          <AutoForm schema={CompanySchema} onSubmit={this.submit} model={this.props.doc}>
+            <Segment>
+              <TextField name='name'/>
+              <TextField name='owners'/>
+              <TextField name='address'/>
+              <NumField name='zipCode' decimal={false}/>
+              <LongTextField name='summary'/>
+              <TextField name='website'/>
+              <SubmitField value='Submit'/>
+              <ErrorsField/>
+              <HiddenField name='_id' />
+            </Segment>
+          </AutoForm>
+        </Grid.Column>
+      </Grid>
+    </Modal>;
+  }
+
+
   handleFollow = () => {
     const companyId = this.props.company._id;
     const followed = this.props.profile.following.includes(companyId);
