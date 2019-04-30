@@ -82,8 +82,29 @@ class ListCompanies extends React.Component {
     return sorted;
   }
 
+  matchedCompanies() {
+    const companies = [...this.props.companies];
+    // sort by amount of matching skills 
+    console.log(companies);
+    // get users skills into array
+    const userSkills = this.props.profile.skills;
+    // get companies skills into comparable arrays
+    const coskills = _.chain(companies)
+                        .map((company) => company.jobs)
+                        .map((job) => job.skills)
+                        .flatten()
+                        .uniq()
+                        .value();
+
+    console.log(coskills);
+    // map through companies to get # of matching arrays
+
+    // sort by amt matching
+  }
+
   /** Render the page once subscriptions have been received. */
   renderPage() {
+    console.log(this.matchedCompanies());
     const companies = this.props.companies;
     console.log(this.props.profile);
     const favorites = this.props.profile.following;
