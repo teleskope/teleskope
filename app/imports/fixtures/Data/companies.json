@@ -92,6 +92,7 @@
     "address":"111 Maile way",
     "zipCode":"96822",
     "website":"https://www.hawaii.edu",
+    "image": "images/defaultCompany.jpg",
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]
   },
@@ -131,6 +132,7 @@
     "address":"52 Area",
     "zipCode":"89119",
     "website":"https://www.whitehouse.gov",
+    "image": "images/defaultCompany.jpg",
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]
   },
@@ -140,6 +142,7 @@
     "address":"1600 pennsylvania ave",
     "zipCode":"20500",
     "website":"https://www.donaldjtrump.com",
+    "image": "images/defaultCompany.jpg",
     "summary":"Lorem ipsum dolor amet vHS vaporware tote bag, marfa gentrify edison bulb kale chips kogi. Kitsch dreamcatcher trust fund, bicycle rights organic poutine pickled. Pop-up tattooed readymade tumblr.",
     "jobs":[]
   },
