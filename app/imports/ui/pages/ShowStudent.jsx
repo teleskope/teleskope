@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Header, Icon, Image, Loader, Grid, Menu, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import zipcodes from 'zipcodes';
+import { Roles } from 'meteor/alanning:roles';
 import { Profiles } from '../../api/profile/profile';
 import ProfileSkillsDropdown from '../components/ProfileSkillsDropdown';
 
@@ -59,12 +60,14 @@ class ShowStudent extends Component {
                       <Header.Content>{`${city.city}, ${city.state}`}</Header.Content>
                     </Header>
                 ) : ''}
-                <Button
-                    color='blue'
-                    content='Interested'
-                    icon='space shuttle'
-                    toggle
-                />
+                {Roles.userIsInRole(Meteor.userId(), 'company') ? (
+                  <Button
+                      color='blue'
+                      content='Interested'
+                      icon='space shuttle'
+                      toggle
+                  />
+                ) : ''}
               </Container>
             </Grid.Column>
           </Grid.Row>

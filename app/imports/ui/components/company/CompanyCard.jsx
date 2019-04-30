@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Icon, Image, List, Label } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { Roles } from 'meteor/alanning:roles';
 import zipcodes from 'zipcodes';
 import { Roles } from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
@@ -9,8 +10,11 @@ import { Meteor } from 'meteor/meteor';
 export default function CompanyCard(props) {
   const { name, website, _id, zipCode, jobs, image } = props.company;
   const city = zipcodes.lookup(zipCode);
-  const handleFollow = () => {
-    props.onFollow(props.favorited, _id);
+  let handleFollow = null;
+  if (Roles.userIsInRole(Meteor.userId(), 'student')) {
+    handleFollow = () => {
+      props.onFollow(props.favorited, _id);
+    };
   };
 
   let label2 = null;

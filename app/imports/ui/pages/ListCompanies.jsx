@@ -162,16 +162,26 @@ class ListCompanies extends React.Component {
             </Grid.Row>
             <Grid.Row columns='equal'>
               <Card.Group stackable>
-                {sortedCompanies.map((company, index) => {
-                  const isFavorited = favorites.includes(company._id);
-                  return (
-                    <CompanyCard
-                        key={index}
-                        company={company}
-                        onFollow={this.handleFollow}
-                        favorited={isFavorited}
-                    />);
-                    })}
+                {Roles.userIsInRole(Meteor.userId(), 'student') ? (
+                    sortedCompanies.map((company, index) => {
+                      const isFavorited = favorites.includes(company._id);
+                      return (
+                        <CompanyCard
+                            key={index}
+                            company={company}
+                            onFollow={this.handleFollow}
+                            favorited={isFavorited}
+                        />);
+                    })
+                ) : (
+                    sortedCompanies.map((company, index) => {
+                      return (
+                          <CompanyCard
+                              key={index}
+                              company={company}
+                          />);
+                    })
+                    )}
                 </Card.Group>
             </Grid.Row>
           </Grid>
