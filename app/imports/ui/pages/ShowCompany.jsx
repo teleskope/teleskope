@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Container, Header, Icon, Grid, Card, Image } from 'semantic-ui-react';
+import { Loader, Container, Header, Icon, Grid, Card, Image, Menu } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import zipcodes from 'zipcodes';
 import { Companies } from '../../api/company/company';
 import { Profiles } from '../../api/profile/profile';
 import JobCard from '../components/job/JobCard';
-import { Menu } from 'semantic-ui-react/dist/commonjs/collections/Menu';
+// import { Menu } from 'semantic-ui-react/dist/commonjs/collections/Menu';
 
 
 class ShowCompany extends Component {
