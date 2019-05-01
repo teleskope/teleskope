@@ -84,29 +84,30 @@ class ListCompanies extends React.Component {
 
   matchedCompanies() {
     const companies = [...this.props.companies];
-    // sort by amount of matching skills 
-    console.log(companies);
-    // get users skills into array
+    // // sort by amount of matching skills
+
+    // // get users skills into array
     const userSkills = this.props.profile.skills;
-    // get companies skills into comparable arrays
-    const coskills = _.chain(companies)
-                        .map((company) => company.jobs)
-                        .map((job) => job.skills)
-                        .flatten()
-                        .uniq()
-                        .value();
+    // added aggregated skills to companies
+    const companyskills = _.chain(companies)
+                            .map(company => {
+                              const skills = [];
+                              company.jobs.forEach(j => skills.push(j.skills));
+                              return _.extend(company, { skills: _.uniq(_.flatten(skills)) });
+                            })
+                            .value();
 
-    console.log(coskills);
-    // map through companies to get # of matching arrays
+    // function that gets difference of user skills to each company skills
+    // sort by length of matched skills
+    const sorted = _.sortBy(companyskills, (company) => {
+          return _.intersection(company.skills, userSkills).length;
+    });
 
-    // sort by amt matching
+    return sorted.slice(0, 3);
   }
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    console.log(this.matchedCompanies());
-    const companies = this.props.companies;
-    console.log(this.props.profile);
     const favorites = this.props.profile.following;
     const sortedCompanies = this.sortCompanies(this.state.sort);
 
@@ -118,7 +119,7 @@ class ListCompanies extends React.Component {
             </Grid.Row>
             <Grid.Row>
               <Card.Group stackable>
-                  {companies.slice(0, 3).map((company, index) => {
+                  {this.matchedCompanies().map((company, index) => {
                     const isFavorited = favorites.includes(company._id);
                     return (
                       <CompanyCard
