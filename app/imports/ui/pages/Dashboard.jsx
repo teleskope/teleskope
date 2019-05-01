@@ -43,7 +43,7 @@ class Dashboard extends React.Component {
               <Grid.Column stretched>
                 <Segment secondary inverted style={segmentStyle}>
                   <Header as='h3'> Notifications </Header>
-                  <Segment.Group tertiary>
+                  <Segment.Group>
                     <Segment tertiary>Company A is interested in you!</Segment>
                     <Segment tertiary>Company B is interested in you!</Segment>
                     <Segment tertiary>Company C is interested in you!</Segment>
@@ -53,8 +53,8 @@ class Dashboard extends React.Component {
                 </Segment>
               </Grid.Column>
               <Grid.Column stretched>
-                <Advertisement unit='vertical rectangle' test='Advertisements' long centered/>
-                <Advertisement unit='vertical rectangle' test='Advertisements' long centered/>
+                <Advertisement unit='vertical rectangle' test='Advertisements' centered/>
+                <Advertisement unit='vertical rectangle' test='Advertisements' centered/>
               </Grid.Column>
             </Grid.Row>
           </Grid>
