@@ -82,10 +82,35 @@ class ListCompanies extends React.Component {
     return sorted;
   }
 
+  matchedCompanies() {
+    const companies = [...this.props.companies];
+    // // sort by amount of matching skills
+
+    // // get users skills into array
+    const userSkills = this.props.profile.skills;
+    // added aggregated skills to companies
+    const companyskills = _.chain(companies)
+                            .map(company => {
+                              const skills = [];
+                              company.jobs.forEach(j => skills.push(j.skills));
+                              return _.extend(company, { skills: _.uniq(_.flatten(skills)) });
+                            })
+                            .value();
+
+    // function that gets difference of user skills to each company skills
+    // sort by length of matched skills
+    const sorted = _.chain(companyskills)
+                      .sortBy((company) => _.intersection(company.skills, userSkills).length)
+                      .map(company => {
+                        return _.extend(company, { matches: _.intersection(company.skills, userSkills).length });
+                      })
+                      .value();
+
+    return sorted.reverse().slice(0, 3);
+  }
+
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    const companies = this.props.companies;
-    console.log(this.props.profile);
     const favorites = this.props.profile.following;
     const sortedCompanies = this.sortCompanies(this.state.sort);
 
@@ -97,7 +122,7 @@ class ListCompanies extends React.Component {
             </Grid.Row>
             <Grid.Row>
               <Card.Group stackable>
-                  {companies.slice(0, 3).map((company, index) => {
+                  {this.matchedCompanies().map((company, index) => {
                     const isFavorited = favorites.includes(company._id);
                     return (
                       <CompanyCard
@@ -164,7 +189,7 @@ export default withTracker(() => {
     Meteor.subscribe('Companies'),
     Meteor.subscribe('UserProfile'),
   ];
-  const companies = Companies.find({}, { limit: 20 }).fetch();
+  const companies = Companies.find({}, {}).fetch();
   const profile = Profiles.findOne({});
   const loading = handles.some(handle => !handle.ready());
   return {
