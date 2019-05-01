@@ -72,15 +72,15 @@ class Profile extends Component {
           <Grid.Row>
             <Container text>
               <Header as='h2'>About</Header>
-              {summary}
+              <p>{summary}</p>
             </Container>
           </Grid.Row>
           <br></br>
           <br></br>
             <Grid.Row>
               <Container text>
+                <Header as='h2'>Skills</Header>
                 <p>
-                  <Header as='h2'>Skills</Header>
                   Help us provide better company and job matches by listing technical skills that really make you shine!
                 </p>
 
