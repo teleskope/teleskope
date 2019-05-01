@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Loader, Container, Header, Icon, Grid, Card, Image, Menu, Modal, Button, Segment } from 'semantic-ui-react';
+import { Bert } from 'meteor/themeteorchef:bert';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
 import NumField from 'uniforms-semantic/NumField';
@@ -23,6 +24,13 @@ class ShowCompany extends Component {
     this.state = {
       isFavorited: null,
     };
+  }
+
+  submit(data) {
+    const { name, owners, address, zipCode, summary, website, _id } = data;
+    Companies.update(_id, { $set: { name, owners, address, zipCode, summary, website } }, (error) => (error ?
+        Bert.alert({ type: 'danger', message: `Update failed: ${error.message}` }) :
+        Bert.alert({ type: 'success', message: 'Update succeeded' })));
   }
 
 
@@ -95,6 +103,7 @@ class ShowCompany extends Component {
       }
       return (
           <Grid style={{ marginTop: '2em' }}>
+            {console.log(this.props.company._id)}
             <Grid.Row columns={2}>
               <Grid.Column>
                 <Image src={image} style={{ width: '335px' }} floated='right'/>
