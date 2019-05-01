@@ -111,7 +111,6 @@ class ListCompanies extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    console.log(this.matchedCompanies())
     const favorites = this.props.profile.following;
     const sortedCompanies = this.sortCompanies(this.state.sort);
 
