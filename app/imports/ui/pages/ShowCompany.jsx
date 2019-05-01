@@ -139,6 +139,7 @@ class ShowCompany extends Component {
       }
       return (
           <Grid style={{ marginTop: '2em' }}>
+            {console.log(this.props.company._id)}
             <Grid.Row columns={2}>
               <Grid.Column>
                 <Image src={image} style={{ width: '335px' }} floated='right'/>
