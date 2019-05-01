@@ -113,17 +113,15 @@ class ShowCompany extends Component {
     if (role !== 'company') {
       return null;
     }
-    const profileWebsite = this.props.profile.website;
-    const isOwned = this.props.company.owners.contains(profileWebsite);
+    const owner = this.props.profile.owner;
+    const isOwned = this.props.company.owners.includes(owner);
     if (!isOwned) {
 
       return null;
     }
     return <Modal id='modal' trigger={<Button
         content='Edit'
-        color='black'
-        floated='right'
-        inverted
+        color='green'
     />} closeIcon>
       <Grid container centered>
         <Grid.Column>
