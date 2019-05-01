@@ -99,15 +99,19 @@ class ListCompanies extends React.Component {
 
     // function that gets difference of user skills to each company skills
     // sort by length of matched skills
-    const sorted = _.sortBy(companyskills, (company) => {
-          return _.intersection(company.skills, userSkills).length;
-    });
+    const sorted = _.chain(companyskills)
+                      .sortBy((company) => _.intersection(company.skills, userSkills).length)
+                      .map(company => {
+                        return _.extend(company, { matches: _.intersection(company.skills, userSkills).length });
+                      })
+                      .value();
 
-    return sorted.slice(0, 3);
+    return sorted.reverse().slice(0, 3);
   }
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
+    console.log(this.matchedCompanies())
     const favorites = this.props.profile.following;
     const sortedCompanies = this.sortCompanies(this.state.sort);
 
