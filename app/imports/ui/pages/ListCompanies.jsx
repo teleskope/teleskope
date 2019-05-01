@@ -186,7 +186,7 @@ export default withTracker(() => {
     Meteor.subscribe('Companies'),
     Meteor.subscribe('UserProfile'),
   ];
-  const companies = Companies.find({}, { limit: 20 }).fetch();
+  const companies = Companies.find({}, {}).fetch();
   const profile = Profiles.findOne({});
   const loading = handles.some(handle => !handle.ready());
   return {
