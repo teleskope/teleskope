@@ -4,6 +4,9 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Profiles } from '../../api/profile/profile';
+import { Companies } from '/imports/api/company/company';
+import DashboardSubs from '../components/DashboardSubs';
 
 const profileStyle = {
   padding: '50px 0px',
@@ -15,6 +18,7 @@ const segmentStyle = {
 
 class Dashboard extends React.Component {
   render() {
+    console.log(this.props.myCompanies);
     return (
 
       <div>
@@ -30,15 +34,10 @@ class Dashboard extends React.Component {
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
-              <Grid.Column stretched>
-                <Segment tertiary inverted compact style={segmentStyle}>
-                  <Header as='h3' textalign='center'> Companies You Are Following </Header>
-                  <List>
-                    <List.Item>Company A</List.Item>
-                    <List.Item>Company B</List.Item>
-                    <List.Item>Company D</List.Item>
-                  </List>
-                </Segment>
+              <Grid.Column>
+                <DashboardSubs
+                  myCompanies={this.props.myCompanies}
+                />
               </Grid.Column>
               <Grid.Column stretched>
                 <Segment secondary inverted style={segmentStyle}>
@@ -65,12 +64,28 @@ class Dashboard extends React.Component {
 }
 
 Dashboard.propTypes = {
-  currentUser: PropTypes.string,
+  profile: PropTypes.object,
+  ready: PropTypes.bool,
+  myCompanies: PropTypes.array,
 };
 
-const DashboardContainer = withTracker(() => ({
-  currentUser: Meteor.user() ? Meteor.user().username : '',
-}))(Dashboard);
+const DashboardContainer = withTracker(() => {
+  const handles = [
+    Meteor.subscribe('UserProfile'),
+    Meteor.subscribe('Companies'),
+  ];
+
+  const email = Meteor.user() ? Meteor.user().username : undefined;
+  const myCompanies = Companies.find({ owners: email }).fetch();
+
+  const profile = Profiles.findOne({});
+  const ready = handles.some(handle => handle.ready());
+  return {
+    profile,
+    myCompanies,
+    ready,
+  };
+})(Dashboard);
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
 export default withRouter(DashboardContainer);
