@@ -57,6 +57,13 @@ Meteor.methods({
     const profile = Profiles.findOne({ owner: email });
     Profiles.update(profile._id, { $pull: { following: id } });
   },
+
+  updateUserSkills: function (skills) {
+    check(skills, Array);
+    const email = Meteor.user().emails[0].address;
+    const profile = Profiles.findOne({ owner: email });
+    Profiles.update(profile._id, { $set: { skills: skills } });
+  },
 });
 
 if (Meteor.isServer) {
