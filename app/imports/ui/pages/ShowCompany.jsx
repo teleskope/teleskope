@@ -31,17 +31,15 @@ class ShowCompany extends Component {
     if (role !== 'company') {
       return null;
     }
-    const profileWebsite = this.props.profile.website;
-    const isOwned = this.props.company.owners.contains(profileWebsite);
+    const owner = this.props.profile.owner;
+    const isOwned = this.props.company.owners.includes(owner);
     if (!isOwned) {
 
       return null;
     }
     return <Modal id='modal' trigger={<Button
         content='Edit'
-        color='black'
-        floated='right'
-        inverted
+        color='green'
     />} closeIcon>
       <Grid container centered>
         <Grid.Column>
@@ -102,7 +100,7 @@ class ShowCompany extends Component {
                 <Image src={image} style={{ width: '335px' }} floated='right'/>
               </Grid.Column>
               <Grid.Column>
-                <Header as='h1'>{name}</Header>
+                <Header as='h1'>{name}  {this.renderEditModal()}</Header>
                 <Menu borderless text>
                   <Menu.Item href={emailLink}>
                     <Icon size='large' name="envelope outline"/>
@@ -162,7 +160,7 @@ export default withTracker(({ match }) => {
   const documentId = match.params.companyId;
 
   const subscription = Meteor.subscribe('Companies');
-  const subscription2 = Meteor.subscribe('userProfile');
+  const subscription2 = Meteor.subscribe('UserProfile');
   return {
     company: Companies.findOne({ _id: documentId }),
     profile: Profiles.findOne({}),
