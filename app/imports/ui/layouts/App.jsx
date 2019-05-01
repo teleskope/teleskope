@@ -10,7 +10,6 @@ import Landing from '../pages/Landing';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
-import Signout from '../pages/Signout';
 import ListCompanies from '../pages/ListCompanies';
 import ListStudents from '../pages/ListStudents';
 import ShowCompany from '../pages/ShowCompany';
@@ -31,11 +30,12 @@ class App extends React.Component {
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
               <ProtectedRoute path="/companies/:companyId" component={ShowCompany} />
+              <AdminProtectedRoute path="/adminCompanies" component={NotFound}/>
               <ProtectedRoute path="/companies" component={ListCompanies}/>
               <ProtectedRoute path="/students/:studentId" component={ShowStudent} />
+              <AdminProtectedRoute path="/adminStudents" component={NotFound}/>
               <ProtectedRoute path="/students" component={ListStudents}/>
               <ProtectedRoute path="/profile" component={Profile}/>
-              <ProtectedRoute path="/signout" component={Signout}/>
               <ProtectedRoute path="/dashboard" component={Dashboard}/>
               <Route component={NotFound}/>
             </Switch>
