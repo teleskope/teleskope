@@ -122,12 +122,17 @@ class ShowCompany extends Component {
                       </Menu.Item>
                   ))) : ''}
                 </Menu>
-                <Header as='h3'><Icon className="map marker alternate icon"/>{address} {zipCode}</Header>
-                {city ? (
-                    <Header as='h4'>
-                      <Header.Content>{`${city.city}, ${city.state}`}</Header.Content>
-                    </Header>
-                ) : ''}
+                <List>
+                  <List.Item>
+                    <List.Icon name='map marker alternate icon' size='big' verticalAlign='middle' />
+                    <List.Content>
+                      <List.Header>{address}, {zipCode}</List.Header>
+                      {city ? (
+                      <List.Description>{`${city.city}, ${city.state}`}</List.Description>
+                      ) : ''}
+                    </List.Content>
+                  </List.Item>
+                </List>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>

@@ -181,7 +181,7 @@ class ListCompanies extends React.Component {
                               company={company}
                           />);
                     })
-                    )}
+                )}
                 </Card.Group>
             </Grid.Row>
           </Grid>
