@@ -9,11 +9,14 @@ function addData(data) {
   Companies.insert(data);
 }
 
+// randomly assigns 2-3 jobs per company
 function mapJobsToCompanies() {
   const companies = _.map(defaultCompanies, (company) => {
     if (company.jobs.length !== 0) return company;
     const newCompany = company;
-    defaultJobs.forEach(job => {
+    const num = Math.floor(Math.random() * 4) + 1;
+    const randjobs = _.shuffle(defaultJobs).slice(0, num);
+    randjobs.forEach(job => {
       const newJob = job;
       newJob.zipCode = company.zipCode;
       newJob.date = Date.now();
