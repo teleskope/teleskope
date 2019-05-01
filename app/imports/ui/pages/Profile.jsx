@@ -16,7 +16,7 @@ class Profile extends Component {
   }
 
   renderPage() {
-    const { firstName, lastName, website, owner, summary, image, socials, zipCode } = this.props.profile;
+    const { firstName, lastName, website, owner, summary, image, socials, zipCode, skills } = this.props.profile;
     const city = zipcodes.lookup(zipCode);
     const email01 = 'mailto:';
     const email02 = email01.concat(owner);
@@ -79,8 +79,12 @@ class Profile extends Component {
           <br></br>
             <Grid.Row>
               <Container text>
-                <Header as='h2'>Skills</Header>
-                <ProfileSkillsDropdown/>
+                <p>
+                  <Header as='h2'>Skills</Header>
+                  Help us provide better company and job matches by listing technical skills that really make you shine!
+                </p>
+
+                <ProfileSkillsDropdown userSkills={skills}/>
               </Container>
             </Grid.Row>
         </Grid>
@@ -94,11 +98,9 @@ Profile.propTypes = {
 };
 
 export default withTracker(() => {
-  const owner = async () => Meteor.user().username;
-
-  const subscription = Meteor.subscribe('Profiles');
+  const subscription = Meteor.subscribe('UserProfile');
   return {
-    profile: Profiles.findOne({ owner: owner }),
+    profile: Profiles.findOne({}),
     ready: subscription.ready(),
   };
 })(Profile);

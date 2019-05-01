@@ -6,6 +6,17 @@ import { Meteor } from 'meteor/meteor';
 import { Skills } from '../../api/skill/skill';
 
 class ProfileSkillsDropdown extends React.Component {
+  state = {
+    currentValues: [],
+  }
+
+  handleChange = (e, { value }) => {
+    this.setState(
+      { currentValues: value },
+      () => Meteor.call('updateUserSkills', this.state.currentValues),
+    );
+  };
+
   render() {
     return (this.props.ready) ? this.renderDropdown() : <Loader active>Retrieving data</Loader>;
   }
@@ -27,7 +38,9 @@ class ProfileSkillsDropdown extends React.Component {
           multiple
           search
           selection
+          defaultValue={this.props.userSkills}
           options={skillOptions}
+          onChange={this.handleChange}
         />
       </Container>
     );
@@ -36,8 +49,8 @@ class ProfileSkillsDropdown extends React.Component {
 
 ProfileSkillsDropdown.propTypes = {
   skills: PropTypes.array.isRequired,
-  // currProfile: PropTypes.object,
   ready: PropTypes.bool,
+  userSkills: PropTypes.array,
 };
 
 export default withTracker(() => {
