@@ -21,7 +21,7 @@ export default function CompanyCard(props) {
 
   return (
       <Card raised>
-        <Label attached='top' size='big' to={`/companies/${_id}`} as={NavLink} activeClassName="active" >
+        <Label attached='top' size='big' activeClassName="active" >
           {name}
           {Roles.userIsInRole(Meteor.userId(), 'student') ? (
               <Icon
