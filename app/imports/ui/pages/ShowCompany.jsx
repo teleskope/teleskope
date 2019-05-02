@@ -20,9 +20,7 @@ import JobCard from '../components/job/JobCard';
 class ShowCompany extends Component {
   constructor() {
     super();
-    this.state = {
-      isFavorited: null,
-    };
+    this.follow = null;
   }
 
   submit(data) {
@@ -74,10 +72,10 @@ class ShowCompany extends Component {
     const followed = this.props.profile.following.includes(companyId);
     if (!followed) {
       Meteor.call('followCompany', companyId);
-      this.setState({ isFavorited: true });
+      this.follow = true;
     } else {
       Meteor.call('unfollowCompany', companyId);
-      this.setState({ isFavorited: false });
+      this.follow = false;
     }
   };
 
@@ -88,7 +86,8 @@ class ShowCompany extends Component {
     renderPage() {
       const { jobs, zipCode, image, summary, name, address, owners, socials, website } = this.props.company;
       const city = zipcodes.lookup(zipCode);
-      const { firstName, lastName } = this.props.profile;
+      const { firstName, lastName, role } = this.props.profile;
+      this.follow = this.props.profile.following.includes(this.props.company._id);
 
       return (
           <Grid style={{ marginTop: '2em' }}>
@@ -123,6 +122,10 @@ class ShowCompany extends Component {
                     </List.Content>
                   </List.Item>
                 </List>
+                {role === 'student' ? (
+                <Button color={ this.follow ? 'yellow' : null} content='Follow' icon='star'
+                        onClick={this.handleFollow}/>
+                ) : ''}
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>

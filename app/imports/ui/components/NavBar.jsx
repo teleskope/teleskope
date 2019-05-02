@@ -53,9 +53,9 @@ class NavBar extends React.Component {
               </Link>
             </div>
           ) : (
-            <Dropdown text={`${this.props.currentUser}`}
-                      pointing="top right"
-                      icon={ role === 'company' ? 'building' : 'student'} >
+            <Dropdown text={`${this.props.currentUser}`} pointing="top right"
+                      icon={ role === 'company' ? { name: 'building', size: 'large' } :
+                                                  { name: 'student', size: 'large' }}>
               <Dropdown.Menu>
                 <Dropdown.Item icon="user" text="My Profile" as={NavLink} exact to="/profile"/>
 
