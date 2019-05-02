@@ -10,10 +10,36 @@ body {
 }
 
 h1, h2, h3, h4, h5, p, span {
-  font-family: 'Lato', sans-serif;
+  font-family: Lato, sans-serif;
 }
 
-/*For the companyCard when company students are logged in*/
+#cardHeader {
+  background-color: #455880;
+  color: #F5F0F0;
+}
+
+#modal {
+  background-color: #F5F0F0;
+}
+
+#modalHeader {
+  background-color: #455880;
+  color: #F5F0F0;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 30px;
+}
+
+#modalComponent  {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#modalFooter {
+  background-color: #455880;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}/*For the companyCard when company students are logged in*/
 .companyCardImage > img {
   width: 100%;
   height: auto;
@@ -30,3 +56,4 @@ img.companyCardImage {
   height: auto;
   max-height: 150px;
 }
+

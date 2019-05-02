@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Container, Header, Icon, Grid, Card, Image, Menu } from 'semantic-ui-react';
+import { Loader, Container, Header, Icon, Grid, Card, Image, Menu, Modal, Button, Segment } from 'semantic-ui-react';
+import { Bert } from 'meteor/themeteorchef:bert';
+import AutoForm from 'uniforms-semantic/AutoForm';
+import TextField from 'uniforms-semantic/TextField';
+import NumField from 'uniforms-semantic/NumField';
+import LongTextField from 'uniforms-semantic/LongTextField';
+import SubmitField from 'uniforms-semantic/SubmitField';
+import ErrorsField from 'uniforms-semantic/ErrorsField';
 import { withTracker } from 'meteor/react-meteor-data';
 import zipcodes from 'zipcodes';
-import { Companies } from '../../api/company/company';
+import { Companies, CompanySchema } from '../../api/company/company';
 import { Profiles } from '../../api/profile/profile';
 import JobCard from '../components/job/JobCard';
 // import { Menu } from 'semantic-ui-react/dist/commonjs/collections/Menu';
@@ -16,6 +23,50 @@ class ShowCompany extends Component {
     this.state = {
       isFavorited: null,
     };
+  }
+
+  submit(data) {
+    const { name, owners, address, zipCode, summary, website, _id, image } = data;
+    Companies.update(_id, { $set: { name, owners, address, zipCode, summary, website, image } }, (error) => (error ?
+        Bert.alert({ type: 'danger', message: `Update failed: ${error.message}` }) :
+        Bert.alert({ type: 'success', message: 'Update succeeded' })));
+  }
+
+
+  renderEditModal() {
+    const { role } = this.props.profile;
+    if (role !== 'company') {
+      return null;
+    }
+    const owner = this.props.profile.owner;
+    const isOwned = this.props.company.owners.includes(owner);
+    if (!isOwned) {
+
+      return null;
+    }
+    return <Modal id='modal' trigger={<Button
+        content='Edit'
+        color='green'
+    />} closeIcon>
+      <Grid container centered>
+        <Grid.Column>
+          <Header as="h2" textAlign="center">Edit Company</Header>
+          <AutoForm schema={CompanySchema} onSubmit={this.submit} model={this.props.company}>
+            <Segment>
+              <TextField name='name'/>
+              <TextField name='owners'/>
+              <TextField name='address'/>
+              <NumField name='zipCode' decimal={false}/>
+              <TextField name='website'/>
+              <TextField name='image'/>
+              <LongTextField name='summary'/>
+              <SubmitField value='Submit'/>
+              <ErrorsField/>
+            </Segment>
+          </AutoForm>
+        </Grid.Column>
+      </Grid>
+    </Modal>;
   }
 
 
@@ -56,7 +107,7 @@ class ShowCompany extends Component {
                 <Image src={image} style={{ width: '335px' }} floated='right'/>
               </Grid.Column>
               <Grid.Column>
-                <Header as='h1'>{name}</Header>
+                <Header as='h1'>{name}  {this.renderEditModal()}</Header>
                 <Menu borderless text>
                   <Menu.Item href={emailLink}>
                     <Icon size='large' name="envelope outline"/>
@@ -116,10 +167,10 @@ export default withTracker(({ match }) => {
   const documentId = match.params.companyId;
 
   const subscription = Meteor.subscribe('Companies');
-  const subscription2 = Meteor.subscribe('Profiles');
+  const subscription2 = Meteor.subscribe('UserProfile');
   return {
     company: Companies.findOne({ _id: documentId }),
-    profile: Profiles.findOne({ _id: Meteor.userId() }),
+    profile: Profiles.findOne({}),
     ready: (subscription.ready() && subscription2.ready()),
   };
 })(ShowCompany);
