@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import zipcodes from 'zipcodes';
 import { Container, Header, Icon, Image, Loader, Grid, Menu, } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Profiles, ProfileSchema } from '../../api/profile/profile';
+import { Profiles } from '../../api/profile/profile';
 import ProfileSkillsDropdown from '../components/ProfileSkillsDropdown';
 import EditProfile from '../components/EditProfile';
 
