@@ -19,6 +19,7 @@ class NavBar extends React.Component {
       backgroundColor: '#455880',
     };
     const userId = Meteor.userId();
+    const { role } = this.props.profile || '';
 
     return (
       <Menu style={menuStyle} borderless inverted>
@@ -67,7 +68,8 @@ class NavBar extends React.Component {
               </Link>
             </div>
           ) : (
-            <Dropdown text={this.props.currentUser} pointing="top right" icon={'user'}>
+            <Dropdown text={`${this.props.currentUser}`} pointing="top right" icon={ role === 'company' ? 'building' : 'student'}>
+              
               <Dropdown.Menu>
                 <Dropdown.Item icon="user" text="My Profile" as={NavLink} exact to="/profile"/>
 
