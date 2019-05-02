@@ -1,76 +1,90 @@
 import React from 'react';
-import { Grid, Header, Segment, Image, Container, Advertisement, List } from 'semantic-ui-react';
+import { Grid, Header, Segment, Image, Button, List, Loader } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
-const profileStyle = {
-  padding: '50px 0px',
-};
+import { Profiles } from '../../api/profile/profile';
+import { Companies } from '/imports/api/company/company';
+import DashboardSubs from '../components/DashboardSubs';
 
 const segmentStyle = {
   backgroundColor: '#455880',
 };
-
+ /* eslint no-else-return: "error" */
 class Dashboard extends React.Component {
+  subCompanies(role) {
+    const { companies, profile } = this.props;
+    let result = [];
+    if (role === 'company') {
+      result = _.filter(companies, company => company.owners.includes(profile.owner));
+    } else if (role === 'student') {
+      result = _.filter(companies, (company) => profile.following.includes(company._id));
+    }
+    return result;
+  }
+
   render() {
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+  }
+
+  renderPage() {
+    const { image, firstName, lastName, role } = this.props.profile;
+    const companies = this.subCompanies(role);
     return (
 
       <div>
-        <Container>
-          {/* Image here needs to be grabbed from the user's profile */}
-          <Grid columns='equal'>
-            <Grid.Row>
-              <Grid.Column>
-                <Image src='http://clipart-library.com/images/6cpop79oi.png' size='medium' style={profileStyle}/>
-              </Grid.Column>
-              <Grid.Column style={profileStyle}>
-                <Header as='h2'> Welcome First Last </Header>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column stretched>
-                <Segment tertiary inverted compact style={segmentStyle}>
-                  <Header as='h3' textalign='center'> Companies You Are Following </Header>
-                  <List>
-                    <List.Item>Company A</List.Item>
-                    <List.Item>Company B</List.Item>
-                    <List.Item>Company D</List.Item>
-                  </List>
-                </Segment>
-              </Grid.Column>
-              <Grid.Column stretched>
-                <Segment secondary inverted style={segmentStyle}>
-                  <Header as='h3'> Notifications </Header>
-                  <Segment.Group>
-                    <Segment tertiary>Company A is interested in you!</Segment>
-                    <Segment tertiary>Company B is interested in you!</Segment>
-                    <Segment tertiary>Company C is interested in you!</Segment>
-                    <Segment tertiary>Company A is interested in you!</Segment>
-                    <Segment tertiary>Company B is interested in you!</Segment>
-                  </Segment.Group>
-                </Segment>
-              </Grid.Column>
-              <Grid.Column stretched>
-                <Advertisement unit='vertical rectangle' test='Advertisements' centered/>
-                <Advertisement unit='vertical rectangle' test='Advertisements' centered/>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Container>
+        <Grid container style={{ marginTop: '1em' }}>
+          <Grid.Column width={4}>
+              <Image src={image} size='medium' />
+              <DashboardSubs
+                myCompanies={companies}
+                profile={this.props.profile}
+              />
+          </Grid.Column>
+          <Grid.Column width={10}>
+            <Header as='h2'>{`${firstName} ${lastName}`} </Header>
+            <Segment secondary inverted style={segmentStyle}>
+              <Header as='h3'> Notifications </Header>
+              <Segment.Group>
+                <Segment tertiary>Company A is interested in you!</Segment>
+                <Segment tertiary>Company B is interested in you!</Segment>
+                <Segment tertiary>Company C is interested in you!</Segment>
+                <Segment tertiary>Company A is interested in you!</Segment>
+                <Segment tertiary>Company B is interested in you!</Segment>
+              </Segment.Group>
+            </Segment>
+          </Grid.Column>
+          <Grid.Column width={2}/>
+        </Grid>
       </div>
     );
   }
 }
 
 Dashboard.propTypes = {
-  currentUser: PropTypes.string,
+  profile: PropTypes.object,
+  ready: PropTypes.bool,
+  companies: PropTypes.array,
 };
 
-const DashboardContainer = withTracker(() => ({
-  currentUser: Meteor.user() ? Meteor.user().username : '',
-}))(Dashboard);
+const DashboardContainer = withTracker(() => {
+  const handles = [
+    Meteor.subscribe('UserProfile'),
+    Meteor.subscribe('Companies'),
+  ];
+  const profile = Profiles.findOne({});
+  // const email = Meteor.user() ? Meteor.user().username : undefined;
+
+  const companies = Companies.find({}).fetch();
+
+  const ready = handles.some(handle => handle.ready());
+  return {
+    profile,
+    companies,
+    ready,
+  };
+})(Dashboard);
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
 export default withRouter(DashboardContainer);
