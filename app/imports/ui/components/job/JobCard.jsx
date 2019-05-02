@@ -3,8 +3,6 @@ import { Card, Header, Modal, Button, Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import zipcodes from 'zipcodes';
 
-
-
 export default function JobCard(props) {
   const { zipCode, title, employmentType, description, requirements } = props.job;
   const city = zipcodes.lookup(zipCode);

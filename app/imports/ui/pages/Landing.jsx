@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { Grid, Icon, Header, Button, Segment, Image } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';

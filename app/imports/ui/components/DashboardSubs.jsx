@@ -12,8 +12,8 @@ export default class DashboardSubs extends Component {
 
   myCompanies() {
     const { activeItem } = this.state;
-    return _.map(this.props.myCompanies, (company) => {
-            return <Menu.Item
+    return _.map(this.props.myCompanies, (company) => (
+            <Menu.Item
                       name={company.name}
                       active={activeItem === company.name}
                       onClick={this.handleItemClick}
@@ -21,8 +21,8 @@ export default class DashboardSubs extends Component {
                       link href={`/#/companies/${company._id}`}
                       >
                       {company.name}
-                   </Menu.Item>;
-    });
+                   </Menu.Item>
+            ));
   }
 
   render() {

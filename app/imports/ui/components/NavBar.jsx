@@ -29,9 +29,9 @@ class NavBar extends React.Component {
         {((Roles.userIsInRole(userId, 'student') || Roles.userIsInRole(userId, 'company')) && this.props.profile) ? (
             [
               <Menu.Item as={NavLink}
-              activeClassName="active"
-              exact to={'/dashboard/'}
-              key='dashboard'
+                          activeClassName="active"
+                          exact to={'/dashboard/'}
+                          key='dashboard'
                   >
                   Dashboard
                   </Menu.Item>,
@@ -51,10 +51,15 @@ class NavBar extends React.Component {
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
             [
-              <Menu.Item as={NavLink} activeClassName="active" exact
-                         to="/adminCompanies" key='adminCompanies'>Company Admin</Menu.Item>,
-              <Menu.Item as={NavLink} activeClassName="active" exact
-                         to="/adminStudents" key='adminStudents'>Student Admin</Menu.Item>,
+              <Menu.Item as={NavLink}
+                         activeClassName="active"
+                         exact
+                         to="/adminCompanies"
+                         key='adminCompanies'>Company Admin</Menu.Item>,
+              <Menu.Item as={NavLink}
+                         activeClassName="active"
+                         exact to="/adminStudents"
+                         key='adminStudents'>Student Admin</Menu.Item>,
             ]
           ) : ''}
         <Menu.Item position="right">
@@ -68,8 +73,9 @@ class NavBar extends React.Component {
               </Link>
             </div>
           ) : (
-            <Dropdown text={`${this.props.currentUser}`} pointing="top right" icon={ role === 'company' ? 'building' : 'student'}>
-              
+            <Dropdown text={`${this.props.currentUser}`}
+                      pointing="top right"
+                      icon={ role === 'company' ? 'building' : 'student'} >
               <Dropdown.Menu>
                 <Dropdown.Item icon="user" text="My Profile" as={NavLink} exact to="/profile"/>
 
