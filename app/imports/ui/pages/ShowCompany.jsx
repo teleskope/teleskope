@@ -15,7 +15,6 @@ import zipcodes from 'zipcodes';
 import { Companies, CompanySchema } from '../../api/company/company';
 import { Profiles } from '../../api/profile/profile';
 import JobCard from '../components/job/JobCard';
-// import { Menu } from 'semantic-ui-react/dist/commonjs/collections/Menu';
 
 
 class ShowCompany extends Component {
@@ -42,7 +41,6 @@ class ShowCompany extends Component {
     const owner = this.props.profile.owner;
     const isOwned = this.props.company.owners.includes(owner);
     if (!isOwned) {
-
       return null;
     }
     return <Modal id='modal' trigger={<Button
@@ -90,17 +88,8 @@ class ShowCompany extends Component {
     renderPage() {
       const { jobs, zipCode, image, summary, name, address, owners, socials, website } = this.props.company;
       const city = zipcodes.lookup(zipCode);
-      const email01 = 'mailto:';
-      const email02 = email01.concat(owners[0]);
-      const emailLink = email02.concat('?Subject=Hello');
-      const iconName = new Array(100);
-      if (socials) {
-        socials.map(function (social, index) {
-          iconName[index] = social.provider;
-          iconName[index].concat(' icon');
-          return iconName[index];
-        });
-      }
+      const { firstName, lastName } = this.props.profile;
+
       return (
           <Grid style={{ marginTop: '2em' }}>
             <Grid.Row columns={2}>
@@ -110,7 +99,7 @@ class ShowCompany extends Component {
               <Grid.Column>
                 <Header as='h1'>{name}  {this.renderEditModal()}</Header>
                 <Menu borderless text>
-                  <Menu.Item href={emailLink}>
+                  <Menu.Item href={`mailto:${owners[0]}?Subject=Hi, I'm ${firstName} ${lastName}!`}>
                     <Icon size='large' name="envelope outline"/>
                   </Menu.Item>
                   {website ? (
@@ -119,13 +108,13 @@ class ShowCompany extends Component {
                   ) : ''}
                   {socials ? (socials.map((social, index) => (
                       <Menu.Item href={social.link} key={index} target='_blank'>
-                        <Icon size='large' name={iconName[index]}/>
+                        <Icon size='large' name={social.provider}/>
                       </Menu.Item>
                   ))) : ''}
                 </Menu>
                 <List>
                   <List.Item>
-                    <List.Icon name='map marker alternate icon' size='big' verticalAlign='middle' />
+                    <List.Icon name='map marker alternate' size='big' verticalAlign='middle' />
                     <List.Content>
                       <List.Header>{address}, {zipCode}</List.Header>
                       {city ? (

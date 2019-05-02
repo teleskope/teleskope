@@ -31,15 +31,19 @@ class Landing extends React.Component {
                 <div style={{ maxWidth: '250px', margin: 'auto' }}>
                   <Image src='images/student.png' centered/>
                   <h3>For Students</h3>
-                  <i>{'“Teleskope helped me realize that I have no discernable skills that employers would find useful!”'}</i>
+                  <i>{'“Teleskope helped me realize that I have no discernable skills that employers would find ' +
+                  'useful!”'}</i>
                 </div>
               </Grid.Column>
-              <Grid.Column textAlign='center' verticalAlign='middle'><h2><i>Match your skill set with the skills employers are looking for</i></h2></Grid.Column>
+              <Grid.Column textAlign='center' verticalAlign='middle'>
+                <h2><i>Match your skill set with the skills employers are looking for</i></h2>
+              </Grid.Column>
               <Grid.Column textAlign='center'>
                 <div style={{ maxWidth: '250px', margin: 'auto' }}>
                   <Image src='images/company.png' centered/>
                   <h3>For Companies</h3>
-                  <i>{'This is the perfect tool to match our hiring managers with passionate compatible candidates.'}</i>
+                  <i>{'This is the perfect tool to match our hiring managers with passionate compatible candidates.'}
+                  </i>
                 </div>
 
               </Grid.Column>

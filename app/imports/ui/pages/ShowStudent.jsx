@@ -19,17 +19,6 @@ class ShowStudent extends Component {
   renderPage() {
     const { firstName, lastName, website, owner, summary, image, socials, zipCode } = this.props.student;
     const city = zipcodes.lookup(zipCode);
-    const email01 = 'mailto:';
-    const email02 = email01.concat(owner);
-    const emailLink = email02.concat('?Subject=Hello');
-    const iconName = new Array(100);
-    if (socials) {
-      socials.map(function (social, index) {
-        iconName[index] = social.provider;
-        iconName[index].concat(' icon');
-        return iconName[index];
-      });
-    }
 
     return (
         <Grid style={{ marginTop: '2em' }}>
@@ -41,7 +30,7 @@ class ShowStudent extends Component {
               <Header as='h1'>{firstName} {lastName}</Header>
               <Container>
                 <Menu borderless text>
-                  <Menu.Item href={emailLink}>
+                  <Menu.Item href={`mailto:${owner}?Subject=Hi ${firstName} ${lastName}!`} >
                     <Icon size='large' name="envelope outline"/>
                   </Menu.Item>
                   {website ? (
@@ -50,7 +39,7 @@ class ShowStudent extends Component {
                   ) : ''}
                   {socials ? (socials.map((social, index) => (
                       <Menu.Item href={social.link} key={index} target='_blank'>
-                        <Icon size='large' name={iconName[index]}/>
+                        <Icon size='large' name={social.provider}/>
                       </Menu.Item>
                   ))) : ''}
                 </Menu>

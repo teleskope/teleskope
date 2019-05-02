@@ -4,7 +4,6 @@ import { Card, Icon, Image, List, Label } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { Roles } from 'meteor/alanning:roles';
 import zipcodes from 'zipcodes';
-import { Roles } from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
 
 export default function CompanyCard(props) {
@@ -15,7 +14,7 @@ export default function CompanyCard(props) {
     handleFollow = () => {
       props.onFollow(props.favorited, _id);
     };
-  };
+  }
 
   let label2 = null;
   if (Roles.userIsInRole(Meteor.userId(), 'student') && props.company.matches > 0) {

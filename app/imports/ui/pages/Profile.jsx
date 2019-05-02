@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import zipcodes from 'zipcodes';
-import { Container, Header, Icon, Image, Loader, Grid, Menu, } from 'semantic-ui-react';
+import { Container, Header, Icon, Image, Loader, Grid, Menu } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Profiles } from '../../api/profile/profile';
 import ProfileSkillsDropdown from '../components/ProfileSkillsDropdown';
@@ -19,17 +19,6 @@ class Profile extends Component {
   renderPage() {
     const { firstName, lastName, website, owner, summary, image, socials, zipCode, skills } = this.props.profile;
     const city = zipcodes.lookup(zipCode);
-    const email01 = 'mailto:';
-    const email02 = email01.concat(owner);
-    const emailLink = email02.concat('?Subject=Hello');
-    const iconName = new Array(100);
-    if (socials) {
-      socials.map(function (social, index) {
-        iconName[index] = social.provider;
-        iconName[index].concat(' icon');
-        return iconName[index];
-      });
-    }
 
     return (
         <Grid style={{ marginTop: '2em' }}>
@@ -41,7 +30,7 @@ class Profile extends Component {
               <Header as='h1'>{firstName} {lastName}</Header>
               <Container>
                 <Menu borderless text>
-                  <Menu.Item href={emailLink}>
+                  <Menu.Item href={`mailto:${owner}?Subject=Hi ${firstName} ${lastName}!`}>
                     <Icon size='large' name="envelope outline"/>
                   </Menu.Item>
                   {website ? (
@@ -50,7 +39,7 @@ class Profile extends Component {
                   ) : ''}
                   {socials ? (socials.map((social, index) => (
                     <Menu.Item href={social.link} key={index} target='_blank'>
-                      <Icon size='large' name={iconName[index]}/>
+                      <Icon size='large' name={social.provider}/>
                     </Menu.Item>
                   ))) : ''}
                 </Menu>

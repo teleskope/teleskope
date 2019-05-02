@@ -19,10 +19,14 @@ export default function StudentCard(props) {
         <Card.Content>
           <br/>
           <Card.Meta>
-            { website ? (
-            <a href={website}>
-              <Icon name='globe' color='blue'/> &nbsp;{website}
+            <a href={`mailto:${owner}?Subject=Hi ${firstName} ${lastName}!`} target="_top" style={{ color: '#0E6EB8' }}
+            >
+              {owner}
             </a>
+            { website ? (
+              <a href={website}>
+                <Icon name='globe' color='blue'/> &nbsp;{website}
+              </a>
             ) : ''}
           </Card.Meta>
         <Card.Description>

@@ -6,9 +6,9 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import zipcodes from 'zipcodes';
 import { Companies } from '/imports/api/company/company';
+import { Roles } from 'meteor/alanning:roles';
 import { Profiles } from '../../api/profile/profile';
 import CompanyCard from '../components/company/CompanyCard';
-
 
 const filterOptions = [
   {
@@ -91,6 +91,7 @@ class ListCompanies extends React.Component {
     // // get users skills into array
     const userSkills = this.props.profile.skills;
     // added aggregated skills to companies
+    // TODO:Get rid of ESLint errors
     const companyskills = _.chain(companies)
                             .map(company => {
                               const skills = [];
@@ -111,11 +112,7 @@ class ListCompanies extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    const companies = this.props.companies;
-    let favorites = null;
-    if (Roles.userIsInRole(Meteor.userId(), 'student')) {
-      favorites = this.props.profile.following;
-    }
+    const favorites = this.props.profile.following;
     const sortedCompanies = this.sortCompanies(this.state.sort);
 
     return (
@@ -155,7 +152,7 @@ class ListCompanies extends React.Component {
                   button
                   className='icon'
                 >
-                  <Dropdown.Menu >
+                  <Dropdown.Menu>
                     <Dropdown.Menu scrolling>
                       {filterOptions.map(option => (
                         <Dropdown.Item key={option.value} {...option} onClick={this.handleSort}/>
@@ -167,27 +164,17 @@ class ListCompanies extends React.Component {
             </Grid.Row>
             <Grid.Row columns='equal'>
               <Card.Group stackable>
-                {Roles.userIsInRole(Meteor.userId(), 'student') ? (
-                    sortedCompanies.map((company, index) => {
-                      const isFavorited = favorites.includes(company._id);
-                      return (
-                        <CompanyCard
-                            key={index}
-                            company={company}
-                            onFollow={this.handleFollow}
-                            favorited={isFavorited}
-                        />);
-                    })
-                ) : (
-                    sortedCompanies.map((company, index) => {
-                      return (
-                          <CompanyCard
-                              key={index}
-                              company={company}
-                          />);
-                    })
-                )}
-                </Card.Group>
+                {sortedCompanies.map((company, index) => {
+                  const isFavorited = favorites.includes(company._id);
+                  return (
+                      <CompanyCard
+                          key={index}
+                          company={company}
+                          onFollow={this.handleFollow}
+                          favorited={isFavorited}
+                      />);
+                })}
+              </Card.Group>
             </Grid.Row>
           </Grid>
         </Container>

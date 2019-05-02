@@ -37,7 +37,8 @@ h1, h2, h3, h4, h5, p, span {
   background-color: #455880;
   padding-top: 20px;
   padding-bottom: 20px;
-}/*For the companyCard when company students are logged in*/
+}
+/*For the companyCard when company students are logged in*/
 .companyCardImage > img {
   width: 100%;
   height: auto;
