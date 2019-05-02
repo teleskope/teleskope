@@ -35,13 +35,12 @@ class ShowCompany extends Component {
 
   renderEditModal() {
     const { role } = this.props.profile;
-    if (role !== 'company') {
+    if (role !== 'company' || role !== 'admin') {
       return null;
     }
     const owner = this.props.profile.owner;
     const isOwned = this.props.company.owners.includes(owner);
-    if (!isOwned) {
-
+    if ((role !== 'admin') && !isOwned) {
       return null;
     }
     return <Modal id='modal' trigger={<Button
