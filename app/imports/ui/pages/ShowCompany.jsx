@@ -8,7 +8,6 @@ import TextField from 'uniforms-semantic/TextField';
 import NumField from 'uniforms-semantic/NumField';
 import LongTextField from 'uniforms-semantic/LongTextField';
 import SubmitField from 'uniforms-semantic/SubmitField';
-import HiddenField from 'uniforms-semantic/HiddenField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
 import { withTracker } from 'meteor/react-meteor-data';
 import zipcodes from 'zipcodes';
@@ -27,8 +26,8 @@ class ShowCompany extends Component {
   }
 
   submit(data) {
-    const { name, owners, address, zipCode, summary, website, _id } = data;
-    Companies.update(_id, { $set: { name, owners, address, zipCode, summary, website } }, (error) => (error ?
+    const { name, owners, address, zipCode, summary, website, _id, image } = data;
+    Companies.update(_id, { $set: { name, owners, address, zipCode, summary, website, image } }, (error) => (error ?
         Bert.alert({ type: 'danger', message: `Update failed: ${error.message}` }) :
         Bert.alert({ type: 'success', message: 'Update succeeded' })));
   }
@@ -58,11 +57,11 @@ class ShowCompany extends Component {
               <TextField name='owners'/>
               <TextField name='address'/>
               <NumField name='zipCode' decimal={false}/>
-              <LongTextField name='summary'/>
               <TextField name='website'/>
+              <TextField name='image'/>
+              <LongTextField name='summary'/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
-              <HiddenField name='_id' />
             </Segment>
           </AutoForm>
         </Grid.Column>
