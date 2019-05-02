@@ -8,21 +8,29 @@ import { Profiles } from '../../api/profile/profile';
 import { Companies } from '/imports/api/company/company';
 import DashboardSubs from '../components/DashboardSubs';
 
-const profileStyle = {
-  padding: '50px 0px',
-};
-
 const segmentStyle = {
   backgroundColor: '#455880',
 };
-
+ /* eslint no-else-return: "error" */
 class Dashboard extends React.Component {
+  subCompanies(role) {
+    const { companies, profile } = this.props;
+    let result = [];
+    if (role === 'company') {
+      result = _.filter(companies, company => company.owners.includes(profile.owner));
+    } else if (role === 'student') {
+      result = _.filter(companies, (company) => profile.following.includes(company._id));
+    }
+    return result;
+  }
+
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
   renderPage() {
-    const { image, firstName, lastName } = this.props.profile;
+    const { image, firstName, lastName, role } = this.props.profile;
+    const companies = this.subCompanies(role);
     return (
 
       <div>
@@ -30,7 +38,8 @@ class Dashboard extends React.Component {
           <Grid.Column width={4}>
               <Image src={image} size='medium' />
               <DashboardSubs
-                myCompanies={this.props.myCompanies}
+                myCompanies={companies}
+                profile={this.props.profile}
               />
           </Grid.Column>
           <Grid.Column width={10}>
@@ -56,7 +65,7 @@ class Dashboard extends React.Component {
 Dashboard.propTypes = {
   profile: PropTypes.object,
   ready: PropTypes.bool,
-  myCompanies: PropTypes.array,
+  companies: PropTypes.array,
 };
 
 const DashboardContainer = withTracker(() => {
@@ -64,15 +73,15 @@ const DashboardContainer = withTracker(() => {
     Meteor.subscribe('UserProfile'),
     Meteor.subscribe('Companies'),
   ];
-
-  const email = Meteor.user() ? Meteor.user().username : undefined;
-  const myCompanies = Companies.find({ owners: email }).fetch();
-
   const profile = Profiles.findOne({});
+  // const email = Meteor.user() ? Meteor.user().username : undefined;
+
+  const companies = Companies.find({}).fetch();
+
   const ready = handles.some(handle => handle.ready());
   return {
     profile,
-    myCompanies,
+    companies,
     ready,
   };
 })(Dashboard);
