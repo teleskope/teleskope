@@ -14,14 +14,14 @@ export default function CompanyCard(props) {
   };
 
   let label2 = null;
-  if (Roles.userIsInRole(Meteor.userId(), 'student')) {
+  if (Roles.userIsInRole(Meteor.userId(), 'student') && props.company.matches > 0) {
     label2 = { as: 'a', color: 'orange', ribbon: 'right',
       content: `${props.company.matches} skill matches!` };
   }
 
   return (
       <Card raised>
-        <Label attached='top' size='big' to={`/companies/${_id}`} as={NavLink} activeClassName="active" >
+        <Label attached='top' size='big' activeClassName="active" >
           {name}
           {Roles.userIsInRole(Meteor.userId(), 'student') ? (
               <Icon
