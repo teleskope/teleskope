@@ -26,16 +26,14 @@ class NavBar extends React.Component {
         <Image src='images/ts_white_logo.png' size='tiny'/><Image src='images/teleskope_horizontal.svg'/>
         </Menu.Item>
         {((Roles.userIsInRole(userId, 'student') || Roles.userIsInRole(userId, 'company')) && this.props.profile) ? (
-            <Menu.Item as={NavLink}
-                 activeClassName="active"
-                 exact to={'/dashboard/'}
-                 key='dashboard'
-                 >
-                 Dashboard
-            </Menu.Item>
-        ) : ''}
-        {this.props.currentUser ? (
             [
+              <Menu.Item as={NavLink}
+              activeClassName="active"
+              exact to={'/dashboard/'}
+              key='dashboard'
+                  >
+                  Dashboard
+                  </Menu.Item>,
               <Menu.Item as={NavLink}
                          activeClassName="active"
                          exact to="/companies"
@@ -51,8 +49,13 @@ class NavBar extends React.Component {
             ]
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-            <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
-        ) : ''}
+            [
+              <Menu.Item as={NavLink} activeClassName="active" exact
+                         to="/adminCompanies" key='adminCompanies'>Company Admin</Menu.Item>,
+              <Menu.Item as={NavLink} activeClassName="active" exact
+                         to="/adminStudents" key='adminStudents'>Student Admin</Menu.Item>,
+            ]
+          ) : ''}
         <Menu.Item position="right">
           {this.props.currentUser === '' ? (
             <div>

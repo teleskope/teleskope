@@ -7,6 +7,7 @@ import zipcodes from 'zipcodes';
 import { Companies } from '/imports/api/company/company';
 import { Profiles } from '../../api/profile/profile';
 import CompanyCard from '../components/company/CompanyCard';
+import { Roles } from 'meteor/alanning:roles';
 
 const filterOptions = [
   {
@@ -117,24 +118,28 @@ class ListCompanies extends React.Component {
     return (
         <Container style={{ marginTop: '80px' }}>
           <Grid>
-            <Grid.Row>
-              <Header as="h2" floated='left'>We think you may like</Header>
-            </Grid.Row>
-            <Grid.Row>
-              <Card.Group stackable>
-                  {this.matchedCompanies().map((company, index) => {
-                    const isFavorited = favorites.includes(company._id);
-                    return (
-                      <CompanyCard
-                          key={index}
-                          company={company}
-                          onFollow={this.handleFollow}
-                          favorited={isFavorited}
-                      />);
-                    })}
-                </Card.Group>
-            </Grid.Row>
-            <Divider />
+            {Roles.userIsInRole(Meteor.userId(), 'student') ? (
+              [
+                <Grid.Row key='head'>
+                  <Header as="h2" floated='left'>We think you may like</Header>
+                </Grid.Row>,
+                <Grid.Row key='card'>
+                  <Card.Group stackable>
+                      {this.matchedCompanies().map((company, index) => {
+                        const isFavorited = favorites.includes(company._id);
+                        return (
+                          <CompanyCard
+                              key={index}
+                              company={company}
+                              onFollow={this.handleFollow}
+                              favorited={isFavorited}
+                          />);
+                        })}
+                    </Card.Group>
+                </Grid.Row>,
+                <Divider key='divider'/>,
+              ]
+            ) : ''}
             <Grid.Row verticalAlign='middle' columns='equal'>
               <Grid.Column floated='left'>
                 <Header as="h2">All Companies</Header>
