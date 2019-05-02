@@ -96,9 +96,10 @@ class ShowCompany extends Component {
               <NumField name='zipCode' decimal={false}/>
               <LongTextField name='summary'/>
               <TextField name='website'/>
+              <TextField name='image'/>
+              <LongTextField name='summary'/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
-              <HiddenField name='_id' />
             </Segment>
           </AutoForm>
         </Grid.Column>
