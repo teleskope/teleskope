@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Label, Menu } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 
 export default class DashboardSubs extends Component {
   state = { activeItem: '' }
@@ -15,6 +15,7 @@ export default class DashboardSubs extends Component {
                       active={activeItem === company.name}
                       onClick={this.handleItemClick}
                       key={company._id}
+                      link href={`/#/companies/${company._id}`}
                       >
                       {/* TODO recent notification labels for each company */}
                       {/* <Label color='teal'></Label> */} 
@@ -24,19 +25,13 @@ export default class DashboardSubs extends Component {
   }
 
   render() {
-    const { activeItem } = this.state;
     const myCompanies = this.myCompanies();
 
     return (
-      <Menu size='large' vertical>
+      <Menu vertical fluid>
         {/* only show if logged in as company TODO  */}
         <Menu.Item><Menu.Header>My Companies</Menu.Header></Menu.Item>
         { myCompanies }
-
-        <Menu.Item name='updates' active={activeItem === 'updates'} onClick={this.handleItemClick}>
-          <Label>1</Label>
-          Updates
-        </Menu.Item>
       </Menu>
     );
   }
