@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Header, Segment, Image, Button, List, Loader } from 'semantic-ui-react';
+import { Grid, Header, Segment, Image, Loader } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Icon, Image, Menu } from 'semantic-ui-react';
+import { Card, Icon, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { Roles } from 'meteor/alanning:roles';
-import { Meteor } from "meteor/meteor";
+import { Meteor } from 'meteor/meteor';
 
 const imageStyle = {
   width: '100%',
@@ -50,8 +50,6 @@ export default function StudentCard(props) {
           {summary ? `${summary.substring(0, summaryMaxLen)}...` : ''}
         </Card.Description>
         </Card.Content>
-         {/* TODO: list skills for extra card content????? */}
-        {/* <Card.Content extra>{skills}</Card.Content> */}
       </Card>
   );
 }

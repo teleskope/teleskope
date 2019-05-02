@@ -3,11 +3,11 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Grid, Header, Loader, Card, Divider, Dropdown } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Roles } from 'meteor/alanning:roles';
 import zipcodes from 'zipcodes';
 import { Companies } from '/imports/api/company/company';
 import { Profiles } from '../../api/profile/profile';
 import CompanyCard from '../components/company/CompanyCard';
-import { Roles } from 'meteor/alanning:roles';
 
 const filterOptions = [
   {
@@ -102,9 +102,7 @@ class ListCompanies extends React.Component {
     // sort by length of matched skills
     const sorted = _.chain(companyskills)
                       .sortBy((company) => _.intersection(company.skills, userSkills).length)
-                      .map(company => {
-                        return _.extend(company, { matches: _.intersection(company.skills, userSkills).length });
-                      })
+                      .map(company => _.extend(company, { matches: _.intersection(company.skills, userSkills).length }))
                       .value();
 
     return sorted.reverse().slice(0, 3);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Card, Icon, Image, List, Label } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import zipcodes from 'zipcodes';
