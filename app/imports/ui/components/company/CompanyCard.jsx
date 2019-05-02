@@ -14,7 +14,7 @@ export default function CompanyCard(props) {
   };
 
   let label2 = null;
-  if (Roles.userIsInRole(Meteor.userId(), 'student')) {
+  if (Roles.userIsInRole(Meteor.userId(), 'student') && props.company.matches > 0) {
     label2 = { as: 'a', color: 'orange', ribbon: 'right',
       content: `${props.company.matches} skill matches!` };
   }
