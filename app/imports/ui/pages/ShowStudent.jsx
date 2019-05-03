@@ -37,11 +37,14 @@ class ShowStudent extends Component {
                       <Menu.Item href={website} target='_blank'>
                         <Icon size='large' name='globe'/></Menu.Item>
                   ) : ''}
-                  {socials ? (socials.map((social, index) => (
-                      <Menu.Item href={social.link} key={index} target='_blank'>
+                  {socials ? (socials.map((social, index) => {
+                    if (social.link) {
+                      return <Menu.Item href={social.link} key={index} target='_blank'>
                         <Icon size='large' name={social.provider}/>
-                      </Menu.Item>
-                  ))) : ''}
+                      </Menu.Item>;
+                    }
+                    return '';
+                  })) : ''}
                 </Menu>
                 {city ? (
                     <Header as='h4'>
@@ -72,7 +75,8 @@ class ShowStudent extends Component {
             <Grid.Row>
               <Container text>
                 <Header as='h2'>Skills</Header>
-                <ProfileSkillsDropdown/>
+                {/*TODO: Display Skills*/}
+                {/*<ProfileSkillsDropdown/>*/}
               </Container>
             </Grid.Row>
         </Grid>

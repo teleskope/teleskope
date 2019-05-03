@@ -8,7 +8,7 @@ import { Skills } from '../../api/skill/skill';
 class ProfileSkillsDropdown extends React.Component {
   state = {
     currentValues: [],
-  }
+  };
 
   handleChange = (e, { value }) => {
     this.setState(

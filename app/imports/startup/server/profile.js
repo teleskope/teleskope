@@ -34,6 +34,8 @@ Meteor.methods({
     profile.website = '';
     profile.zipCode = '';
     profile.socials = [];
+    // const providers = ['linkedin', 'github', 'twitter'];
+    // providers.map((provider) => profile.socials.push({ provider: `${provider}`, link: '' }));
     profile.skills = [];
     profile.experience = '';
     profile.summary = '';

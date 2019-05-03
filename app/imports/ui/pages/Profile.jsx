@@ -37,11 +37,14 @@ class Profile extends Component {
                       <Menu.Item href={website} target='_blank'>
                         <Icon size='large' name='globe'/></Menu.Item>
                   ) : ''}
-                  {socials ? (socials.map((social, index) => (
-                    <Menu.Item href={social.link} key={index} target='_blank'>
-                      <Icon size='large' name={social.provider}/>
-                    </Menu.Item>
-                  ))) : ''}
+                  {socials ? (socials.map((social, index) => {
+                    if (social.link) {
+                      return <Menu.Item href={social.link} key={index} target='_blank'>
+                        <Icon size='large' name={social.provider}/>
+                      </Menu.Item>;
+                    }
+                    return '';
+                  })) : ''}
                 </Menu>
                 {city ? (
                   <Header as='h4'>

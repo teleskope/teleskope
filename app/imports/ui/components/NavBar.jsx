@@ -10,7 +10,7 @@ import { Profiles } from '/imports/api/profile/profile';
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
   render() {
-    return (this.props.ready) ? this.renderNavBar() : <Loader active>Retrieving data</Loader>;
+    return (this.props.ready) ? this.renderNavBar() : '';
   }
 
   renderNavBar() {
