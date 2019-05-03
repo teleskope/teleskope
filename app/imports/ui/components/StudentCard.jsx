@@ -12,7 +12,7 @@ export default function StudentCard(props) {
           <Label attached='top' size='big' >
             {`${firstName} ${lastName}`}
           </Label>
-          <Link to={`/companies/${_id}`}>
+          <Link to={`/students/${_id}`}>
             <Image src={image} className="companyCardImage" style={{ top: '17px' }}/>
         </Link>
 
