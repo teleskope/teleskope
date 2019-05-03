@@ -35,7 +35,7 @@ class ShowCompany extends Component {
 
   renderEditModal() {
     const { role } = this.props.profile;
-    if (role !== 'company' || role !== 'admin') {
+    if (role !== 'company' && role !== 'admin') {
       return null;
     }
     const owner = this.props.profile.owner;

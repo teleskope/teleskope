@@ -69,10 +69,13 @@ class NavBar extends React.Component {
             </div>
           ) : (
             <Dropdown text={`${this.props.currentUser}`} pointing="top right" icon={ role === 'company' ? 'building' : 'student'}>
-              
-              <Dropdown.Menu>
-                <Dropdown.Item icon="user" text="My Profile" as={NavLink} exact to="/profile"/>
 
+              <Dropdown.Menu>
+                {((Roles.userIsInRole(userId, 'student') || Roles.userIsInRole(userId, 'company')) && this.props.profile) ? (
+                    [
+                      <Dropdown.Item icon="user" text="My Profile" as={NavLink} exact to="/profile"/>,
+                    ]
+                ) : ''}
                 <Dropdown.Item icon="sign out" text="Sign Out" as={NavLink} exact to="/"
                                onClick={(() => Meteor.logout())}
                 />

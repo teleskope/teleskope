@@ -35,14 +35,6 @@ class ListCompanies extends React.Component {
     };
   }
 
-  handleFollow = (favorited, companyId) => {
-    if (!favorited) {
-      Meteor.call('followCompany', companyId);
-    } else {
-      Meteor.call('unfollowCompany', companyId);
-    }
-  }
-
   handleSort = (e, data) => {
     this.setState({ sort: data.value });
   }
@@ -112,8 +104,6 @@ class ListCompanies extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-
-    const favorites = this.props.profile.following;
     const sortedCompanies = this.sortCompanies(this.state.sort);
 
     return (
@@ -127,13 +117,10 @@ class ListCompanies extends React.Component {
                 <Grid.Row key='card'>
                   <Card.Group stackable>
                       {this.matchedCompanies().map((company, index) => {
-                        const isFavorited = favorites.includes(company._id);
                         return (
                           <CompanyCard
                               key={index}
                               company={company}
-                              onFollow={this.handleFollow}
-                              favorited={isFavorited}
                           />);
                         })}
                     </Card.Group>
@@ -167,13 +154,10 @@ class ListCompanies extends React.Component {
             <Grid.Row>
               <Card.Group stackable>
                 {sortedCompanies.map((company, index) => {
-                  const isFavorited = favorites.includes(company._id);
                   return (
                     <CompanyCard
                         key={index}
                         company={company}
-                        onFollow={this.handleFollow}
-                        favorited={isFavorited}
                     />);
                     })}
                 </Card.Group>
