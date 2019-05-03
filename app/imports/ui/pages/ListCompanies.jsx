@@ -115,7 +115,7 @@ class ListCompanies extends React.Component {
 
     return (
         <Container style={{ marginTop: '80px' }}>
-          <Grid>
+          <Grid style={{ marginRight: 'auto', marginLeft: 'auto' }}>
             {Roles.userIsInRole(Meteor.userId(), 'student') ? (
               [
                 <Grid.Row key='head' columns='equal'>
@@ -138,8 +138,8 @@ class ListCompanies extends React.Component {
                 <Divider key='divider'/>,
               ]
             ) : ''}
-            <Grid.Row verticalAlign='middle'>
-              <Grid.Column width={8}>
+            <Grid.Row verticalAlign='middle' columns='equal'>
+              <Grid.Column>
                 <Header floated='left' as="h2">All Companies</Header>
               </Grid.Column>
               <Grid.Column>
