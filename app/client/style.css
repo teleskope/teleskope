@@ -56,9 +56,21 @@ img.companyCardImage {
   object-fit: cover;
   object-position: center;
 }
+img.studentCardImage {
+  width: 100%;
+  height: 200px;
+  max-height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
 
 .righteous {
   font-family: 'Righteous', cursive !important;
+}
+
+a.ui.orange.right.ribbon.label {
+  z-index: 2;
+  top: 15%;
 }
 
 /* Media Query override for S-UI */

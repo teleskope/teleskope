@@ -20,8 +20,8 @@ export default function CompanyCard(props) {
   }
 
   return (
-      <Card raised>
-        <Label attached='top' size='big' activeClassName="active" >
+      <Card raised style={{ maxWidth: '345px' }}>
+        <Label attached='top' size='big' activeClassName="active" style={{ zIndex: 2 }}>
           {name}
           {Roles.userIsInRole(Meteor.userId(), 'student') ? (
               <Icon

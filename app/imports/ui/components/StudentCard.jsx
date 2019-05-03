@@ -8,12 +8,12 @@ export default function StudentCard(props) {
   const summaryMaxLen = 150;
 
   return (
-      <Card raised>
-          <Label attached='top' size='big' >
+      <Card raised style={{maxWidth: '300px' }}>
+          <Label attached='top' size='large' style={{ zIndex: 1 }}>
             {`${firstName} ${lastName}`}
           </Label>
           <Link to={`/students/${_id}`}>
-            <Image src={image} className="companyCardImage" style={{ top: '17px' }}/>
+            <Image src={image} className="companyCardImage" style={{}}/>
         </Link>
 
         <Card.Content>
