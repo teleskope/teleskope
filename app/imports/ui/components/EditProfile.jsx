@@ -14,8 +14,8 @@ import { Profiles, ProfileSchema } from '../../api/profile/profile';
 
 class EditProfile extends React.Component {
   sites = [{ provider: 'linkedin', link: '' },
-    { provider: 'github', link: '' },
-    { provider: 'twitter', link: '' }];
+            { provider: 'github', link: '' },
+            { provider: 'twitter', link: '' }];
 
   socialSitesTemp = [];
 
@@ -25,25 +25,15 @@ class EditProfile extends React.Component {
   show = () => this.setState({ open: true });
 
   /* Close modal */
-  close = () => {
-    console.log('close');
-    this.setState({ open: false });
-  }
-
-  callClose = () => {
-    console.log('callClose');
-    this.close;
-  }
+  close = () => this.setState({ open: false });
 
   /** On successful submit, insert the this.props.profile. */
   submit(data) {
     const { firstName, lastName, website, summary, image, zipCode, _id } = data;
+
+    /* Clear any social sites without any links */
     let { socials } = data;
-    console.log('socials');
-    console.log(socials);
     socials = socials.filter((social) => social.link);
-    console.log('socials');
-    console.log(socials);
 
     /* Check's seem redundant but i included it anyways */
     check(data, Object);
@@ -55,16 +45,13 @@ class EditProfile extends React.Component {
         (error) => (error ?
             Bert.alert({ type: 'danger', message: `Update failed: ${error.message}` }) :
             Bert.alert({ type: 'success', message: 'Update succeeded' })));
-    console.log("Profile object");
-    console.log(Profiles.findOne({ _id: _id }));
     this.close();
   }
 
   loadData = (profile) => () => {
-    console.log("entered loadData");
-    console.log(profile.socials);
     let socialsIndex = 0;
     this.socialSitesTemp = [];
+
     /* Copy profile.socials.$.link to socialSitesTemp */
     for (let i = 0; i < this.sites.length; i++) {
       this.socialSitesTemp.push(Object.assign({}, this.sites[i]));
@@ -75,12 +62,7 @@ class EditProfile extends React.Component {
         }
       }
     }
-    console.log("entered loadData 2");
-    console.log(this.socialSitesTemp);
-    /* this.socialSitesTemp & profile.socials point to the same array since no CopyConstructor */
-    // profile.socials = this.socialSitesTemp;
     Profiles.update(profile._id, { $set: { socials: this.socialSitesTemp } });
-    console.log("exiting loadData");
     this.show();
   };
 
@@ -107,13 +89,9 @@ class EditProfile extends React.Component {
                         <TextField name='lastName'/>
                       </Form.Group>
                       <TextField name='website'/>
-                      {this.socialSitesTemp.map((social, index) => {
-                        // if (index > 0) {
-                        //   console.log(`${index - 1}, ${this.props.profile.socials[index - 1].link}`);
-                        // }
-                        return <TextField label={`${social.provider}`}
-                                          name={`socials.${index}.link`} key={index}/>;
-                      })}
+                      {this.socialSitesTemp.map((social, index) => (<TextField label={`${social.provider}`}
+                                          name={`socials.${index}.link`} key={index}/>
+                      ))}
                       <TextField name='image'/>
                       <TextField name='zipCode'/>
                       <LongTextField name='summary'/>
