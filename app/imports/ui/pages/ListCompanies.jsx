@@ -118,7 +118,7 @@ class ListCompanies extends React.Component {
           <Grid>
             {Roles.userIsInRole(Meteor.userId(), 'student') ? (
               [
-                <Grid.Row key='head'>
+                <Grid.Row key='head' columns='equal'>
                   <Header as="h2" floated='left'>We think you may like</Header>
                 </Grid.Row>,
                 <Grid.Row key='card'>
@@ -138,9 +138,9 @@ class ListCompanies extends React.Component {
                 <Divider key='divider'/>,
               ]
             ) : ''}
-            <Grid.Row verticalAlign='middle' columns='equal'>
-              <Grid.Column floated='left'>
-                <Header as="h2">All Companies</Header>
+            <Grid.Row verticalAlign='middle'>
+              <Grid.Column width={8}>
+                <Header floated='left' as="h2">All Companies</Header>
               </Grid.Column>
               <Grid.Column>
                 <Dropdown
@@ -159,9 +159,8 @@ class ListCompanies extends React.Component {
                   </Dropdown.Menu>
                 </Dropdown>
               </Grid.Column>
-              <Grid.Column width={8}></Grid.Column>
             </Grid.Row>
-            <Grid.Row>
+            <Grid.Row columns='equal'>
               <Card.Group stackable>
                 {sortedCompanies.map((company, index) => {
                   const isFavorited = favorites.includes(company._id);

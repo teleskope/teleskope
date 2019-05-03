@@ -68,6 +68,12 @@ img.studentCardImage {
   font-family: 'Righteous', cursive !important;
 }
 
+/* margin right left auto */
+.ui.stackable.cards {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
 a.ui.orange.right.ribbon.label {
   z-index: 2;
   top: 15%;
