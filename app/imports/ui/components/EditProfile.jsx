@@ -81,7 +81,6 @@ class EditProfile extends React.Component {
               <Grid container centered>
                 <Grid.Column>
                   <Header as="h2" textAlign="center">Edit Profile</Header>
-                  /* Need to bind this.submit call*/
                   <AutoForm schema={ProfileSchema} onSubmit={this.submit.bind(this)}
                             model={this.props.profile}>
                     <Segment>
