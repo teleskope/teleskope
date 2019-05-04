@@ -4,18 +4,18 @@ import { Card, Icon, Image, Label } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 export default function StudentCard(props) {
-  const { firstName, lastName, website, _id, summary, image } = props.student;
+  const { firstName, lastName, website, _id, summary, image, owner } = props.student;
   const summaryMaxLen = 150;
 
   return (
       <Card raised style={{maxWidth: '300px' }}>
-          <Label attached='top' size='large' style={{ zIndex: 1 }}>
-            {`${firstName} ${lastName}`}
+          <Label attached='top' size='big'>
+            <Link to={`/students/${_id}`} style={{ color: '#000' }}>
+                  {`${firstName} ${lastName}`}</Link>
           </Label>
           <Link to={`/students/${_id}`}>
-            <Image src={image} className="companyCardImage" style={{}}/>
+            <Image src={image} className="companyCardImage" style={{ top: '17px' }}/>
         </Link>
-
         <Card.Content>
           <br/>
           <Card.Meta>
