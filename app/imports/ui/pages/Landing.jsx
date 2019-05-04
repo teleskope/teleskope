@@ -12,7 +12,7 @@ class Landing extends React.Component {
 
       <div>
         <Segment id="teleskope-background" attached="top" inverted padded="very" size="large" textAlign="center">
-          <Image src='images/teleskope_horizontal.svg' centered size='large'/>
+          <Header as="h1" className='righteous' size='large'>TeleSkope</Header>
           <Header as="h2" size="medium">Helping employers find stars</Header>
           {!Meteor.user() ? ([
             <Link to={'/signup'} key="StudentSignup">

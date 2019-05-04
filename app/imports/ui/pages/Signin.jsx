@@ -47,8 +47,8 @@ export default class Signin extends React.Component {
     // Otherwise return the Login form.
     return (
         <Container style={{ marginTop: '80px' }}>
-          <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
-            <Grid.Column>
+          <Grid textAlign="center" verticalAlign="middle" centered columns={1}>
+            <Grid.Column mobile={12} tablet={10} computer={8}>
               <Header as="h2" textAlign="center">
                 Login to your account
               </Header>
@@ -72,7 +72,7 @@ export default class Signin extends React.Component {
                       type="password"
                       onChange={this.handleChange}
                   />
-                  <Form.Button content="Submit"/>
+                  <Form.Button content="Log In" fluid color='blue'/>
                 </Segment>
               </Form>
               <Message>
