@@ -12,20 +12,17 @@ class Landing extends React.Component {
 
       <div>
         <Segment id="teleskope-background" attached="top" inverted padded="very" size="large" textAlign="center">
-          <Header as="h1" className='righteous' size='large'>TeleSkope</Header>
+          <Header as="h1" className='righteous'>TeleSkope</Header>
           <Header as="h2" size="medium">Helping employers find stars</Header>
           {!Meteor.user() ? ([
             <Link to={'/signup'} key="StudentSignup">
-              <Button>{'I\'m a Student'}</Button>
+              <Button><Icon name='student' />{'I\'m a Student'}</Button>
             </Link>,
             <Link to={'/signup'} key="CompanySignup">
-              <Button>{'I\'m an Employer'}</Button>
+              <Button><Icon name='building' />{'I\'m an Employer'}</Button>
             </Link>,
           ]) : ''}
-        </Segment>
-
-        <Segment padded="very" basic>
-          <Grid container centered stackable>
+          <Grid container centered stackable style={{ marginTop: '1em' }}>
             <Grid.Row textAlign='center' columns={3}>
               <Grid.Column textAlign='center'>
                 <div style={{ maxWidth: '250px', margin: 'auto' }}>
@@ -48,6 +45,12 @@ class Landing extends React.Component {
 
               </Grid.Column>
             </Grid.Row>
+          </Grid>
+        </Segment>
+
+        <Segment padded="very" basic>
+          <Grid container centered stackable>
+
             <Grid.Row columns={3}>
               <Grid.Column textAlign='center'>
                 <Icon size='huge' name="star outline" />
