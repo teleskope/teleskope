@@ -9,9 +9,7 @@ import { Profiles } from '../../api/profile/profile';
 function addData(data) {
   console.log(`  Adding: ${data.lastName}`);
   const profile = data;
-  if (!profile.socials) {
-    profile.socials = [];
-  }
+  profile.socials = profile.socials || [];
   Profiles.insert(profile);
 }
 
@@ -38,8 +36,6 @@ Meteor.methods({
     profile.website = '';
     profile.zipCode = '';
     profile.socials = [];
-    // const providers = ['linkedin', 'github', 'twitter'];
-    // providers.map((provider) => profile.socials.push({ provider: `${provider}`, link: '' }));
     profile.skills = [];
     profile.experience = '';
     profile.summary = '';

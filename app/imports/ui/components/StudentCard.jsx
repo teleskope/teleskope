@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Icon, Image, Label } from 'semantic-ui-react';
+import { Card, Icon, Image, Label, Header, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 export default function StudentCard(props) {
@@ -13,21 +13,26 @@ export default function StudentCard(props) {
             <Link to={`/students/${_id}`} style={{ color: '#000' }}>
                   {`${firstName} ${lastName}`}</Link>
           </Label>
-          <Link to={`/students/${_id}`}>
-            <Image src={image} className="companyCardImage" style={{ top: '17px' }}/>
+        {/* <br/> for buffer between label and image */}
+        <br/>
+        <br/>
+        <Link to={`/students/${_id}`}>
+            <Image src={image} className="companyCardImage"/>
         </Link>
         <Card.Content>
-          <br/>
           <Card.Meta>
-            <a href={`mailto:${owner}?Subject=Hi ${firstName} ${lastName}!`} target="_top" style={{ color: '#0E6EB8' }}
-            >
-              {owner}
-            </a>
-            { website ? (
-              <a href={website}>
-                <Icon name='globe' color='blue'/> &nbsp;{website}
-              </a>
-            ) : ''}
+            <List>
+              <List.Item>
+                <List.Icon name='envelope'/>
+                <List.Content as='a' href={owner} style={{ color: '#0E6EB8' }}>{owner}</List.Content>
+              </List.Item>
+              { website ? (
+                <List.Item>
+                  <Icon name='globe'/>
+                  <List.Content as='a' href={website} style={{ color: '#0E6EB8' }}>{website}</List.Content>
+                </List.Item>
+              ) : ''}
+            </List>
           </Card.Meta>
         <Card.Description>
           {summary ? `${summary.substring(0, summaryMaxLen)}...` : ''}

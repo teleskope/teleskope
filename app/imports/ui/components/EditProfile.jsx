@@ -13,6 +13,10 @@ import { check } from 'meteor/check';
 import { Profiles, ProfileSchema } from '../../api/profile/profile';
 
 class EditProfile extends React.Component {
+  socialMedia = this.props.profile.socials;
+
+  userId = this.props.profile._id;
+
   sites = [{ provider: 'linkedin', link: '' },
             { provider: 'github', link: '' },
             { provider: 'twitter', link: '' }];
@@ -21,19 +25,37 @@ class EditProfile extends React.Component {
 
   state = { open: false };
 
+  noSubmit = true;
+
   /* Open modal */
   show = () => this.setState({ open: true });
 
   /* Close modal */
-  close = () => this.setState({ open: false });
+  close = () => {
+    if (this.noSubmit) {
+      /* Clear any social sites without any links (for not submitting) */
+      this.socialMedia = (this.socialMedia).filter((social) => social.link);
+      Profiles.update(this.userId, { $set: { socials: this.socialMedia } });
+    }
+    this.noSubmit = true;
+    this.setState({ open: false });
+  };
 
   /** On successful submit, insert the this.props.profile. */
   submit(data) {
-    const { firstName, lastName, website, summary, image, zipCode, _id } = data;
+    const { firstName, lastName, website, summary, zipCode, _id } = data;
 
     /* Clear any social sites without any links */
-    let { socials } = data;
+    let { socials, image } = data;
     socials = socials.filter((social) => social.link);
+    console.log(this.socialMedia);
+    // for (let i = 0; i < socials.length; i++) {
+      this.socialMedia = $.extend(true, [], socials);
+    // }
+    console.log(this.socialMedia);
+    // this.socialMedia[0].provider = 'blah';
+    // console.log(this.socialMedia);
+    image = image || 'https://apod.nasa.gov/apod/image/1905/photo95cielaustral1024.jpg';
 
     /* Check's seem redundant but i included it anyways */
     check(data, Object);
@@ -45,6 +67,7 @@ class EditProfile extends React.Component {
         (error) => (error ?
             Bert.alert({ type: 'danger', message: `Update failed: ${error.message}` }) :
             Bert.alert({ type: 'success', message: 'Update succeeded' })));
+    this.noSubmit = false;
     this.close();
   }
 
@@ -75,13 +98,12 @@ class EditProfile extends React.Component {
         <div >
           <Button color='green' content='Edit Profile' icon='edit'
                   onClick={this.loadData(this.props.profile)}/>
-          <Modal open={open} onClose={this.close} closeIcon>
+          <Modal open={open} onClose={this.close.bind(this)} closeIcon>
             <Header icon='edit' content='Edit Profile'/>
             <Modal.Content>
               <Grid container centered>
                 <Grid.Column>
                   <Header as="h2" textAlign="center">Edit Profile</Header>
-                  /* Need to bind this.submit call*/
                   <AutoForm schema={ProfileSchema} onSubmit={this.submit.bind(this)}
                             model={this.props.profile}>
                     <Segment>
@@ -90,6 +112,7 @@ class EditProfile extends React.Component {
                         <TextField name='lastName'/>
                       </Form.Group>
                       <TextField name='website'/>
+                      {/* TODO: username input and then append site to beginning of it */}
                       {this.socialSitesTemp.map((social, index) => (<TextField label={`${social.provider}`}
                                           name={`socials.${index}.link`} key={index}/>
                       ))}
