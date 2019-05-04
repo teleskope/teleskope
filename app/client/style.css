@@ -69,25 +69,26 @@ img.studentCardImage {
   font-family: 'Righteous', cursive !important;
 }
 
-/* margin right left auto */
-.ui.stackable.cards {
-  margin-right: auto !important;
-  margin-left: auto !important;
-}
-
 a.ui.orange.right.ribbon.label {
   z-index: 2;
   top: 15%;
 }
 
 /* Media Query override for S-UI */
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 650px) {
   .nav-large { 
     display: none !important;
   }
 }
-@media only screen and (min-width: 521px) {
+@media only screen and (min-width: 651px) {
   .nav-small {
     display: none !important;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .cardrow.ui.stackable.cards {
+    margin-right: auto ;
+    margin-left: auto ;
   }
 }

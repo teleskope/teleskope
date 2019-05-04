@@ -41,7 +41,7 @@ class Dashboard extends React.Component {
     return (
 
       <div>
-        <Grid container style={{ marginTop: '1em' }}>
+        <Grid container style={{ marginTop: '1em' }} stackable>
           <Grid.Column width={4}>
               <Image src={image} size='medium' />
               <DashboardSubs

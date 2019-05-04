@@ -116,14 +116,14 @@ class ListCompanies extends React.Component {
 
     return (
         <Container style={{ marginTop: '80px' }}>
-          <Grid style={{ marginRight: 'auto', marginLeft: 'auto' }}>
+          <Grid>
             {Roles.userIsInRole(Meteor.userId(), 'student') ? (
-              [
+              <React.Fragment>
                 <Grid.Row key='head' columns='equal'>
                   <Header as="h2" floated='left'>We think you may like</Header>
-                </Grid.Row>,
+                </Grid.Row>
                 <Grid.Row key='card'>
-                  <Card.Group stackable>
+                  <Card.Group stackable className='cardrow'>
                       {this.matchedCompanies().map((company, index) => {
                         const isFavorited = favorites.includes(company._id);
                         return (
@@ -135,10 +135,11 @@ class ListCompanies extends React.Component {
                           />);
                         })}
                     </Card.Group>
-                </Grid.Row>,
-                <Divider key='divider'/>,
-              ]
+                </Grid.Row>
+                </React.Fragment>
             ) : ''}
+            
+            <Divider/>
             <Grid.Row verticalAlign='middle' columns='equal'>
               <Grid.Column>
                 <Header floated='left' as="h2">All Companies</Header>
@@ -162,7 +163,7 @@ class ListCompanies extends React.Component {
               </Grid.Column>
             </Grid.Row>
             <Grid.Row columns='equal'>
-              <Card.Group stackable>
+              <Card.Group stackable className='cardrow'>
                 {sortedCompanies.map((company, index) => {
                   const isFavorited = favorites.includes(company._id);
                   return (
