@@ -2,27 +2,30 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Icon, Image, List, Label } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import zipcodes from 'zipcodes';
 import { Roles } from 'meteor/alanning:roles';
+import zipcodes from 'zipcodes';
 import { Meteor } from 'meteor/meteor';
 
 export default function CompanyCard(props) {
   const { name, website, _id, zipCode, jobs, image } = props.company;
   const city = zipcodes.lookup(zipCode);
-  const handleFollow = () => {
-    props.onFollow(props.favorited, _id);
-  };
+  let handleFollow = null;
+  if (Roles.userIsInRole(Meteor.userId(), 'student')) {
+    handleFollow = () => {
+      props.onFollow(props.favorited, _id);
+    };
+  }
 
   let label2 = null;
   if (Roles.userIsInRole(Meteor.userId(), 'student') && props.company.matches > 0) {
-    label2 = { as: 'a', color: 'orange', ribbon: 'right',
+    label2 = { color: 'orange', ribbon: 'right',
       content: `${props.company.matches} skill matches!` };
   }
 
   return (
       <Card raised style={{ maxWidth: '345px' }}>
-        <Label attached='top' size='big' activeClassName="active" style={{ zIndex: 2 }}>
-          {name}
+        <Label attached='top' size='big' style={{ zIndex: 2 }}>
+          <Link to={`/companies/${_id}`} style={{ color: '#000' }}>{name}</Link>
           {Roles.userIsInRole(Meteor.userId(), 'student') ? (
               <Icon
                   link

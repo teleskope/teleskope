@@ -10,7 +10,7 @@ import { Profiles } from '/imports/api/profile/profile';
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
   render() {
-    return (this.props.ready) ? this.renderNavBar() : <Loader active>Retrieving data</Loader>;
+    return (this.props.ready) ? this.renderNavBar() : '';
   }
 
   renderNavBar() {
@@ -53,9 +53,9 @@ class NavBar extends React.Component {
               </Link>
             </div>
           ) : (
-            <Dropdown text={`${this.props.currentUser}`}
-                      pointing="top right"
-                      icon={ role === 'company' ? 'building' : 'student'} >
+            <Dropdown text={`${this.props.currentUser}`} pointing="top right"
+                      icon={ role === 'company' ? { name: 'building', size: 'large' } :
+                                                  { name: 'student', size: 'large' }}>
               <Dropdown.Menu>
                 <Dropdown.Item icon="user" text="My Profile" as={NavLink} exact to="/profile"/>
 

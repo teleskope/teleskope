@@ -1,29 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Icon, Image, Label } from 'semantic-ui-react';
+import { Card, Icon, Image, Label, Header, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 export default function StudentCard(props) {
-  const { firstName, lastName, website, _id, summary, image } = props.student;
+  const { firstName, lastName, website, _id, summary, image, owner } = props.student;
   const summaryMaxLen = 150;
 
   return (
       <Card raised style={{maxWidth: '300px' }}>
-          <Label attached='top' size='large' style={{ zIndex: 1 }}>
-            {`${firstName} ${lastName}`}
+          <Label attached='top' size='big'>
+            <Link to={`/students/${_id}`} style={{ color: '#000' }}>
+                  {`${firstName} ${lastName}`}</Link>
           </Label>
-          <Link to={`/students/${_id}`}>
-            <Image src={image} className="companyCardImage" style={{}}/>
+        {/* <br/> for buffer between label and image */}
+        <br/>
+        <br/>
+        <Link to={`/students/${_id}`}>
+            <Image src={image} className="companyCardImage"/>
         </Link>
-
         <Card.Content>
-          <br/>
           <Card.Meta>
-            { website ? (
-            <a href={website}>
-              <Icon name='globe' color='blue'/> &nbsp;{website}
-            </a>
-            ) : ''}
+            <List>
+              <List.Item>
+                <List.Icon name='envelope'/>
+                <List.Content as='a' href={owner} style={{ color: '#0E6EB8' }}>{owner}</List.Content>
+              </List.Item>
+              { website ? (
+                <List.Item>
+                  <Icon name='globe'/>
+                  <List.Content as='a' href={website} style={{ color: '#0E6EB8' }}>{website}</List.Content>
+                </List.Item>
+              ) : ''}
+            </List>
           </Card.Meta>
         <Card.Description>
           {summary ? `${summary.substring(0, summaryMaxLen)}...` : ''}

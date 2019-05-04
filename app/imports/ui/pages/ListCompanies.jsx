@@ -90,6 +90,7 @@ class ListCompanies extends React.Component {
     // // get users skills into array
     const userSkills = this.props.profile.skills;
     // added aggregated skills to companies
+    // TODO:Get rid of ESLint errors
     const companyskills = _.chain(companies)
                             .map(company => {
                               const skills = [];
@@ -150,7 +151,7 @@ class ListCompanies extends React.Component {
                   button
                   className='icon'
                 >
-                  <Dropdown.Menu >
+                  <Dropdown.Menu>
                     <Dropdown.Menu scrolling>
                       {filterOptions.map(option => (
                         <Dropdown.Item key={option.value} {...option} onClick={this.handleSort}/>
@@ -165,14 +166,14 @@ class ListCompanies extends React.Component {
                 {sortedCompanies.map((company, index) => {
                   const isFavorited = favorites.includes(company._id);
                   return (
-                    <CompanyCard
-                        key={index}
-                        company={company}
-                        onFollow={this.handleFollow}
-                        favorited={isFavorited}
-                    />);
-                    })}
-                </Card.Group>
+                      <CompanyCard
+                          key={index}
+                          company={company}
+                          onFollow={this.handleFollow}
+                          favorited={isFavorited}
+                      />);
+                })}
+              </Card.Group>
             </Grid.Row>
           </Grid>
         </Container>

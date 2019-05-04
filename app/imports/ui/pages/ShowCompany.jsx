@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Container, Header, Icon, Grid, Card, Image, Menu, Modal, Button, Segment } from 'semantic-ui-react';
+import { Loader, Container, Header, Icon, Grid, Card, Image, Menu, Modal, Button, Segment,
+          List } from 'semantic-ui-react';
 import { Bert } from 'meteor/themeteorchef:bert';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
@@ -14,15 +15,12 @@ import zipcodes from 'zipcodes';
 import { Companies, CompanySchema } from '../../api/company/company';
 import { Profiles } from '../../api/profile/profile';
 import JobCard from '../components/job/JobCard';
-// import { Menu } from 'semantic-ui-react/dist/commonjs/collections/Menu';
 
 
 class ShowCompany extends Component {
   constructor() {
     super();
-    this.state = {
-      isFavorited: null,
-    };
+    this.follow = null;
   }
 
   submit(data) {
@@ -41,7 +39,6 @@ class ShowCompany extends Component {
     const owner = this.props.profile.owner;
     const isOwned = this.props.company.owners.includes(owner);
     if (!isOwned) {
-
       return null;
     }
     return <Modal id='modal' trigger={<Button
@@ -75,10 +72,10 @@ class ShowCompany extends Component {
     const followed = this.props.profile.following.includes(companyId);
     if (!followed) {
       Meteor.call('followCompany', companyId);
-      this.setState({ isFavorited: true });
+      this.follow = true;
     } else {
       Meteor.call('unfollowCompany', companyId);
-      this.setState({ isFavorited: false });
+      this.follow = false;
     }
   };
 
@@ -89,17 +86,9 @@ class ShowCompany extends Component {
     renderPage() {
       const { jobs, zipCode, image, summary, name, address, owners, socials, website } = this.props.company;
       const city = zipcodes.lookup(zipCode);
-      const email01 = 'mailto:';
-      const email02 = email01.concat(owners[0]);
-      const emailLink = email02.concat('?Subject=Hello');
-      const iconName = new Array(100);
-      if (socials) {
-        socials.map(function (social, index) {
-          iconName[index] = social.provider;
-          iconName[index].concat(' icon');
-          return iconName[index];
-        });
-      }
+      const { firstName, lastName, role } = this.props.profile;
+      this.follow = this.props.profile.following.includes(this.props.company._id);
+
       return (
           <Grid style={{ marginTop: '2em' }}>
             <Grid.Row columns={2}>
@@ -109,24 +98,36 @@ class ShowCompany extends Component {
               <Grid.Column>
                 <Header as='h1'>{name}  {this.renderEditModal()}</Header>
                 <Menu borderless text>
-                  <Menu.Item href={emailLink}>
+                  <Menu.Item href={`mailto:${owners[0]}?Subject=Hi, I'm ${firstName} ${lastName}!`}>
                     <Icon size='large' name="envelope outline"/>
                   </Menu.Item>
                   {website ? (
                       <Menu.Item href={website} target='_blank'>
                         <Icon size='large' name='globe'/></Menu.Item>
                   ) : ''}
-                  {socials ? (socials.map((social, index) => (
-                      <Menu.Item href={social.link} key={index} target='_blank'>
-                        <Icon size='large' name={iconName[index]}/>
-                      </Menu.Item>
-                  ))) : ''}
+                  {socials ? (socials.map((social, index) => {
+                    if (social.link) {
+                      return <Menu.Item href={social.link} key={index} target='_blank'>
+                        <Icon size='large' name={social.provider}/>
+                      </Menu.Item>;
+                    }
+                    return '';
+                  })) : ''}
                 </Menu>
-                <Header as='h3'><Icon className="map marker alternate icon"/>{address} {zipCode}</Header>
-                {city ? (
-                    <Header as='h4'>
-                      <Header.Content>{`${city.city}, ${city.state}`}</Header.Content>
-                    </Header>
+                <List>
+                  <List.Item>
+                    <List.Icon name='map marker alternate' size='big' verticalAlign='middle' />
+                    <List.Content>
+                      <List.Header>{address}, {zipCode}</List.Header>
+                      {city ? (
+                      <List.Description>{`${city.city}, ${city.state}`}</List.Description>
+                      ) : ''}
+                    </List.Content>
+                  </List.Item>
+                </List>
+                {role === 'student' ? (
+                <Button color={ this.follow ? 'yellow' : null} content='Follow' icon='star'
+                        onClick={this.handleFollow}/>
                 ) : ''}
               </Grid.Column>
             </Grid.Row>
