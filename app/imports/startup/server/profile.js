@@ -8,7 +8,11 @@ import { Profiles } from '../../api/profile/profile';
 /** Initialize the database with a default data document. */
 function addData(data) {
   console.log(`  Adding: ${data.lastName}`);
-  Profiles.insert(data);
+  const profile = data;
+  if (!profile.socials) {
+    profile.socials = [];
+  }
+  Profiles.insert(profile);
 }
 
 /** Initialize the collection if empty. Load per user. */
@@ -39,7 +43,7 @@ Meteor.methods({
     profile.skills = [];
     profile.experience = '';
     profile.summary = '';
-    profile.image = 'https://media1.giphy.com/media/MuE0xWbEohUrxbm77r/giphy.gif';
+    profile.image = 'https://apod.nasa.gov/apod/image/1905/photo95cielaustral1024.jpg';
     profile.owner = Meteor.user().emails[0].address;
     profile.role = Roles.userIsInRole(Meteor.userId(), ['company']) ? 'company' : 'student';
     profile.following = [];

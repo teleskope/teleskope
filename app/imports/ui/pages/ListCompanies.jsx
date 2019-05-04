@@ -6,7 +6,6 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import zipcodes from 'zipcodes';
 import { Companies } from '/imports/api/company/company';
-import { Roles } from 'meteor/alanning:roles';
 import { Profiles } from '../../api/profile/profile';
 import CompanyCard from '../components/company/CompanyCard';
 

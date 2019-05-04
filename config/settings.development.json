@@ -80,7 +80,7 @@
       "skills": ["Data Science", "Machine Learning", "Bioinformatics", "Graphic Design"],
       "zipCode": "96817",
       "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!",
-      "image": "https://i.ytimg.com/vi/8i0z4oykaUQ/maxresdefault.jpg",
+      "image": "https://pbs.twimg.com/profile_images/725321660484583424/ArQ4fM3k_400x400.jpg",
       "following": []
     },
     {
@@ -127,7 +127,7 @@
       ],
       "zipCode": "96817",
       "summary": "Hi I am a computer science student with 3 years of programming experience. I love working with people and I would like to work on a fantastic team!",
-      "image": "https://www.troundup.com/wp-content/uploads/2017/04/erlich-html-shirt-450x600.jpg",
+      "image": "http://s3.amazonaws.com/assets.piedpiper.pro/app/uploads/2016/06/piedpiper_308_blog_01.jpg",
       "following": []
     },
     {
@@ -136,6 +136,7 @@
       "firstName":"Steve",
       "lastName": "Jobs",
       "website": "https://en.wikipedia.org/wiki/Steve_Jobs",
+      "socials": [],
       "skills": ["Machine Learning"],
       "zipCode": "95015",
       "summary": "Hi, I am undeclared and I dropped out after a semester, but I am working on my startup and need a job to help fund it.",
@@ -148,6 +149,7 @@
       "firstName": "Bill",
       "lastName": "Gates",
       "website": "https://en.wikipedia.org/wiki/Bill_Gates",
+      "socials": [],
       "skills": ["Bioinformatics"],
       "zipCode": "98052",
       "summary": "Hi, I am undeclared and I dropped out after a semester, but I am working on my startup and need a job to help fund it.",
