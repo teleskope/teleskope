@@ -24,8 +24,22 @@ Meteor.methods({
     company.summary = '';
     company.image = 'images/defaultCompany.jpg';
     company.socials = [];
+    company.notifications = [];
     company.jobs = [];
     company.owners = [Meteor.user().emails[0].address];
-    Companies.insert(company);
+    Companies.insert(company, (err, id) => Meteor.call('addNotification', id, `${company.name} has joined Teleskope!`));
   },
+
+  addNotification: function (company_id, message) {
+    check(company_id, String);
+    check(message, String);
+
+    const notification = {
+      datetime: Date.now(),
+      content: message,
+    };
+
+    Companies.update(company_id, { $push: { notifications: notification } });
+  },
+
 });

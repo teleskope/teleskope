@@ -31,6 +31,10 @@ const CompanySchema = new SimpleSchema({
     'jobs.$.requirements': String,
     'jobs.$.skills': Array,
     'jobs.$.skills.$': String,
+  notifications: { type: Array },
+    'notifications.$': Object,
+    'notifications.$.datetime': Date,
+    'notifications.$.content': String,
 }, { tracker: Tracker, requiredByDefault: false });
 
 Companies.attachSchema(CompanySchema);

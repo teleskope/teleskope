@@ -1,12 +1,13 @@
+import { Meteor } from 'meteor/meteor';
 import { Companies } from '/imports/api/company/company.js';
+import _ from 'underscore';
 import defaultCompanies from './data/companies';
 import defaultJobs from './data/jobs';
-import _ from 'underscore';
 /* eslint-disable no-console */
 
 function addData(data) {
   console.log(`  Adding: ${data.name}`);
-  Companies.insert(data);
+  Companies.insert(data, (err, id) => Meteor.call('addNotification', id, `${data.name} has joined Teleskope!`));
 }
 
 // randomly assigns 2-3 jobs per company with company and job zip same
