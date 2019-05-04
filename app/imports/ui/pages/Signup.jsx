@@ -54,7 +54,7 @@ export default class Signup extends React.Component {
           <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
             <Grid.Column>
               <Header as="h2" textAlign="center">
-                Register your account
+                {this.state.companyReg ? 'Company Registration' : 'Student Registration'}
               </Header>
                 {registrationForm}
               <Message>
