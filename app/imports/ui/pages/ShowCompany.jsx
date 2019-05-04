@@ -126,7 +126,7 @@ class ShowCompany extends Component {
                   </List.Item>
                 </List>
                 {role === 'student' ? (
-                <Button color={ this.follow ? 'yellow' : null} content='Follow' icon='star'
+                <Button color={ this.follow ? null : 'yellow'} content={this.follow ? 'unfollow' : 'follow'} icon='star'
                         onClick={this.handleFollow}/>
                 ) : ''}
               </Grid.Column>

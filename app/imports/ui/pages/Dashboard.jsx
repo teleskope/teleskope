@@ -85,7 +85,8 @@ const DashboardContainer = withTracker(() => {
                           .filter(company => profile.following.includes(company._id))
                           .map(company => {
                             const notices = company.notifications;
-                            notices.forEach((n) => {
+                            notices.forEach((notice) => {
+                              const n = notice;
                               n.company = company.name;
                               n.image = company.image;
                             });
