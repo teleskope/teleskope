@@ -49,12 +49,11 @@ class EditProfile extends React.Component {
     let { socials, image } = data;
     socials = socials.filter((social) => social.link);
     console.log(this.socialMedia);
-    // for (let i = 0; i < socials.length; i++) {
-      this.socialMedia = $.extend(true, [], socials);
-    // }
-    console.log(this.socialMedia);
-    // this.socialMedia[0].provider = 'blah';
-    // console.log(this.socialMedia);
+
+    /* Need to update this.socialMedia if socials changed */
+    this.socialMedia = $.extend(true, [], socials);
+
+    /* Default profile picture */
     image = image || 'https://apod.nasa.gov/apod/image/1905/photo95cielaustral1024.jpg';
 
     /* Check's seem redundant but i included it anyways */
