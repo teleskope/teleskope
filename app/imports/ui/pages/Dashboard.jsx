@@ -1,18 +1,25 @@
 import React from 'react';
-import { Grid, Header, Segment, Image, Loader } from 'semantic-ui-react';
+import { Grid, Header, Segment, Image, Loader, Comment } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
+import uuid from 'uuid';
 import PropTypes from 'prop-types';
 import { Profiles } from '../../api/profile/profile';
 import { Companies } from '/imports/api/company/company';
-import DashboardSubs from '../components/DashboardSubs';
+import DashboardSubs from '../components/dashboard/DashboardSubs';
+import Notification from '../components/dashboard/Notification';
 
 const segmentStyle = {
   backgroundColor: '#455880',
 };
  /* eslint no-else-return: "error" */
 class Dashboard extends React.Component {
+  notificationFeed() {
+    const { notifications } = this.props;
+    return _.map(notifications, (notice) => <Notification notice={notice} key={uuid.v1()}/>);
+  }
+
   subCompanies(role) {
     const { companies, profile } = this.props;
     let result = [];
@@ -34,7 +41,7 @@ class Dashboard extends React.Component {
     return (
 
       <div>
-        <Grid container style={{ marginTop: '1em' }}>
+        <Grid container style={{ marginTop: '1em' }} stackable>
           <Grid.Column width={4}>
               <Image src={image} size='medium' />
               <DashboardSubs
@@ -46,13 +53,9 @@ class Dashboard extends React.Component {
             <Header as='h2'>{`${firstName} ${lastName}`} </Header>
             <Segment secondary inverted style={segmentStyle}>
               <Header as='h3'> Notifications </Header>
-              <Segment.Group>
-                <Segment tertiary>Company A is interested in you!</Segment>
-                <Segment tertiary>Company B is interested in you!</Segment>
-                <Segment tertiary>Company C is interested in you!</Segment>
-                <Segment tertiary>Company A is interested in you!</Segment>
-                <Segment tertiary>Company B is interested in you!</Segment>
-              </Segment.Group>
+              <Comment.Group>
+                { this.notificationFeed() }
+              </Comment.Group>
             </Segment>
           </Grid.Column>
           <Grid.Column width={2}/>
@@ -66,6 +69,7 @@ Dashboard.propTypes = {
   profile: PropTypes.object,
   ready: PropTypes.bool,
   companies: PropTypes.array,
+  notifications: PropTypes.array,
 };
 
 const DashboardContainer = withTracker(() => {
@@ -77,12 +81,27 @@ const DashboardContainer = withTracker(() => {
   // const email = Meteor.user() ? Meteor.user().username : undefined;
 
   const companies = Companies.find({}).fetch();
+  const notifications = _.chain(companies)
+                          .filter(company => profile.following.includes(company._id))
+                          .map(company => {
+                            const notices = company.notifications;
+                            notices.forEach((notice) => {
+                              const n = notice;
+                              n.company = company.name;
+                              n.image = company.image;
+                            });
+                            return notices;
+                          })
+                          .flatten()
+                          .sortBy(n => n.datetime)
+                          .value();
 
   const ready = handles.some(handle => handle.ready());
   return {
     profile,
     companies,
     ready,
+    notifications,
   };
 })(Dashboard);
 

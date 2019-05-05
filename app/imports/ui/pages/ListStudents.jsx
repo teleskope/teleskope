@@ -18,7 +18,7 @@ class ListStudents extends React.Component {
         <Container style={{ marginTop: '80px' }}>
           <Grid>
             <Grid.Row>
-              <Card.Group stackable>
+              <Card.Group stackable className='cardrow'>
                 {students.map((student, index) => (
                       <StudentCard student={student} key={index}/>
                   ))}

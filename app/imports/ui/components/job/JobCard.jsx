@@ -11,10 +11,11 @@ export default function JobCard(props) {
       <Card id='modal' raised>
         <Card.Content id='cardHeader'>
           <Header id='cardHeader'>{title} <Modal id='modal' trigger={<Button
-              content='View Job'
+              content='View'
               color='black'
               floated='right'
               inverted
+              size='tiny'
           />} closeIcon>
             <div id='modalHeader'>
               <Modal.Header as='h1'>{title}</Modal.Header>

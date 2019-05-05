@@ -28,22 +28,7 @@ export default class StudentRegistration extends Component {
   // TODO: reimplement handleSubmit and redirect signup to landing profile
   handleSubmit() {
     const { email, password, firstName, lastName } = this.state;
-    //
-    // const reportError = (error, callback) => {
-    //   if (callback) {
-    //     callback(error);
-    //   } else {
-    //     throw error;
-    //   }
-    // };
-    //
-    // if (!firstName || !lastName) {
-    //   reportError(new Meteor.Error(400, 'Name fields may not be empty'), (err) => {
-    //     if (err) {
-    //       this.setState({ error: err.reason });
-    //     }
-    //   });
-    // } else {
+
       const profile = {
         firstName,
         lastName,
@@ -54,7 +39,6 @@ export default class StudentRegistration extends Component {
         } else {
           Meteor.call('addUserRoleStudent');
           Meteor.call('createUserProfile', profile);
-          // this.props.history.push('/');
         }
       });
     // }
@@ -105,7 +89,7 @@ export default class StudentRegistration extends Component {
                 onChange={this.handleChange}
                 required
             />
-            <Form.Button content="Submit"/>
+            <Form.Button content="Submit" fluid primary/>
           </Segment>
         </Form>
         {this.state.error === '' ? ('') :

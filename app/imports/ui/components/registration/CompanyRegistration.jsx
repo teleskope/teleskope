@@ -144,7 +144,7 @@ export default class CompanyRegistration extends Component {
                 onChange={this.handleChange}
                 required
             />
-            <Form.Button content="Submit"/>
+            <Form.Button content="Submit" fluid primary/>
           </Segment>
         </Form>
           {this.state.error === '' ? ('') :
