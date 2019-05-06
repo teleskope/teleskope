@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink, Link } from 'react-router-dom';
-import { Menu, Dropdown, Image, Button, Loader, Icon } from 'semantic-ui-react';
+import { Menu, Dropdown, Image, Button, Icon } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import { Profiles } from '/imports/api/profile/profile';
 
@@ -24,7 +24,8 @@ class NavBar extends React.Component {
     return (
       <Menu style={menuStyle} borderless inverted>
         <Menu.Item as={NavLink} activeClassName="" exact to="/">
-        <Image src='images/ts_white_logo.png' size='tiny'/><h1 className='righteous' style={{ alignSelf: 'baseline' }}>TeleSkope</h1>
+        <Image src='images/ts_white_logo.png' size='tiny'/>
+        <h1 className='righteous' style={{ alignSelf: 'baseline' }}>TeleSkope</h1>
         </Menu.Item>
         {((Roles.userIsInRole(userId, 'student') || Roles.userIsInRole(userId, 'company')) && this.props.profile) ? (
             <StudentNav />
@@ -69,7 +70,7 @@ class NavBar extends React.Component {
         {/* menu for mobile */}
         <Menu.Item position="right" className='nav-small'>
           {this.props.currentUser === '' ? (
- 
+
             <Dropdown pointing="top right" icon={<Icon name='bars' size='large'/>}>
               <Dropdown.Menu>
                 <Dropdown.Item text="Log In" as={NavLink} exact to="/signin"/>
@@ -77,7 +78,7 @@ class NavBar extends React.Component {
                 />
               </Dropdown.Menu>
             </Dropdown>
-            
+
           ) : (
             <Dropdown pointing="top right"
                       icon={<Icon name='bars' size='large'/>}>
@@ -101,8 +102,7 @@ class NavBar extends React.Component {
   }
 }
 
-const StudentNav = () => {
-  return (
+const StudentNav = () => (
     [
       <Menu.Item as={NavLink}
                   className='nav-large'
@@ -127,7 +127,6 @@ const StudentNav = () => {
       </Menu.Item>,
     ]
   );
-};
 
 /** Declare the types of all properties. */
 NavBar.propTypes = {
