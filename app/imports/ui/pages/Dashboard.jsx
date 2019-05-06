@@ -94,6 +94,7 @@ const DashboardContainer = withTracker(() => {
                           })
                           .flatten()
                           .sortBy(n => n.datetime)
+                          .reverse()
                           .value();
 
   const ready = handles.some(handle => handle.ready());
