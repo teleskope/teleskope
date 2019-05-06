@@ -138,7 +138,7 @@ class ListCompanies extends React.Component {
                 </Grid.Row>
                 </React.Fragment>
             ) : ''}
-            
+
             <Divider/>
             <Grid.Row verticalAlign='middle' columns='equal'>
               <Grid.Column>
