@@ -89,6 +89,7 @@ const DashboardContainer = withTracker(() => {
                               const n = notice;
                               n.company = company.name;
                               n.image = company.image;
+                              n.companyId = company._id;
                             });
                             return notices;
                           })
