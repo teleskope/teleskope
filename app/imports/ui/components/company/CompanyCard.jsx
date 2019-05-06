@@ -18,8 +18,9 @@ export default function CompanyCard(props) {
 
   let label2 = null;
   if (Roles.userIsInRole(Meteor.userId(), 'student') && props.company.matches > 0) {
-    label2 = { color: 'orange', ribbon: 'right',
-      content: `${props.company.matches} skill matches!` };
+    label2 = <Label color='orange' ribbon='right' style={{ top: '15%', zIndex: 2 }}>
+                {`${props.company.matches} skill matches!`}
+             </Label>;
   }
 
   return (
@@ -37,7 +38,7 @@ export default function CompanyCard(props) {
           ) : ''}
         </Label>
         <Link to={`/companies/${_id}`}>
-          <Image src={image} className="companyCardImage" style={{ top: '17px' }} label={label2}/>
+          <Image src={image} className="companyCardImage" style={{ top: '1.2em', display: 'block' }} label={label2}/>
         </Link>
         <Card.Content>
           <br/>
