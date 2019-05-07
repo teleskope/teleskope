@@ -59,10 +59,10 @@ img.companyCardImage {
 }
 img.studentCardImage {
   width: 100%;
-  height: 200px;
-  max-height: 200px;
+  height: 230px;
+  max-height: 230px;
   object-fit: cover;
-  object-position: center;
+  object-position: 50% 10%;
 }
 
 .righteous {

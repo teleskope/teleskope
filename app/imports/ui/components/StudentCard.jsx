@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Icon, Image, Label, Header, List } from 'semantic-ui-react';
+import { Card, Icon, Image, Label, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 export default function StudentCard(props) {
@@ -8,16 +8,13 @@ export default function StudentCard(props) {
   const summaryMaxLen = 150;
 
   return (
-      <Card raised style={{maxWidth: '300px' }}>
-          <Label attached='top' size='big'>
+      <Card raised style={{ maxWidth: '300px' }}>
+          <Label attached='top' size='big' style={{ zIndex: 2 }}>
             <Link to={`/students/${_id}`} style={{ color: '#000' }}>
                   {`${firstName} ${lastName}`}</Link>
           </Label>
-        {/* <br/> for buffer between label and image */}
-        <br/>
-        <br/>
         <Link to={`/students/${_id}`}>
-            <Image src={image} className="companyCardImage"/>
+            <Image src={image} className="studentCardImage" />
         </Link>
         <Card.Content>
           <Card.Meta>

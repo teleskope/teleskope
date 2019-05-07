@@ -14,7 +14,7 @@ const options = {
 export default function Notification(props) {
   return (
     <Comment style={{ padding: '1em', backgroundColor: '#f1f1f1', borderRadius: '5px' }}>
-      <Comment.Avatar as='a' src={props.notice.image} />
+      <Comment.Avatar as='a' src={props.notice.image} href={`/#/companies/${props.notice.companyId}`}/>
       <Comment.Content>
         <Comment.Author>{props.notice.company}</Comment.Author>
         <Comment.Metadata>

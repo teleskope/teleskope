@@ -120,7 +120,7 @@ class ListCompanies extends React.Component {
             {Roles.userIsInRole(Meteor.userId(), 'student') ? (
               <React.Fragment>
                 <Grid.Row key='head' columns='equal'>
-                  <Header as="h2" floated='left'>We think you may like</Header>
+                  <Header as="h2">Companies that match you</Header>
                 </Grid.Row>
                 <Grid.Row key='card'>
                   <Card.Group stackable className='cardrow'>
@@ -138,7 +138,7 @@ class ListCompanies extends React.Component {
                 </Grid.Row>
                 </React.Fragment>
             ) : ''}
-            
+
             <Divider/>
             <Grid.Row verticalAlign='middle' columns='equal'>
               <Grid.Column>

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Icon, Image, Loader, Grid, Menu, Button } from 'semantic-ui-react';
+import uuid from 'uuid';
+import { Container, Header, Icon, Image, Loader, Grid, Menu, Button, Label } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import zipcodes from 'zipcodes';
 import { Roles } from 'meteor/alanning:roles';
 import { Profiles } from '../../api/profile/profile';
-import ProfileSkillsDropdown from '../components/ProfileSkillsDropdown';
 
 class ShowStudent extends Component {
 
@@ -52,6 +52,11 @@ class ShowStudent extends Component {
                       <Header.Content>{`${city.city}, ${city.state}`}</Header.Content>
                     </Header>
                 ) : ''}
+                <Label.Group tag color='blue'>
+                  {
+                    this.props.student.skills.map((skill) => <Label key={uuid.v1()}>{skill}</Label>)
+                  }
+                </Label.Group>
                 {Roles.userIsInRole(Meteor.userId(), 'company') ? (
                   <Button
                       color='blue'
@@ -74,9 +79,8 @@ class ShowStudent extends Component {
           <br></br>
             <Grid.Row>
               <Container text>
-                <Header as='h2'>Skills</Header>
-                {/*TODO: Display Skills*/}
-                {/*<ProfileSkillsDropdown/>*/}
+                <Header as='h2'></Header>
+                  
               </Container>
             </Grid.Row>
         </Grid>

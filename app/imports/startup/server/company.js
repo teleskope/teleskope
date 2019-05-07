@@ -42,4 +42,17 @@ Meteor.methods({
     Companies.update(company_id, { $push: { notifications: notification } });
   },
 
+  addJob: function (company_id, data) {
+    check(company_id, String);
+    check(data, Object);
+    const job = { ...data };
+    const company = Companies.findOne(company_id);
+    job.date = Date.now();
+    job.zipCode = company.zipCode;
+
+    Companies.update(company_id, { $push: { jobs: job } }, () => {
+      Meteor.call('addNotification', company_id, `New listed opportunity: ${job.title} `);
+    });
+  },
+
 });

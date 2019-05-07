@@ -89,11 +89,13 @@ const DashboardContainer = withTracker(() => {
                               const n = notice;
                               n.company = company.name;
                               n.image = company.image;
+                              n.companyId = company._id;
                             });
                             return notices;
                           })
                           .flatten()
                           .sortBy(n => n.datetime)
+                          .reverse()
                           .value();
 
   const ready = handles.some(handle => handle.ready());
