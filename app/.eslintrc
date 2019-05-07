@@ -55,6 +55,7 @@
   },
   "globals": {
     "_": false,
+    "$": false,
     "Assets": true
   }
 }
