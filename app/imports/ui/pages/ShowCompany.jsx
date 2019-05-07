@@ -15,6 +15,7 @@ import zipcodes from 'zipcodes';
 import { Companies, CompanySchema } from '../../api/company/company';
 import { Profiles } from '../../api/profile/profile';
 import JobCard from '../components/job/JobCard';
+import AddJob from '../components/job/AddJob';
 
 
 class ShowCompany extends Component {
@@ -28,6 +29,19 @@ class ShowCompany extends Component {
     Companies.update(_id, { $set: { name, owners, address, zipCode, summary, website, image } }, (error) => (error ?
         Bert.alert({ type: 'danger', message: `Update failed: ${error.message}` }) :
         Bert.alert({ type: 'success', message: 'Update succeeded' })));
+  }
+
+  renderAddJob() {
+    const { role } = this.props.profile;
+    if (role !== 'company') {
+      return null;
+    }
+    const owner = this.props.profile.owner;
+    const isOwned = this.props.company.owners.includes(owner);
+    if (!isOwned) {
+      return null;
+    }
+    return <AddJob/>;
   }
 
 
@@ -139,7 +153,7 @@ class ShowCompany extends Component {
             </Grid.Row>
             <Grid.Row>
               <Container text>
-                <Header as='h2'>Current Openings</Header>
+                <Header as='h2'>Current Openings  {this.renderAddJob()}</Header>
               </Container>
             </Grid.Row>
             {jobs ? (
