@@ -1,46 +1,64 @@
-import { Companies, CompanySchema } from '../../../api/company/company';
-import { Button, Header, Modal, Segment } from 'semantic-ui-react';
-import { Grid } from 'semantic-ui-react/dist/commonjs/collections/Grid';
-import AutoForm from '../../pages/ShowCompany';
+import React from 'react';
+import { Companies, CompanySchema } from '/imports/api/company/company';
+import { Grid, Segment, Header } from 'semantic-ui-react';
+import AutoForm from 'uniforms-semantic/AutoForm';
+import TextField from 'uniforms-semantic/TextField';
+import LongTextField from 'uniforms-semantic/LongTextField';
+import SelectField from 'uniforms-semantic/SelectField';
+import SubmitField from 'uniforms-semantic/SubmitField';
+import HiddenField from 'uniforms-semantic/HiddenField';
+import ErrorsField from 'uniforms-semantic/ErrorsField';
+import { Bert } from 'meteor/themeteorchef:bert';
+import { Meteor } from 'meteor/meteor';
 
+/** Renders the Page for adding a document. */
+class AddStuff extends React.Component {
 
-export default function AddJob(props) {
+  /** Bind 'this' so that a ref to the Form can be saved in formRef and communicated between render() and submit(). */
+  constructor(props) {
+    super(props);
+    this.submit = this.submit.bind(this);
+    this.insertCallback = this.insertCallback.bind(this);
+    this.formRef = null;
+  }
 
+  /** Notify the user of the results of the submit. If successful, clear the form. */
+  insertCallback(error) {
+    if (error) {
+      Bert.alert({ type: 'danger', message: `Add failed: ${error.message}` });
+    } else {
+      Bert.alert({ type: 'success', message: 'Add succeeded' });
+      this.formRef.reset();
+    }
+  }
 
+  /** On submit, insert the data. */
+  submit(data) {
+    const { title, employmentType, requirements, description } = data;
+    Meteor.call(addJob(company, data));
+  }
 
-
-handleSubmit(data){
-  const { title, employmentType, description, requirements } = data;
-  Meteor.call(addJob(company_id, data));
-    const reportError = (error, callback) => {
-      if (callback) {
-        callback(error);
-      } else {
-        throw error;
-      }
-    };
+  /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
+  render() {
+    return (
+        <Grid container centered>
+          <Grid.Column>
+            <Header as="h2" textAlign="center">Add Stuff</Header>
+            <AutoForm ref={(ref) => { this.formRef = ref; }} schema={CompanySchema} onSubmit={this.submit}>
+              <Segment>
+                <TextField name='title'/>
+                <SelectField name='employmentType'/>
+                <LongTextField name='requirements'/>
+                <LongTextField name='description'/>
+                <SubmitField value='Submit'/>
+                <ErrorsField/>
+                <HiddenField name='owner' value='fakeuser@foo.com'/>
+              </Segment>
+            </AutoForm>
+          </Grid.Column>
+        </Grid>
+    );
+  }
 }
 
-  return (
-      <Modal id='modal' trigger={<Button
-      content='Edit'
-      color='green'
-  />} closeIcon>
-    <Grid container centered>
-      <Grid.Column>
-        <Header as="h2" textAlign="center">Add Job</Header>
-        <AutoForm schema={CompanySchema} onSubmit={this.submit} model={this.props.company}>
-          <Segment>
-            <TextField name='title'/>
-            <SelectField name='employmentType'/>
-            <TextField name='requirements'/>
-            <LongTextField name='description'/>
-            <SubmitField value='Submit'/>
-            <ErrorsField/>
-          </Segment>
-        </AutoForm>
-      </Grid.Column>
-    </Grid>
-  </Modal>
-
-)}
+export default AddStuff;
