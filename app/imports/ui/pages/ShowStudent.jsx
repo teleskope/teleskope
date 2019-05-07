@@ -17,7 +17,7 @@ class ShowStudent extends Component {
   }
 
   renderPage() {
-    const { firstName, lastName, website, owner, summary, image, socials, zipCode } = this.props.student;
+    const { firstName, lastName, website, owner, summary, image, socials, zipCode, skills } = this.props.student;
     const city = zipcodes.lookup(zipCode);
 
     return (
@@ -52,11 +52,13 @@ class ShowStudent extends Component {
                       <Header.Content>{`${city.city}, ${city.state}`}</Header.Content>
                     </Header>
                 ) : ''}
-                <Label.Group tag color='blue'>
-                  {
-                    this.props.student.skills.map((skill) => <Label key={uuid.v1()}>{skill}</Label>)
-                  }
-                </Label.Group>
+                {skills ? (
+                  <Label.Group tag color='blue'>
+                    {
+                      this.props.student.skills.map((skill) => <Label key={uuid.v1()}>{skill}</Label>)
+                    }
+                  </Label.Group>
+                ) : ''}
                 {Roles.userIsInRole(Meteor.userId(), 'company') ? (
                   <Button
                       color='blue'
@@ -80,7 +82,7 @@ class ShowStudent extends Component {
             <Grid.Row>
               <Container text>
                 <Header as='h2'></Header>
-                  
+
               </Container>
             </Grid.Row>
         </Grid>

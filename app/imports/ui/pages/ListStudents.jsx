@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Grid, Loader, Card } from 'semantic-ui-react';
+import { Container, Grid, Loader, Card, Header } from 'semantic-ui-react';
 import { Profiles } from '/imports/api/profile/profile';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -16,6 +16,7 @@ class ListStudents extends React.Component {
     const { students } = this.props;
     return (
         <Container style={{ marginTop: '80px' }}>
+          <Header as="h2">All students</Header>
           <Grid>
             <Grid.Row>
               <Card.Group stackable className='cardrow'>

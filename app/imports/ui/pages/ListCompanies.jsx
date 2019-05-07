@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Grid, Header, Loader, Card, Divider, Dropdown } from 'semantic-ui-react';
+import { Container, Grid, Header, Loader, Card, Divider, Dropdown, Image, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
@@ -122,21 +122,40 @@ class ListCompanies extends React.Component {
                 <Grid.Row key='head' columns='equal'>
                   <Header as="h2">Companies that match you</Header>
                 </Grid.Row>
-                <Grid.Row key='card'>
-                  <Card.Group stackable className='cardrow'>
-                      {this.matchedCompanies().map((company, index) => {
-                        const isFavorited = favorites.includes(company._id);
-                        return (
-                          <CompanyCard
-                              key={index}
-                              company={company}
-                              onFollow={this.handleFollow}
-                              favorited={isFavorited}
-                          />);
-                        })}
-                    </Card.Group>
-                </Grid.Row>
-                </React.Fragment>
+                {this.props.profile.skills.length > 0 ? (
+                    <Grid.Row>
+                      <Card.Group stackable className='cardrow'>
+                          {this.matchedCompanies().map((company, index) => {
+                            const isFavorited = favorites.includes(company._id);
+                            return (
+                              <CompanyCard
+                                  key={index}
+                                  company={company}
+                                  onFollow={this.handleFollow}
+                                  favorited={isFavorited}
+                              />);
+                            })}
+                        </Card.Group>
+                    </Grid.Row>
+                ) : (
+                  [
+                    <Grid.Row key='image'columns='equal'>
+                      <Image
+                        src='https://t4.ftcdn.net/jpg/02/03/14/87/500_F_203148787_qItWZPpLfuOc2wCyuiXFDxaO0VvISpw9.jpg'
+                        style={{ height: '167px', width: '250px' }} rounded centered/>
+                    </Grid.Row>,
+                    <Grid.Row columns='equal' key='header'>
+                    <Header as='h2' icon textAlign='center'>
+                        No skills added!
+                        <Header.Subheader>Add skills so we can recommend companies looking for people with your
+                          skillset!
+                        </Header.Subheader>
+                      </Header>
+                    </Grid.Row>,
+                  ]
+                )}
+
+              </React.Fragment>
             ) : ''}
 
             <Divider/>
